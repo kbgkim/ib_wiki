@@ -21,7 +21,7 @@
 
 ## 4. 자동화 및 워크플로우 (Automation)
 - **문서 입수 스킬**: `ib-wiki-ingestion` 스킬을 사용하여 인박스 문서를 자동으로 처리합니다.
-- **인제션 로그**: 모든 문서 처리 내역은 [INGESTION_LOG.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/99_System/INGESTION_LOG.md)에 기록됩니다.
+- **인제션 로그**: 모든 문서 처리 내역은 [INGESTION_LOG.md](INGESTION_LOG.md)에 기록됩니다.
 
 ## 5. 향후 과제 (Next Steps)
 - `src/00_Inbox`에 추가되는 기존 문서들의 분석 및 위키 편입

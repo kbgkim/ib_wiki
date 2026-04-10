@@ -60,9 +60,9 @@ erDiagram
 | **61 - 100** | **CCC ~ D** | **위험 (High Risk)** |
 
 ## 4. 관련 문서 (Related Documents)
-- **리스크 전파 매커니즘**: [03_Risk_Propagation_Mechanics.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/03_Risk_Propagation_Mechanics.md) - 비선형 충격 전이 모델.
-- **통합 리스크 프레임워크**: [01_Unified_Risk_Framework.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/01_Unified_Risk_Framework.md) - 자산별 PD/LGD/EAD 매핑 이론.
-- **리스크 관리 정책**: [Risk_Management_Policy.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/01_Foundations/Risk_Management_Policy.md) - 전사적 리스크 거버넌스.
+- **리스크 전파 매커니즘**: [03_Risk_Propagation_Mechanics.md](03_Risk_Propagation_Mechanics.md) - 비선형 충격 전이 모델.
+- **통합 리스크 프레임워크**: [01_Unified_Risk_Framework.md](01_Unified_Risk_Framework.md) - 자산별 PD/LGD/EAD 매핑 이론.
+- **리스크 관리 정책**: [Risk_Management_Policy.md](../01_Foundations/Risk_Management_Policy.md) - 전사적 리스크 거버넌스.
 
 ---
 *최종 수정일: 2026-04-11*

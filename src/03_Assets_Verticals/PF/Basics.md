@@ -1,26 +1,26 @@
-# PF (Project Finance) Basics
+# 프로젝트 파이낸싱 (Project Finance, PF) 기초
 
-Project Finance (PF) is the financing of long-term infrastructure, industrial projects, or public services based on the projected cash flows of the project rather than the balance sheets of its sponsors.
+프로젝트 파이낸싱(PF)은 특정 프로젝트(인프라, 산업 단지, 발전소 등)의 사업성을 기반으로 자금을 조달하는 금융 기법입니다. 기업의 전반적인 신용이나 담보보다는 프로젝트 자체의 미래 현금흐름을 상환 재원으로 삼는 것이 특징입니다.
 
-## 1. PF Structure
-- **SPV (Special Purpose Vehicle)**: A distinct legal entity created solely for the project.
-- **Off-Balance Sheet**: Debt is limited to the project assets and does not affect the sponsors' balance sheets.
-- **Non-Recourse / Limited Recourse**: Lenders have no or limited claim on the sponsors' other assets if the project fails.
+## 1. PF의 구조적 특징
+- **특수목적법인 (Special Purpose Vehicle, SPV)**: 프로젝트 수행을 위해 별도의 독립된 법인을 설립.
+- **부외금융 (Off-Balance Sheet)**: 프로젝트의 부채가 사업주의 재무제표에 직접 계상되지 않음.
+- **비소구 / 제한적 소구 (Non-Recourse / Limited Recourse)**: 프로젝트 부실 시 대주(Lenders)가 사업주의 다른 자산에 대해 청구권을 갖지 않거나 매우 제한적으로 가짐 (현업 핵심).
 
-## 2. Risk Management
-- **Construction Risk**: Delay or cost overruns (Mitigated by EPC contracts/Performance bonds).
-- **Operation Risk**: Efficiency issues or technical failure.
-- **Market/Demand Risk**: Lower than expected revenue (Mitigated by Take-or-pay agreements).
-- **Financial Risk**: Interest rate or currency fluctuations.
+## 2. 주요 리스크 관리 (Risk Management)
+- **건설 리스크 (Construction Risk)**: 준공 지연이나 공사비 초과 발생 (E-PC 계약 및 책임준공 확약으로 완화).
+- **운영 리스크 (Operation Risk)**: 준공 후 운영 효율성 저하나 기술적 결함.
+- **수요 리스크 (Market/Demand Risk)**: 예상보다 낮은 매출 (수익형 민자사업 등에서 핵심).
+- **금융 리스크 (Financial Risk)**: 금리 변동 및 환율 위험.
 
-## 3. Cash Flow Modeling
-- **DSCR (Debt Service Coverage Ratio)**: Key metric for lenders (Target > 1.2x).
-- **LLCR (Loan Life Coverage Ratio)**: Covers the entire remaining life of the loan.
-- **Cash Flow Waterfall**:
-    1. Operating expenses.
-    2. Debt service (Interest + Principal).
-    3. Maintenance reserve.
-    4. Dividend distributions to Equity sponsors.
+## 3. 현금흐름 모델링 및 지표
+- **부채상환계수 (Debt Service Coverage Ratio, DSCR)**: 원리금 상환 능력을 나타내는 핵심 지표 (현업 목표 1.2배 이상).
+- **차입금상환계수 (Loan Life Coverage Ratio, LLCR)**: 전체 대출 기간 동안의 현금흐름 안정성 평가.
+- **현금흐름 폭포 (Cash Flow Waterfall)**: 
+    1. 운영비용 (OpEx) 지불.
+    2. 선순위 원리금 상환.
+    3. 예비비 적립.
+    4. 후순위 및 자본금 배당.
 
 ---
-*Created: 2026-04-10*
+*최종 수정일: 2026-04-10*

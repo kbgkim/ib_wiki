@@ -1,22 +1,23 @@
-# NPL (Non-Performing Loan) Basics
+# 부실채권 (Non-Performing Loan, NPL) 기초
 
-Non-Performing Loans (NPLs) are debts where the borrower has failed to make scheduled payments for a specific period (usually 90 days). In IB, NPL management is a specialized field focused on valuation, acquisition, and recovery of these distressed assets.
+부실채권(NPL)은 차주가 원리금 지급 약정을 일정 기간(통상 90일 이상) 이행하지 못한 대출 채권을 의미합니다. IB 영역에서 NPL 관리는 자산의 가치평가, 인수, 그리고 회수 전략(Recovery)에 집중됩니다.
 
-## 1. NPL Classification
-- **Sub-standard**: Interest or principal payments are in arrears.
-- **Doubtful**: Full collection is highly unlikely, but liquidation value exists.
-- **Loss**: No realistic prospect of recovery.
+## 1. NPL 건전성 분류
+- **요주의**: 연체 발생 우려가 있는 단계.
+- **고정 (Sub-standard)**: 연체가 발생했으나 담보가 확실한 단계.
+- **회수의문 (Doubtful)**: 담보가 부족하여 전액 회수가 불확실한 단계.
+- **추정손실 (Loss)**: 회수 가능성이 거의 없는 단계.
 
-## 2. Evaluation Methodologies
-- **DCF (Discounted Cash Flow)**: Estimating recovery timing and amounts.
-- **Fair Market Value (FMV) of Collateral**: Essential for secured NPLs (e.g., real estate).
-- **LGD (Loss Given Default)**: Calculating the percentage of the exposure that will likely be lost.
+## 2. 가치평가 방법론 (Evaluation)
+- **현금흐름 할인법 (Discounted Cash Flow, DCF)**: 미래 회수 예상 금액과 시점을 추정하여 현재 가치로 환산.
+- **담보 가치 평가 (Fair Market Value of Collateral)**: 부동산 등 담보물의 경매 낙찰가율 등을 고려한 가치 산정.
+- **부도 시 손실률 (Loss Given Default, LGD)**: 부도 발생 시 실제 손실되는 비율 산출 (현업 용어).
 
-## 3. Recovery Strategies
-1. **Self-Normalizing**: Re-negotiating terms with the borrower (Workout).
-2. **Legal Enforcement**: Foreclosure, auction of collateral.
-3. **Debt-to-Equity Swap**: Converting debt into an ownership stake (linking to Equity domain).
-4. **NPL Sale/Securitization**: Bulk sales to AMC (Asset Management Companies) or issuance of NPL ABS (linking to ABS domain).
+## 3. 회수 전략 (Recovery Strategies)
+1. **자율 정상화 (Workout)**: 채무자와 협상을 통해 상환 조건을 조정 (현업: 채무 조정).
+2. **법적 절차 (Enforcement)**: 경매(Foreclosure), 공매 등을 통한 담보권 행사.
+3. **출자 전환 (Debt-to-Equity Swap)**: 부채를 지분으로 전환하여 기업의 주인으로서 직접 경영권 행사 (Equity 영역과 연계).
+4. **채권 매각 및 유동화**: 자산관리회사(AMC) 등에 매각하거나 **NPL ABS**를 발행하여 현금화 (ABS 영역과 연계).
 
 ---
-*Created: 2026-04-10*
+*최종 수정일: 2026-04-10*

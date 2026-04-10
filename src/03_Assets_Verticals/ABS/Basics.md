@@ -1,24 +1,24 @@
-# ABS (Asset-Backed Securities) Basics
+# 자산유동화증권 (Asset-Backed Securities, ABS) 기초
 
-Asset-Backed Securities (ABS) are financial instruments created by pooling various types of debt (loans, leases, credit card debt, receivables) and selling them as tranches to investors.
+자산유동화증권(ABS)은 대출, 리스, 매출채권 등 다양한 형태의 자산을 한데 묶어(Pooling) 이를 담보로 발행하는 증권을 의미합니다.
 
-## 1. The Securitization Process
-Securitization is the core mechanism behind ABS:
-1. **Originator**: The entity that originally granted the loans (e.g., a bank or a PF lender).
-2. **Transfer**: The Originator transfers assets to an **SPV (Special Purpose Vehicle)** to ensure bankruptcy remoteness.
-3. **Tranching**: The SPV issues securities backed by these assets, usually divided into Senior, Mezzanine, and Junior (Equity) tranches.
-4. **Credit Enhancement**: Techniques used to improve the credit rating of higher tranches.
+## 1. 유동화 프로세스 (Securitization Process)
+유동화는 다음과 같은 메커니즘으로 진행됩니다.
+1. **자산보유자 (Originator)**: 자산을 원래 보유하고 있던 주체 (예: 은행, PF 대주).
+2. **자산 양도 (Transfer)**: 자산을 **특수목적법인 (Special Purpose Vehicle, SPV)**에 양도하여 파산격리(Bankruptcy Remoteness)를 확보.
+3. **트랜칭 (Tranching)**: SPV가 발행하는 증권을 위험도에 따라 선순위(Senior), 중순위(Mezzanine), 후순위(Junior/Equity)로 구분.
+4. **신용보강 (Credit Enhancement)**: 상위 트랜치의 신용등급을 높이기 위해 활용되는 기법.
 
-## 2. Key Components of ABS
-- **Cash Flow Waterfall**: The priority of payments from the underlying assets to different tranches.
-- **Credit Enhancement (Internal)**: Over-collateralization, Excess spread, Reserve accounts.
-- **Credit Enhancement (External)**: Letters of credit, Financial guarantees (Monoline insurance).
-- **Servicer**: The entity responsible for collecting payments from the underlying borrowers.
+## 2. ABS의 핵심 구성 요소
+- **현금흐름 폭포 (Cash Flow Waterfall)**: 기초자산에서 발생하는 현금흐름을 각 트랜치에 배분하는 우선순위 체계.
+- **내부 신용보강 (Internal Enhancement)**: 초과 담보(Over-collateralization), 초과 스프레드, 예비 기금 적립.
+- **외부 신용보강 (External Enhancement)**: 신용장(L/C), 금융 보증(보험), 자금 보충 약정 (현업).
+- **자산관리자 (Servicer)**: 차주로부터 원리금을 수납하고 관리하는 주체.
 
-## 3. ABS in the Integrated IB Context
-ABS is the "Liquidity Engine" for other IB domains:
-- **NPL Securitization**: Converting bad loan portfolios into NPL ABS to offload risk from balance sheets.
-- **PF Securitization**: Using CLOs (Collateralized Loan Obligations) to bundle infrastructure or project loans.
+## 3. 통합 IB 관점에서의 ABS
+ABS는 다른 IB 도메인에 '유동성'을 공급하는 엔진 역할을 합니다.
+- **NPL 유동화**: 부실채권 포트폴리오를 **NPL ABS**로 전환하여 은행의 비유동 자산을 현금화.
+- **PF 유동화**: 인프라나 프로젝트 대출을 기초로 **CLO (Collateralized Loan Obligation)** 등을 발행하여 자금 순환.
 
 ---
-*Created: 2026-04-10*
+*최종 수정일: 2026-04-10*

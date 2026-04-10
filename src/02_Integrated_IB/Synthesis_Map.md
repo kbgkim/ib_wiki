@@ -1,49 +1,49 @@
-# IB Integration Synthesis Map
+# IB 통합 시너지 맵 (Integrated IB Synthesis Map)
 
-This document illustrates how **NPL, PF, Equity, and ABS** intersect to form a comprehensive Investment Banking ecosystem.
+이 문서는 **NPL, PF, Equity, ABS**가 어떻게 서로 교차하며 종합적인 투자은행(IB) 생태계를 형성하는지 보여줍니다.
 
-## 1. The Integrated Lifecycle
+## 1. 자산 라이프사이클 통합 (Integrated Lifecycle)
 
-The following diagram shows the lifecycle of a large-scale asset (e.g., a Power Plant Project) and how it transitions through different IB domains.
+아래 다이어그램은 대규모 자산(예: 발전소 건설 프로젝트)이 라이프사이클에 따라 각 IB 도메인을 어떻게 거쳐가는지 설명합니다.
 
 ```mermaid
 graph TD
-    subgraph "Phase 1: Project Genesis"
-        A[Sponsor Equity] -->|Seed Capital| B(PF: Project Finance)
-        C[Bank Debt] -->|Lending| B
+    subgraph "Phase 1: 자금 모집 (Genesis)"
+        A[전략적/재무적 투자자 지분] -->|보통주 Capital| B(PF: 프로젝트 파이낸싱)
+        C[대주단 대출] -->|선순위 론| B
     end
 
-    subgraph "Phase 2: Operational Stress"
-        B -->|Construction Delay| D{Financial Distress}
-        D -->|Default| E[NPL: Non-Performing Loan]
+    subgraph "Phase 2: 자산 부실화 (Distress)"
+        B -->|준공 지연/운영 실패| D{재무적 위기 발생}
+        D -->|부도/기한이익상실| E[NPL: 부실채권]
     end
 
-    subgraph "Phase 3: Recovery & Restructuring"
-        E -->|Workout/Recap| F[Equity Swap]
-        E -->|Portfolio Sale| G[ABS: NPL Securitization]
-        F --> H[Distressed Equity Fund]
+    subgraph "Phase 3: 재구조화 (Restructuring)"
+        E -->|채무 조정/출자전환| F[지분/Equity 전환]
+        E -->|채권 매각/유동화| G[ABS: NPL 유동화]
+        F --> H[구조조정 펀드/PEF]
     end
 
-    subgraph "Phase 4: Exit & Recycling"
-        G --> I[Capital Market Investors]
-        H --> J[IPO / Trade Sale]
-        J --> K[Re-invest into New PF]
+    subgraph "Phase 4: 엑시트 및 선순환 (Exit & Recycling)"
+        G --> I[자본시장 투자자]
+        H --> J[기업공개/IPO 또는 경영권 매각]
+        J --> K[새로운 PF 사업으로 재투자]
     end
 ```
 
-## 2. Cross-Asset Synergy Points
+## 2. 도메인별 시너지 포인트 (Cross-Asset Synergy)
 
-### A. PF -> NPL (The Distress Bridge)
-When a project fails to meet DSCR (Debt Service Coverage Ratio) requirements, it moves from a PF asset to an NPL. IB's role transitions from *Structuring* to *Restructuring*.
+### 가. PF -> NPL (부실 전이 지점)
+프로젝트가 **DSCR (부채상환계수)** 요건을 충족하지 못하면, 해당 자산은 일반 대출에서 NPL로 분류됩니다. 이 시점부터 IB의 역할은 '구조화 (Structuring)'에서 '재구조화 (Restructuring)'로 전환됩니다.
 
-### B. NPL -> ABS (The Liquidity Bridge)
-To clean up balance sheets, banks bundle NPLs into ABS tranches. This allows institutional investors to "buy" into recovery potential with different risk-return profiles.
+### 나. NPL -> ABS (유동성 공급 지점)
+은행의 건전성 제고를 위해 NPL 포트폴리오는 ABS 형태로 유동화됩니다. 이를 통해 기관 투자자들은 위험도별로 분산된 트랜치에 투자하여 회수 이익을 공유합니다.
 
-### C. Equity -> PF (The Growth Bridge)
-Equity capital is the primary engine for starting new PF projects. Successful exits in one domain provide the liquidity needed for the next cycle.
+### 다. Equity -> PF (성장 엔진 지점)
+지분 자본(Equity)은 새로운 PF 프로젝트를 시작하는 원동력이 됩니다. 한 도메인에서의 성공적인 **엑시트 (Exit)**는 다음 사이클을 위한 유동성을 제공합니다.
 
-### D. ABS -> PF (The Debt Bridge)
-ABS mechanisms (like CLOs) are used to provide the underlying debt capital for PF projects, creating a continuous loop of funding.
+### 라. ABS -> PF (자금 조달 지점)
+ABS 메커니즘(예: PF 대출 채권을 기초로 한 ABCP)은 PF 프로젝트의 선순위 대출 자금을 공급하며 금융의 연속성을 보장합니다.
 
 ---
-*Created: 2026-04-10*
+*최종 수정일: 2026-04-10*

@@ -97,7 +97,7 @@ graph LR
 xychart-beta
     title "Risk vs. Reward Grid"
     x-axis [Low Risk, Mid Risk, High Risk]
-    y-axis "Expected Return (%)" [0, 5, 10, 15, 20, 25]
+    y-axis "Expected Return (%)" 0 --> 25
     bar [6, 11, 22]
     line [8, 14, 25]
 ```

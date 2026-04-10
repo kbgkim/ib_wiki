@@ -8,9 +8,9 @@
 
 ```mermaid
 sequenceDiagram
-    participant Front[Front: RM/영업]
-    participant Middle[Middle: 리스크/심사]
-    participant Back[Back: 운영/결제]
+    participant Front as Front: RM/영업
+    participant Middle as Middle: 리스크/심사
+    participant Back as Back: 운영/결제
 
     Note over Front: 1. 딜 소싱 및 분석
     Front->>Front: 타겟 발굴 및 밸류에이션

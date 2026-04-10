@@ -45,5 +45,15 @@ graph TD
 ### 라. ABS -> PF (자금 조달 지점)
 ABS 메커니즘(예: PF 대출 채권을 기초로 한 ABCP)은 PF 프로젝트의 선순위 대출 자금을 공급하며 금융의 연속성을 보장합니다.
 
+## 4. 관련 문서 (Related Documents)
+- **통합 리스크 프레임워크**: [01_Unified_Risk_Framework.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/01_Unified_Risk_Framework.md) - 전 자산 통합 리스크 이론.
+- **IB 기본 개요**: [IB_Overview.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/01_Foundations/IB_Overview.md) - 투자은행 기능 및 가치 사슬 개요.
+
+### 상세 자산별 기초 (Asset Verticals)
+- **부실채권**: [NPL Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/NPL/Basics.md)
+- **프로젝트 파이낸싱**: [PF Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/PF/Basics.md)
+- **자산유동화**: [ABS Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/ABS/Basics.md)
+- **자본/지분**: [Equity Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/Equity/Basics.md)
+
 ---
-*최종 수정일: 2026-04-10*
+*최종 수정일: 2026-04-11*

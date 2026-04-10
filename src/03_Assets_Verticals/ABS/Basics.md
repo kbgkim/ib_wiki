@@ -30,5 +30,10 @@ ABS는 기초 자산의 리스크가 트랜치 구조를 통해 재구성된 형
 > [!NOTE]
 > ABS의 현금흐름 안정성은 [리스크 엔진 기술 사양](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/02_Risk_Engine_Tech_Spec.md) 내 정규화 로직을 통해 상시 모니터링됩니다.
 
+## 5. 관련 문서 (Related Documents)
+- **통합 리스크 프레임워크**: [01_Unified_Risk_Framework.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/01_Unified_Risk_Framework.md) - PD/LGD/EAD 매핑 이론.
+- **통합 시너지 맵**: [Synthesis_Map.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/Synthesis_Map.md) - 자산 간 연계 구조.
+- **리스크 엔진 기술 사양**: [02_Risk_Engine_Tech_Spec.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/02_Risk_Engine_Tech_Spec.md) - 구조화 리스크 정규화 로직.
+
 ---
-*최종 수정일: 2026-04-10*
+*최종 수정일: 2026-04-11*

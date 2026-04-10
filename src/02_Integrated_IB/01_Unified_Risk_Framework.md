@@ -37,5 +37,16 @@ $$EL (예상 손실) = PD \times LGD \times EAD$$
 - **Stress (위기)**: 유의미한 거시 충격 시의 리스크 변동성 확대 측정.
 - **Worst (극단)**: 최악의 상황(Black Swan)에서의 생존 가능성 테스트.
 
+## 4. 관련 문서 (Related Documents)
+- **리스크 관리 정책**: [Risk_Management_Policy.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/01_Foundations/Risk_Management_Policy.md) - 전사적 리스크 거버넌스.
+- **IB 기본 개요**: [IB_Overview.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/01_Foundations/IB_Overview.md) - IB의 핵심 기능 및 가치 사슬 개요.
+- **통합 시너지 맵**: [Synthesis_Map.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/Synthesis_Map.md) - 자산군 간의 라이프사이클 연결.
+
+### 상세 자산별 기초 (Asset Verticals)
+- **부실채권**: [NPL Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/NPL/Basics.md)
+- **프로젝트 파이낸싱**: [PF Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/PF/Basics.md)
+- **자산유동화**: [ABS Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/ABS/Basics.md)
+- **자본/지분**: [Equity Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/Equity/Basics.md)
+
 ---
 *최종 수정일: 2026-04-11*

@@ -32,5 +32,16 @@
 | **부실채권 (NPL)** | 부실 자산 관리 | 채권 회수 또는 재구조화를 통해 새로운 **Equity**나 **ABS**로 전환. |
 | **자산유동화 (ABS)** | 유동성 공급 | **PF** 대출이나 **NPL** 포트폴리오를 유동화하여 자금 순환 촉진. |
 
+## 4. 통합 도메인 연결 (Domain Connectivity)
+본 위키는 개별 자산을 넘어, 이들이 어떻게 상호작용하는지 다음 문서들을 통해 설명합니다:
+- **통합 시너지 맵**: [Synthesis_Map.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/Synthesis_Map.md) - 자산군 간의 라이프사이클 연결.
+- **리스크 관리 정책**: [Risk_Management_Policy.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/01_Foundations/Risk_Management_Policy.md) - 전사적 리스크 거버넌스.
+
+### 상세 자산별 기초 (Asset Verticals)
+- **부실채권**: [NPL Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/NPL/Basics.md)
+- **프로젝트 파이낸싱**: [PF Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/PF/Basics.md)
+- **자산유동화**: [ABS Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/ABS/Basics.md)
+- **자본/지분**: [Equity Basics](file:///home/kbgkim/antigravity/projects/ib_wiki/src/03_Assets_Verticals/Equity/Basics.md)
+
 ---
-*최종 수정일: 2026-04-10*
+*최종 수정일: 2026-04-11*

@@ -29,5 +29,10 @@
 > [!NOTE]
 > 상세 계산 로직은 [통합 리스크 관리 체계](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/01_Unified_Risk_Framework.md)를 참조하십시오.
 
+## 5. 관련 문서 (Related Documents)
+- **통합 리스크 프레임워크**: [01_Unified_Risk_Framework.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/01_Unified_Risk_Framework.md) - PD/LGD/EAD 매핑 이론.
+- **통합 시너지 맵**: [Synthesis_Map.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/Synthesis_Map.md) - 자산 간 연계 구조.
+- **IB 기본 개요**: [IB_Overview.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/01_Foundations/IB_Overview.md) - IB 가치 사슬 개요.
+
 ---
-*최종 수정일: 2026-04-10*
+*최종 수정일: 2026-04-11*

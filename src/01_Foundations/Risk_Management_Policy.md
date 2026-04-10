@@ -23,5 +23,10 @@
 - 특정 위기 시나리오 발생 시 선제적인 자본 배분 및 리스크 완화 전략 수집.
 - 데이터에 기반한 고도화된 자본 집행 및 조직의 리스크 관리 문화 정착.
 
+## 6. 관련 문서 (Related Documents)
+- **통합 리스크 프레임워크**: [01_Unified_Risk_Framework.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/01_Unified_Risk_Framework.md) - PD/LGD/EAD의 상세 매핑 이론.
+- **리스크 엔진 기술 사양**: [02_Risk_Engine_Tech_Spec.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/02_Integrated_IB/02_Risk_Engine_Tech_Spec.md) - 실제 시스템 구현 로직.
+- **IB 기본 개요**: [IB_Overview.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/01_Foundations/IB_Overview.md) - 투자은행 기능 및 가치 사슬 개요.
+
 ---
 *최종 수정일: 2026-04-11*

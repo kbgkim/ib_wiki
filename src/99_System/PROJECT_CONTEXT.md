@@ -21,7 +21,9 @@
 
 ## 4. 자동화 및 워크플로우 (Automation)
 - **문서 입수 스킬**: `ib-wiki-ingestion` 스킬을 사용하여 인박스 문서를 자동으로 처리합니다.
+- **검증 및 정합성 스킬**: `ib-wiki-verification` 스킬을 통해 위키의 기술적 무결성과 논리적 정합성을 점검합니다.
 - **인제션 로그**: 모든 문서 처리 내역은 [INGESTION_LOG.md](INGESTION_LOG.md)에 기록됩니다.
+- **검증 보고서**: 정기 검증 결과는 [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md)에 공시됩니다.
 
 ## 5. 향후 과제 (Next Steps)
 - `src/00_Inbox`에 추가되는 기존 문서들의 분석 및 위키 편입

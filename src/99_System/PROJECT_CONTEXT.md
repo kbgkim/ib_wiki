@@ -19,7 +19,11 @@
   - 리스크 점수 정규화 엔진 및 비선형 리스크 전파 모델(Sigmoid) 기술 스펙 내재화
 - **인박스(Inbox) 시스템**: 외부 문서 입수를 위한 `src/00_Inbox` 폴더 및 아카이브 시스템 구축
 
-## 4. 향후 과제 (Next Steps)
+## 4. 자동화 및 워크플로우 (Automation)
+- **문서 입수 스킬**: `ib-wiki-ingestion` 스킬을 사용하여 인박스 문서를 자동으로 처리합니다.
+- **인제션 로그**: 모든 문서 처리 내역은 [INGESTION_LOG.md](file:///home/kbgkim/antigravity/projects/ib_wiki/src/99_System/INGESTION_LOG.md)에 기록됩니다.
+
+## 5. 향후 과제 (Next Steps)
 - `src/00_Inbox`에 추가되는 기존 문서들의 분석 및 위키 편입
 - 각 자산군(Verticals)별 상세 수익 모델 및 현금흐름 시뮬레이션 로직 정리
 - 리스크 지표 간 상관관계(Correlation Matrix) 분석 심화

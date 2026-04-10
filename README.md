@@ -20,6 +20,7 @@
 
 위키의 내용은 `src/` 디렉토리 아래에 체계적으로 분류되어 있습니다.
 
+-   🚀 **[통합 리스크 대시보드](src/DASHBOARD.md)**: **4대 자산 통합 관제 및 리스크 현황 (Dashboard)**
 -   **[01_Foundations](src/01_Foundations/IB_Overview.md)**: IB의 기본 개념, 가치 사슬, 전사 리스크 정책.
 -   **[02_Integrated_IB](src/02_Integrated_IB/Synthesis_Map.md)**: 자산군 간의 시너지 맵, 통합 리스크 프레임워크 및 기술 사양.
 -   **[03_Assets_Verticals](src/03_Assets_Verticals/NPL/Basics.md)**: NPL, PF, ABS, Equity 각 도메인의 심층 기초 지식.

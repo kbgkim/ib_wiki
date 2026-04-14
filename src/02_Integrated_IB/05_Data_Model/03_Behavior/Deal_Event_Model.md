@@ -1,44 +1,54 @@
-# 딜 이벤트 모델 (Deal Event Model)
+# 딜 이벤트 모델 (Deal_Event_Model)
 
-## 목적
-딜(Deal) 상태 변화가 리스크에 미치는 동적 영향도를 정의합니다.
+## 🔥 목적
 
----
+IB 딜(Deal)의 생명주기 동안 발생하는 주요 비즈니스 이벤트를 정의하고, 이것들이 포지션 및 현금흐름에 미치는 영향을 기술합니다.
 
-## 개념
+### ─────────────
 
-**Event**는 포지션(Position)과 현금흐름(Cashflow)을 변화시키며, 결과적으로 리스크 산출 결과 값을 변동시킵니다.
+## 📌 개념
 
----
+딜 이벤트는 정적인 자산 데이터에 동적인 변화를 주는 '트리거'입니다.
 
-## 구조
+👉 **역할**
+- Deal Lifecycle Management (생애주기 관리)
+- Cashflow Trigger (현금흐름 발생 유도)
+- Status Transition (상태 전이 제어)
 
-**Deal Event**  
- → **Position** 상태 변화  
- → **Cashflow** 스케줄/실적 변화  
- → **Risk** 값 재산출  
+### ─────────────
 
----
+## 🧠 주요 이벤트 유형
 
-## 주요 이벤트 (Core Events)
+### 1. 전향적 이벤트 (Positive Events)
+- **Drawdown**: 대출금 인출 또는 투자 집행  
+- **Repayment**: 차주의 원리금 상환  
+- **Exit**: 자산 매각 또는 IPO 성공  
 
-- **Drawdown** (대출 실행): Exposure 및 EAD 증가
-- **Repayment** (상환): Exposure 감소
-- **Delinquency** (연체): Cashflow Shortfall 발생 → LGD 할증 고려
-- **Default** (부도): PD 100% 적용 및 회수(Recovery) 프로세스 진입
-- **Prepayment** (조기상환): 미래 현금흐름의 소멸 및 재투자 리스크 발생
+### 2. 부정적 이벤트 (Negative Events)
+- **Delinquency**: 이자 지급 지연 (단기 연체)  
+- **Default (EOD)**: 기한이익상실 또는 파산 사건  
+- **Covenant Breach**: 재무 약정 위반  
 
----
+### ─────────────
 
-## 설계 원칙
+## 💰 현금흐름과의 연결성
 
-- **이벤트 기반 추적**: 데이터의 모든 변화는 명시적인 Event로 기록되어야 합니다.
-- **실시간 반영**: Event 발생 → 물리적 데이터 변경 → 리스크 엔진 재작동 순으로 연동됩니다.
+이벤트가 발생하면 해당 포지션의 현금흐름 테이블(`CASHFLOW_EVENT`)에 새로운 레코드가 생성되거나 상태가 변경됩니다.
 
----
+```mermaid
+graph LR
+    Event[Deal Event] --> Logic{Processing}
+    Logic --> CF[New Cashflow Record]
+    Logic --> Pos[Position Exposure Update]
+```
 
-## 연결
+### ─────────────
 
-→ [포지션 (Position)](../../01_Core_Model/Position.md)  
-→ [현금흐름 (Cashflow)](../../01_Core_Model/Cashflow.md)  
-→ [포지션 스키마 (Position Schema)](../01_Schemas/Position_Schema.md)
+## 🔗 연결
+
+- [딜 스키마 (Deal Schema)](../01_Schemas/Deal_Schema.md)
+- [포지션 스키마 (Position Schema)](../01_Schemas/Position_Schema.md)
+
+### ─────────────
+
+*최종 업데이트: 2026-04-14*

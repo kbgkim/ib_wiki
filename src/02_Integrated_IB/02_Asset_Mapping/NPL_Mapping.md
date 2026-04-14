@@ -1,126 +1,67 @@
-# NPL 매핑 (NPL Mapping)
+# NPL 리스크 매핑 가이드 (NPL Risk Mapping Guide)
 
-부실채권(NPL) 투자를 Position 기반 리스크 모델로 변환합니다.
+## 🔥 목적
 
----
+부실채권(NPL) 자산의 리스크 구조를 표준화된 PD, LGD, EAD 프레임워크로 변환하는 기준을 정의합니다. 
+NPL은 이미 부실화된 자산이므로 **'회수 가능성(Recovery) 중심의 신용 리스크'**로 분류됩니다.
 
-## 포지션 (Position)
+### ─────────────
 
-- 개별 채권 단위  
-- 담보 또는 채무자 기준으로 분리 관리  
+## 📌 매핑 매커니즘 (Mapping Mechanism)
 
----
+NPL 리스크는 담보 처분 시나리오와 회수 예상 현금흐름 분석을 통해 산출됩니다.
 
-## 부도 확률 (PD)
+### 리스크 변수 매핑 테이블
 
-- **100% 고정**
-- 이미 부실화된 자산이므로 PD 변동 없음  
+| 구분 | NPL 리스크 요인 | 통합 모델 변수 (Standard) |
+| :--- | :--- | :--- |
+| **부도여부** | 이미 부실화된 채권 | **PD (100% 고정)** |
+| **회수가치** | 담보 낙찰가, 회수비용, 소요기간 | **LGD (손실률)** |
+| **권리규모** | 미상환 원금 잔액 (OPB) + 미수이자 | **EAD (익스포저)** |
 
-👉 NPL에서는 PD가 아니라 **회수율이 리스크를 결정**
+### ─────────────
 
----
+## ⚙️ 리스크 산출 핵심 논리
 
-## 노출액 (Exposure)
+NPL은 부도가 이미 발생(PD=100%)한 상태이므로, 리스크의 핵심은 **"얼마를 언제 회수할 것인가"**에 집중됩니다.
 
-- **OPB (Outstanding Principal Balance)**  
-- 미상환 원금 기준 금액  
+### LGD 산출의 원칙
+- **Recovery Rate**: (담보 처분 이익 - 회수 비용) / 부도 시점 총 채권액  
+- **LGD**: 1 - Recovery Rate  
 
----
+👉 NPL 리스크 산정 시 LGD가 0 이하(전액 회수 이상)가 될 경우 리스크는 0으로 처리됩니다.
 
-## 부도시노출액 (EAD)
+### ─────────────
 
-NPL에서 EAD는 일반 Credit과 다르게 정의됩니다.
+## 💰 Cashflow 관점
 
-👉 **EAD = Recovery 기준 Exposure**
+NPL 리스크는 담보권 행사를 통한 회수 현금흐름(Recovery Cashflow)의 속도와 규모를 추정하는 작업입니다.
 
-구성:
-- OPB
-- 연체이자
-- 법적 비용
-- 기타 회수 대상 금액
+### 회수 현금흐름 시뮬레이션
+1. 담보물 가치 평가 (Market Value)  
+2. 매각/낙찰 시점 시뮬레이션 (Timing)  
+3. 회수 비용 및 세금 차감 (Costs)  
+4. **최종 회수 현금흐름 확정**  
 
----
+### ─────────────
 
-## 손실률 (LGD)
+## 📊 핵심 리스크 요인
 
-LGD는 회수 결과에 의해 결정됩니다.
+### 담보 가치 변동 리스크
+- 부동산 경기 하락에 따른 담보물 낙찰가 저하
 
-LGD = 1 - (Actual Recovery / EAD)
+### 회수 지연 리스크
+- 법적 절차 및 경매 지연으로 인한 회수 시점 미스매치 (할인율/NPV 감소)
 
----
+### ─────────────
 
-## 💰 Cashflow 관점 (핵심 구조)
+## 🔗 연결
 
-NPL은 **Recovery 기반 Cashflow 모델**입니다.
+- [통합 리스크 프레임워크](../01_Unified_Risk_Framework.md)
+- [손실률 (LGD)](../01_Core_Model/LGD.md)
+- [NPL 기초 지식](../../03_Assets_Verticals/NPL/Basics.md)
+- [기대손실 산출 (EL Calculation)](../03_Risk_Calculation/EL_Calculation.md)
 
----
+### ─────────────
 
-### 구조
-
-- **Expected Recovery**
-  - 담보 평가 기반 예상 회수금
-
-- **Actual Recovery**
-  - 실제 회수 금액 (경매 / 매각 / 배당)
-
----
-
-### Loss 생성 구조
-
-Expected Recovery  
-→ Actual Recovery  
-→ Shortfall  
-
-Shortfall = Expected - Actual  
-
----
-
-### Risk Engine 흐름
-
-Recovery 부족  
-→ LGD 증가  
-→ EL 증가  
-
----
-
-## 🔥 핵심 구조 정의
-
-👉 NPL은 “Default Model”이 아니라
-
-> ❗ **Recovery Model (회수 기반 리스크 모델)**
-
----
-
-## 특징
-
-- PD = 100% 고정
-- 리스크 변동 요인 = LGD (회수율)
-- Cashflow = 회수 이벤트 중심
-- 시장 영향 = 담보 가치 직접 반영
-
----
-
-## 핵심 리스크 요인
-
-- 경매가 하락 (부동산 경기 영향)
-- 회수 지연 (법적 절차)
-- 담보 가치 변동
-- 추가 비용 발생 (소송 / 관리비)
-
----
-
-## 구조적 위치
-
-NPL은 다음 구조를 가집니다:
-
-Credit Model의 특수형 + Recovery 중심 구조
-
----
-
-## 연결
-
-→ [포지션 (Position)](../01_Core_Model/Position.md)  
-→ [노출액 (Exposure)](../01_Core_Model/Exposure.md)  
-→ [부도시노출액 (EAD)](../01_Core_Model/EAD.md)  
-→ [손실률 (LGD)](../01_Core_Model/LGD.md)  
-→ [현금흐름 (Cashflow)](../01_Core_Model/Cashflow.md)
+*최종 업데이트: 2026-04-14*

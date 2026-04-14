@@ -2,94 +2,41 @@
 
 ## 🔥 목적
 
-IB 금융 거래의 최상위 객체인 **딜(Deal)**의 마스터 및 리스크 기준 단위를 정의합니다.
+IB 리스크 관리의 최상위 통제 단위인 딜(Deal)에 대한 물리적 마스터 테이블 구조를 정의합니다. 
+하나의 딜은 여러 포지션(Position)을 포함하는 컨테이너 역할을 수행합니다.
 
----
+### ─────────────
 
-## 📌 개념
+## 📊 테이블 구조 (Table Detail)
 
-**Deal**은 다음 구조의 최상위 레벨입니다:
+### DEAL_MASTER
 
-Deal  
-→ Position  
-→ Cashflow  
-→ Risk
+| 컬럼명 | 타입 | 설명 |
+| :--- | :--- | :--- |
+| **deal_id** | VARCHAR | PK (고유 식별자) |
+| **deal_name** | VARCHAR | 딜 명칭 (건물명, 프로젝트명 등) |
+| **asset_class** | ENUM | PF / NPL / ABS / EQUITY |
+| **status** | VARCHAR | ACTIVE / CLOSED / DEFAULT |
+| **total_commitment** | DECIMAL | 전체 약정 금액 |
+| **currency** | CHAR(3) | 통화 코드 |
+| **manager_id** | VARCHAR | 담당 운용역 ID |
+| **as_of_date** | DATE | Snapshot 기준일 |
 
-👉 모든 리스크 계산은 Deal 단위 집계로 종료됩니다.
+### ─────────────
 
----
+## 🧠 구조 역할
 
-# 🧠 역할 정의
+### 최상위 엔티티
+- 시스템에서 리스크를 집계하는 가장 큰 단위입니다.
+- 개별 포지션의 집합체로서 비즈니스 시나리오가 적용되는 지점입니다.
 
-- Deal = Business Contract Unit
-- Position = Risk Calculation Unit
-- Cashflow = Financial Movement Unit
+### ─────────────
 
----
+## 🔗 연결
 
-# 📊 테이블 구조
+- [통합 리스크 데이터 모델](../../00_Root_Model/IB_Risk_Data_Model.md)
+- [포지션 스키마 (Position Schema)](./Position_Schema.md)
 
-| 컬럼명 | 설명 | 비고 |
-|--------|------|------|
-| deal_id | PK | 딜 고유 식별자 |
-| deal_name | 딜 명칭 | 국문/영문 |
-| industry_code | 자산군/산업 분류 | PF / NPL / ABS / Equity |
-| currency | 통화 | KRW, USD 등 |
-| total_commitment | 총 약정액 | Deal 규모 |
-| start_date | 실행일 | 최초 실행 |
-| end_date | 만기일 | 종료 예정 |
-| status | 라이프사이클 상태 | ACTIVE / MATURED / DEFAULT / WRITTEN_OFF |
-| dept_code | 담당 부서 | RM / 심사 / 운용 |
-| as_of_date | 기준일 (Snapshot Key) | ⚠ 핵심 키 |
+### ─────────────
 
----
-
-# 🔥 Deal Lifecycle (중요)
-
-Deal 상태는 단순 상태값이 아니라  
-**리스크 이벤트 트리거 기준**입니다.
-
-- ACTIVE → 정상 운영
-- MATURED → 만기 종료
-- DEFAULT → 부도 발생
-- WRITTEN_OFF → 손실 확정
-- RESTRUCTURED → 구조조정
-
----
-
-# 🔗 구조적 관계
-
-## 1:N 관계
-
-Deal  
-→ Position (1:N)
-
-👉 하나의 Deal은 여러 Position으로 분해됨
-
----
-
-# ⚙️ Data Mart 설계 핵심
-
-## as_of_date 역할
-
-- 모든 데이터의 Snapshot 기준
-- Risk Engine 실행 기준 시점
-- Time-series 분석 Key
-
----
-
-# 📈 Risk Model 연결
-
-Deal은 직접 리스크를 계산하지 않고:
-
-Deal  
-→ Position  
-→ Risk Engine  
-→ EL / Loss
-
----
-
-# 🔗 연결
-
-→ [포지션 스키마 (Position Schema)](./Position_Schema.md)  
-→ [현금흐름 (Cashflow)](../../01_Core_Model/Cashflow.md)
+*최종 업데이트: 2026-04-14*

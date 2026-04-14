@@ -1,37 +1,52 @@
-# 시나리오 스키마 (Scenario Schema)
+# 시나리오 스키마 (Scenario_Schema)
 
-## 목적
-시뮬레이션 상황에서 리스크 요인(Risk Factor)에 가할 구체적인 충격치(Shock)와 조건을 정의합니다.
+## 🔥 목적
 
----
+리스크 엔진이 수행할 시나리오의 성격과 각 리스크 요인(Risk Factor)에 적용될 충격(Shock)의 크기를 정의합니다.
 
-## 개념
-**Scenario**는 가상의 상황이며, 하나 이상의 **Risk Factor**에 대한 변동 폭(Delta)의 집합입니다. 엔진은 이 스키마의 데이터를 읽어 `Base Value`에 적용합니다.
+### ─────────────
 
----
+## 📌 개념
 
-## 테이블 구조
+시나리오는 '만약 ~라면'에 대한 시스템적 답변입니다.
 
-| 컬럼명 | 설명 | 비고 |
-|--------|------|------|
-| **scenario_id** | PK (Primary Key) | 시나리오 식별자 |
-| **factor_id** | FK (Risk Factor ID) | 대상 리스크 요인 |
-| **scenario_name** | 시나리오 명칭 | 예: 경기침체 (Severe Recession) |
-| **shock_value** | 충격치 (Shock) | 변동량 또는 변동률 |
-| **shock_unit** | 충격 단위 | PERCENT, BP, ABSOLUTE 등 |
-| **shock_direction** | 충격 방향 | INCREASE, DECREASE |
-| **probability** | 시나리오 발생 확률 | 스트레스 시나리오별 가중치 |
-| **is_regulatory** | 감독당국 표준 여부 | 바젤 III 표준 시나리오 등 여부 |
+👉 **역할**
+- Stress Scenario 관리 (위기 상황 정의)
+- Sensitivity Analysis (민감도 분석 기준)
+- Shock Propagation Base (충격 전파 기반 데이터)
 
----
+### ─────────────
 
-## 설계 원칙
-- **매개변수 주입**: 시나리오는 데이터 자체가 아닌 '계산 매개변수'로서 동작합니다.
-- **다대다 매핑**: 한 시나리오(예: 금융위기)는 여러 리스크 요인(금리 상승, 주가 하락)을 동시에 포함할 수 있습니다.
+## 📊 테이블 구조 (Table Detail)
 
----
+### SCENARIO_MASTER
 
-## 연결
-→ [시나리오 모델 (Scenario Model)](../03_Behavior/Scenario_Model.md)  
-→ [리스크 요인 스키마 (Risk Factor Schema)](./Risk_Factor_Schema.md)  
-→ [현금흐름과 손실 (Cashflow to Loss)](../02_Logic/Cashflow_to_Loss_Logic.md)
+| 컬럼명 | 타입 | 설명 |
+| :--- | :--- | :--- |
+| **scenario_id** | VARCHAR | PK (고유 식별자) |
+| **scenario_name** | VARCHAR | 시나리오 명칭 (Base / Stress / Worst) |
+| **factor_id** | VARCHAR | FK (적용 대상 리스크 요인 ID) |
+| **shock_value** | DECIMAL | 적용할 충격 계수 (Multiplier) |
+| **description** | TEXT | 시나리오 설명 (예: 금리 100bp 상승) |
+| **as_of_date** | DATE | Snapshot 기준일 |
+
+### ─────────────
+
+## 🧠 리스크 산출 피드백 루프
+
+### 산출 흐름
+1. 시나리오 로드 (Scenario)  
+2. 리스크 요인에 충격 투영 (Risk Factor × Shock)  
+3. 포지션별 리스크 변수 재산정 (PD/LGD 변동)  
+4. 결과 저장 (Risk Result)  
+
+### ─────────────
+
+## 🔗 연결
+
+- [리스크 요인 스키마 (Risk Factor Schema)](./Risk_Factor_Schema.md)
+- [리스크 결과 스키마 (Risk Result Schema)](./Risk_Result_Schema.md)
+
+### ─────────────
+
+*최종 업데이트: 2026-04-14*

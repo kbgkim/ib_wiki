@@ -1,130 +1,72 @@
-# ABS 매핑 (ABS Mapping)
+# ABS 리스크 매핑 가이드 (ABS Risk Mapping Guide)
 
-자산유동화(ABS) 구조를 Position 기반 리스크 모델로 변환합니다.
+## 🔥 목적
 
----
+자산유동화(ABS) 자산의 리스크 구조를 표준화된 PD, LGD, EAD 프레임워크로 변환하는 기준을 정의합니다. 
+ABS는 기초자산의 현금흐름이 트랜치 순위에 따라 분배되는 **'구조화 신용 리스크'**로 분류됩니다.
 
-## 포지션 (Position)
+### ─────────────
 
-- **트랜치 (Tranching)**: 선순위 / 중순위 / 후순위로 구성된 구조화 투자 단위  
-- 각 트랜치는 서로 다른 리스크와 수익을 가짐  
+## 📌 매핑 매커니즘 (Mapping Mechanism)
 
----
+ABS 리스크는 기초자산(Underlying Assets)의 부도율과 유동화 구조(Waterfall)의 안정성을 통해 산출됩니다.
 
-## 부도 확률 (PD)
+### 리스크 변수 매핑 테이블
 
-- **기초자산 부도율**을 기반으로 산출  
-- 유동화 포트폴리오 전체의 평균 부도 위험을 반영  
+| 구분 | ABS 리스크 요인 | 통합 모델 변수 (Standard) |
+| :--- | :--- | :--- |
+| **기초자산 부도** | Underlying Assets의 PD | **PD (부도확률)** |
+| **구조 손실** | 트랜치 순위, 신용보강(Over-collateralization) | **LGD (손실률)** |
+| **투자 규모** | 실제 투자된 유동화 증권 액면가 | **EAD (익스포저)** |
 
----
+### ─────────────
 
-## 노출액 (Exposure)
+## ⚙️ 워터폴 구조 (Waterfall Structure)
 
-- 현재 시점의 투자 원금  
-- 트랜치별로 독립적으로 관리  
+기초자산에서 유입된 현금흐름은 사전에 정의된 우선순위에 따라 각 포지션(Tranche)에 배분됩니다.
 
----
+### 현금 배분 순위
+1. **운영 비용/세금**: 자산보유자 및 수탁기관 수수료  
+2. **선순위 이자**: Senior Tranche 이자 지급  
+3. **선순위 원금**: Senior Tranche 원금 상환  
+4. **후순위 잔여 수익**: Junior/Equity Tranche 수익 배분  
 
-## 부도시노출액 (EAD)
+### ─────────────
 
-- 잔존 투자금 + 미회수 가능 Cashflow  
-- 트랜치 구조에 따라 다르게 산출  
+## 🧠 리스크 전이 다이어그램
 
----
+기초자산의 부실은 워터폴의 최하단 트랜치부터 순차적으로 전이됩니다.
 
-## 손실률 (LGD)
+```mermaid
+graph TD
+    A[기초자산 Cashflow] --> B{Waterfall 엔진}
+    B -->|1순위| C[Senior Tranche: Low LGD]
+    B -->|2순위| D[Mezzanine Tranche: Mid LGD]
+    B -->|3순위| E[Equity Tranche: High LGD]
+    
+    A -.->|Shortfall 전파| E
+    E -.->|Critical Shortfall| D
+```
 
-LGD는 **Waterfall 구조에 의해 결정됩니다.**
+### ─────────────
 
-- 선순위: 낮은 LGD  
-- 중순위: 중간 LGD  
-- 후순위: 높은 LGD  
+## 📊 핵심 리스크 요인
 
----
+### 신용보강 부족 리스크
+- 기초자산 손실이 신용보강 한도(Subordination Level)를 초과하여 선순위까지 전이될 리스크
 
-# 💰 Cashflow 관점 (핵심 구조)
+### 유동성 미스매치 리스크
+- 기초자산 회수 시점과 유동화증권 상환 시점의 불일치로 인한 조기상환 혹은 상환 지연 리스크
 
-ABS의 리스크는 기초자산 Cashflow 실패에서 발생합니다.
+### ─────────────
 
----
+## 🔗 연결
 
-## Cashflow 구조
+- [통합 리스크 프레임워크](../01_Unified_Risk_Framework.md)
+- [포지션 (Position)](../01_Core_Model/Position.md)
+- [ABS 기초 지식](../../03_Assets_Verticals/ABS/Basics.md)
+- [기대손실 산출 (EL Calculation)](../03_Risk_Calculation/EL_Calculation.md)
 
-- **Pool Cashflow**
-  - 대출 상환
-  - 매출채권 회수
-  - 임대 수익
+### ─────────────
 
-- **Expected Cashflow**
-  - 구조 설계 시 가정된 유입
-
-- **Actual Cashflow**
-  - 실제 회수된 금액
-
----
-
-## Loss 생성 구조
-
-Expected Cashflow  
-→ Actual Cashflow  
-→ Shortfall  
-
----
-
-## Waterfall 구조 (핵심)
-
-Cashflow는 트랜치 우선순위에 따라 배분됩니다:
-
-1. **선순위 트랜치**
-2. **중순위 트랜치**
-3. **후순위 트랜치**
-
----
-
-## Loss 전달 구조 (Tranche Erosion)
-
-Shortfall 발생 시:
-
-후순위 → 먼저 손실 흡수  
-중순위 → 다음 손실 흡수  
-선순위 → 마지막 방어선  
-
----
-
-## 리스크 전이 구조
-
-Shortfall  
-→ Waterfall 배분 실패  
-→ Tranche LGD 증가  
-→ Expected Loss 증가  
-
----
-
-## 핵심 리스크 요인
-
-- 기초자산 Cashflow 감소  
-- 트랜치 손실 전이 (Subordination Failure)  
-- 신용보강 약화 (OC / Guarantee)  
-- 조기상환 / 연체 구조 붕괴  
-
----
-
-## 구조적 위치 (모델 내 의미)
-
-ABS는 다음 중간 구조를 가집니다:
-
-- Credit Risk (PF/NPL) + Cashflow 기반
-- Equity Risk (Market Loss) 구조 일부 포함
-
-즉,
-
-👉 **Credit + Structured Layer Hybrid Model**
-
----
-
-## 연결
-
-→ [포지션 (Position)](../01_Core_Model/Position.md)  
-→ [현금흐름 (Cashflow)](../01_Core_Model/Cashflow.md)  
-→ [부도시노출액 (EAD)](../01_Core_Model/EAD.md)  
-→ [손실률 (LGD)](../01_Core_Model/LGD.md)
+*최종 업데이트: 2026-04-14*

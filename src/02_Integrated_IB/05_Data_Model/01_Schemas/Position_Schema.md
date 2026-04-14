@@ -1,103 +1,41 @@
-# 포지션 스키마 (Position Schema)
+# 포지션 스키마 (Position_Schema)
 
 ## 🔥 목적
 
-모든 IB 자산(PF, NPL, ABS, Equity)의 **리스크 계산 및 현금흐름 관리 기준 단위**인 Position을 정의합니다.
+리스크 산출 및 관리의 최소 기본 단위인 포지션(Position)의 물리적 데이터 구조를 정의합니다. 
+모든 리스크 지표(PD, LGD, EAD)는 본 포지션 테이블에 연결됩니다.
 
----
+### ─────────────
 
-# 📌 개념
+## 📊 테이블 구조 (Table Detail)
 
-Position은 단순 데이터가 아니라 다음 3가지 역할을 수행합니다:
+### POSITION_MASTER
 
-- Risk Calculation Unit
-- Cashflow Generation Unit
-- Exposure Tracking Unit
+| 컬럼명 | 타입 | 설명 |
+| :--- | :--- | :--- |
+| **position_id** | VARCHAR | PK (고유 식별자) |
+| **deal_id** | VARCHAR | FK (소속 딜 ID) |
+| **asset_type** | ENUM | EQUITY / SENIOR_LOAN / MEZZANINE / BOND |
+| **seniority_rank** | INT | Waterfall 상의 우선순위 (낮을수록 우선) |
+| **ccf_rate** | DECIMAL | 적용 CCF (EAD 산출용) |
+| **as_of_date** | DATE | Snapshot 기준일 |
 
----
+### ─────────────
 
-# 🧠 구조 관계
+## 🧠 구조 역할
 
-Deal  
-→ Position (1:N)  
-→ Cashflow  
-→ Risk
+### 리스크 노드의 핵심
+- 포지션은 개별 투자 단위의 경제적 성격을 규정합니다.
+- 현금흐름(Cashflow)이 모여드는 바스켓이자, 리스크 엔진의 핵심 입력 대상입니다.
 
----
+### ─────────────
 
-# 📊 테이블 구조
+## 🔗 연결
 
-| 컬럼명 | 설명 |
-|--------|------|
-| position_id | PK |
-| deal_id | Deal FK |
-| asset_type | PF / NPL / ABS / Equity |
-| position_status | ACTIVE / CLOSED / DEFAULT / WRITTEN_OFF |
-| exposure | 현재 노출 금액 |
-| market_value | 평가 금액 (Equity 중심) |
-| as_of_date | Snapshot 기준일 |
+- [딜 스키마 (Deal Schema)](./Deal_Schema.md)
+- [현금흐름 (Cashflow)](../../01_Core_Model/Cashflow.md)
+- [리스크 결과 스키마 (Risk Result Schema)](./Risk_Result_Schema.md)
 
----
+### ─────────────
 
-# ⚙️ 핵심 설계 원칙
-
-## 1️⃣ Position = Risk Engine Input Unit
-
-모든 리스크 계산은 Position 단위로 수행됩니다.
-
----
-
-## 2️⃣ Asset Type = Risk Engine Routing Key
-
-| asset_type | Risk Model |
-|------------|------------|
-| PF | Cashflow Risk |
-| NPL | Recovery Risk |
-| ABS | Structured Credit Risk |
-| Equity | Market Risk |
-
----
-
-## 3️⃣ EAD / LGD 구조 (Derived Fields)
-
-다음 값은 저장값이 아니라 **파생 계산값**입니다:
-
-- EAD = Exposure + Future Drawdown
-- LGD = Loss / EAD
-
----
-
-## 4️⃣ Lifecycle 관리
-
-Position 상태는 리스크 이벤트와 직접 연결됩니다:
-
-- ACTIVE → 정상
-- CLOSED → 종료
-- DEFAULT → 부도 발생
-- WRITTEN_OFF → 손실 확정
-
----
-
-## 📈 시간 구조 (Critical)
-
-- as_of_date = Snapshot Key
-- 모든 리스크 계산 기준 시점
-
----
-
-# 🔥 리스크 엔진 역할
-
-Position은 다음 입력을 제공합니다:
-
-Position  
-→ Cashflow  
-→ Risk Engine  
-→ EL / Loss
-
----
-
-# 🔗 연결
-
-→ [딜 스키마 (Deal Schema)](./Deal_Schema.md)  
-→ [현금흐름 (Cashflow)](../../01_Core_Model/Cashflow.md)  
-→ [리스크 결과 스키마 (Risk Result Schema)](./Risk_Result_Schema.md)
+*최종 업데이트: 2026-04-14*

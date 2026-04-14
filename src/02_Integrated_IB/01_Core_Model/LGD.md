@@ -1,78 +1,69 @@
-# 손실률 (LGD, Loss Given Default)
+# 손실률 (LGD; Loss Given Default)
 
-부도 발생 시 실제 손실로 확정되는 비율입니다.
+## 🔥 목적
 
----
+손실률(Loss Given Default)은 부도가 발생했을 때, 채권자나 투자자가 회수하지 못하고 실제로 잃게 되는 금액의 비율을 의미합니다. 
+자산의 담보 가치와 우선순위(Waterfall)에 의해 결정됩니다.
 
-## 통합 정의
+### ─────────────
 
-LGD = 1 - (Recovery / EAD)
+## 📌 개념
 
-- **Recovery**: 부도 이후 회수된 금액
-- **EAD (Exposure at Default)**: 부도 시점 기준 총 노출 금액
+LGD는 1에서 회수율(Recovery Rate)을 뺀 값과 같습니다.
 
----
+👉 **LGD = 1 - Recovery Rate**
 
-## 개념 설명
+IB 리스크에서 LGD는 단순히 고정된 수치가 아니라, 부도 시점의 담보 처분 가치나 현금흐름 재구조화 결과에 따라 변동됩니다.
 
-- LGD는 “얼마를 잃었는가”가 아니라  
-  “얼마를 회수하지 못했는가”를 의미합니다.
-- 즉, 회수율(Recovery Rate)의 보완 개념입니다.
+### ─────────────
 
----
+## 🧠 구조 역할
 
-## Cashflow 관점
+### 손실 산출 체인
+1. 부도 확률(PD)로 부도 사건 발생  
+2. 부도 시점의 총 노출액(EAD) 확정  
+3. **LGD**를 적용하여 최종 손실 확정  
+4. 기대손실(EL) = EAD × PD × LGD  
 
-LGD는 현금흐름(Cashflow) 부족의 결과로 발생합니다.
+### ─────────────
 
-Expected Cashflow  
-- Actual Cashflow  
-= Shortfall  
+## 💰 Cashflow 관점
 
-Shortfall이 누적되면  
-→ 최종적으로 Recovery 감소  
-→ LGD 증가로 이어집니다.
+LGD는 부도 이후 발생하는 회수 현금흐름(Recovery Cashflow)의 크기에 결정됩니다.
 
----
+### 손실 전이 구조
+부도 발생  
+→ Cashflow 중단  
+→ 담보 처분 또는 재구조화  
+→ Recovery Cashflow 발생  
+→ **미회수분(Shortfall) 발생**  
+→ 최종 LGD 확정  
 
-## 자산별 해석
+### ─────────────
+
+## ⚖️ 자산별 해석
 
 ### PF (Project Financing)
-- 분양 및 사업 Cashflow 기반 회수
-- 미분양, 공사 지연 → Recovery 감소 → LGD 증가
-
----
+- **주요 결정 요인**: LTV(담보인정비율), 시공사 책임 준공, 분양 대금 에스크로 구조
 
 ### ABS (Asset-Backed Securities)
-- 기초자산 Cashflow를 Waterfall 구조로 배분
-- Cashflow 부족 → 트랜치별 손실 분배 → LGD 결정
-
----
+- **주요 결정 요인**: 트랜치 순위(Senior/Mezzanine), 신용보강 규모, 워터폴(Waterfall) 구조
 
 ### NPL (Non-Performing Loan)
-- 담보 회수 기반
-- 경매 낙찰가 및 회수금액이 Recovery를 결정
-- LGD는 회수율에 직접적으로 의존
-
----
+- **주요 결정 요인**: 담보물의 경·공매 낙찰가, 회수 예상 기간, 배당 순위
 
 ### Equity (지분 투자)
-- LGD 개념을 직접 적용하지 않음
-- 대신 Market Value 기반 손실로 측정
+- **주요 결정 요인**: 원칙적으로 **LGD = 100%** (지분 자본의 후순위성)
 
----
+### ─────────────
 
-## 결정 요소
+## 🔗 연결
 
-- **담보 가치**: 담보물의 경매/매각을 통한 회수 가능 금액
-- **회수율**: 회수 비용을 제외한 순 회수 가능성
-- **시장 상황**: 불황기 담보 가치 하락 등 거시 경제 요인
+- [부도확률 (PD)](./PD.md)
+- [부도시노출액 (EAD)](./EAD.md)
+- [기대손실 (Expected Loss)](./Expected_Loss.md)
+- [현금흐름 (Cashflow)](./Cashflow.md)
 
----
+### ─────────────
 
-## 연결
-
-→ [부도 확률 (PD)](./PD.md)  
-→ [부도시노출액 (EAD)](./EAD.md)  
-→ [기대손실 (Expected_Loss)](./Expected_Loss.md)  
-→ [현금흐름 (Cashflow)](./Cashflow.md)
+*최종 업데이트: 2026-04-14*

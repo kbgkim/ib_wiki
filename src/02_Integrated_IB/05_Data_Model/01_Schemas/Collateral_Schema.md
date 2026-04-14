@@ -1,49 +1,42 @@
-# 담보 스키마 (Collateral Schema)
+# 담보 스키마 (Collateral_Schema)
 
 ## 🔥 목적
 
-딜의 회수 가능성(Recovery)을 결정하여  
-**LGD(손실률)**를 산출하는 핵심 입력 데이터입니다.
+포지션의 손실 완화 수단인 담보(Collateral) 및 신용보강 정보를 정의합니다. 
+부도 시 회수 가치를 결정하며, 최종적으로 LGD 산정의 핵심 근거가 됩니다.
 
----
+### ─────────────
 
-# 📌 개념
+## 📊 테이블 구조 (Table Detail)
 
-Collateral은 단순 자산이 아니라:
+### COLLATERAL_MASTER
 
-👉 Recovery Engine Input Layer  
-👉 LGD 결정 핵심 요소
+| 컬럼명 | 타입 | 설명 |
+| :--- | :--- | :--- |
+| **collateral_id** | VARCHAR | PK (고유 식별자) |
+| **position_id** | VARCHAR | FK (연결된 포지션 ID) |
+| **collateral_type** | ENUM | REAL_ESTATE / STOCK / GUARANTEE / CASH |
+| **valuation_amount** | DECIMAL | 현재 평가액 |
+| **valuation_date** | DATE | 최근 평가 시점 |
+| **loan_to_value** | DECIMAL | 적용 LTV (채권액 / 담보가치) |
+| **seniority_rank** | INT | 담보권 순위 (1순위, 2순위 등) |
+| **as_of_date** | DATE | Snapshot 기준일 |
 
----
+### ─────────────
 
-# 🧠 구조 역할
+## 🧠 구조 역할
 
-Position  
-→ Collateral  
-→ Recovery  
-→ LGD  
-→ EL
+### LGD 산정의 핵심 데이터
+- 담보의 유형과 평가 가치는 **회수율(Recovery Rate)**을 결정합니다.
+- 부동산 담보의 경우 위치, 용도 정보가 추가적으로 연결되어 시나리오별 가격 하락폭을 결정합니다.
 
----
+### ─────────────
 
-# 📊 테이블 구조
+## 🔗 연결
 
-| 컬럼명 | 설명 |
-|--------|------|
-| collateral_id | PK |
-| position_id | FK |
-| collateral_type | 담보 유형 (부동산, 주식, 예금 등) |
-| val_amount | 평가액 (Market Value) |
-| val_date | 평가 기준일 |
-| senior_amount | 선순위 채권액 |
-| status | 담보 상태 |
-| as_of_date | Snapshot 기준일 |
+- [손실률 (LGD)](../../01_Core_Model/LGD.md)
+- [포지션 스키마 (Position Schema)](./Position_Schema.md)
 
----
+### ─────────────
 
-# ⚙️ 핵심 설계 원칙
-
-## 1️⃣ net value = Derived Field
-
-```text id="net_value"
-net_val_amount = val_amount - senior_amount
+*최종 업데이트: 2026-04-14*

@@ -1,86 +1,86 @@
 # 포지션 (Position)
 
-딜 내에서 내가 보유한 자금의 최소 관리 단위이며,  
-모든 리스크를 계산하는 기준 단위입니다.
+## 🔥 목적
 
----
+포지션(Position)은 리스크 산출 및 관리의 최소 기본 단위입니다. 
+하나의 딜(Deal)은 다수의 포지션(Tranche, Loan 등)으로 구성될 수 있으며, 모든 리스크 변수와 현금흐름은 포지션 단위로 귀속됩니다.
 
-## 정의
+### ─────────────
 
-Position은 하나의 딜(Deal)을 구성하는 개별 자금 단위입니다.
+## 📌 개념
 
-> 모든 리스크는 Position 단위에서 측정되고 집계됩니다.
+포지션은 투자 대상의 경제적 권리와 의무가 정의된 '계좌' 혹은 '슬롯'과 같습니다.
 
----
+👉 모든 리스크 산출은 **포지션** 단위에서 시작됩니다.
 
-## 역할
+### POSITION의 3요소
+- **자산 속성**: Equity, Loan, Bond, Mezzanine 등
+- **권리 순위**: Senior, Mezzanine, Junior (Waterfall 우선순위)
+- **익스포저(Exposure)**: 현재 노출된 위험 원금액
 
-- **리스크 계산 기준**: 모든 Risk는 Position 단위에서 계산
-- **Cashflow 귀속 단위**: 모든 자금 흐름이 연결되는 기준
-- **노출 관리 단위**: Exposure 및 EAD 산출 기준
+### ─────────────
 
----
+## 🧠 구조 역할
 
-## 구조
+### 딜과 포지션의 관계
 
-Position은 다음 구조로 리스크에 연결됩니다:
+```mermaid
+graph LR
+    Deal[IB Deal] --> P1[Position A: Senior Loan]
+    Deal --> P2[Position B: Junior Loan]
+    Deal --> P3[Position C: Equity]
+    
+    P1 --> C1[Cashflow Pool]
+    P2 --> C1
+    P3 --> C1
+```
 
-Position  
-→ Exposure (현재 노출)  
-→ EAD (미래 노출)  
-→ Cashflow (자금 흐름)  
-→ LGD (손실률)  
-→ EL (기대손실)  
+### 소속 관계 정의
+- **상위**: 딜(Deal) - 비즈니스 시나리오 및 통제 단위
+- **하위**: 현금흐름(Cashflow) - 포지션에서 파생되는 실제 자본 흐름
 
----
+### ─────────────
 
-## 구성 요소
+## 📊 구성 요소
 
-- Deal ID
-- Position Type (대출, 투자 등)
-- Exposure
-- EAD
-- Cashflow
-- Risk 결과 (EL / Loss)
+| 항목 | 설명 | 주요 변수 |
+| :--- | :--- | :--- |
+| **Exposure** | 포지션의 계약상 원동력 | Current Exposure |
+| **Risk Metrics** | 해당 포지션의 리스크 프로파일 | PD, LGD, EAD |
+| **Cashflow Link** | 포지션에 할당된 현금 유출입 | Cashflow ID |
 
----
+### ─────────────
 
-## 자산별 예시
+## 💰 Cashflow 관점
+
+포지션은 현금흐름의 **'필터'**이자 **'바스켓'**입니다.
+
+1. 기초자산에서 현금흐름 발생
+2. 포지션의 우선순위에 따라 현금 분배 (Waterfall)
+3. 분배된 현금흐름을 바탕으로 포지션의 가치 및 손실 산출
+
+### ─────────────
+
+## ⚖️ 자산별 예시
 
 ### PF (Project Financing)
-- 선순위 대출
-- 후순위 투자
-
----
-
-### ABS (Asset-Backed Securities)
-- 트랜치 (선순위 / 중순위 / 후순위)
-
----
+- 예: A 아파트 건설 프로젝트 (Deal)
+- 포지션 1: 선순위 대출 (Senior Position)
+- 포지션 2: 시행사 지분 (Equity Position)
 
 ### NPL (Non-Performing Loan)
-- 개별 채권 또는 담보 단위
+- 예: B 공장 담보 채권 포트폴리오 (Deal)
+- 포지션: 개별 담보부 채권 (Position)
 
----
+### ─────────────
 
-### Equity (지분 투자)
-- 투자 건별 지분 (포트폴리오사 단위)
+## 🔗 연결
 
----
+- [딜 스키마 (Deal Schema)](../05_Data_Model/01_Schemas/Deal_Schema.md)
+- [포지션 스키마 (Position Schema)](../05_Data_Model/01_Schemas/Position_Schema.md)
+- [현금흐름 (Cashflow)](./Cashflow.md)
+- [기대손실 (Expected Loss)](./Expected_Loss.md)
 
-## 특징
+### ─────────────
 
-- 모든 자산을 동일 구조로 표현 가능
-- 포트폴리오 집계의 최소 단위
-- Credit Risk / Equity Risk 모두 수용 가능
-
----
-
-## 연결
-
-→ [딜 (Deal)](../00_Root_Model/IB_Risk_Data_Model.md)  
-→ [노출액 (Exposure)](./Exposure.md)  
-→ [부도시노출액 (EAD)](./EAD.md)  
-→ [현금흐름 (Cashflow)](./Cashflow.md)  
-→ [손실률 (LGD)](./LGD.md)  
-→ [기대손실 (Expected Loss)](./Expected_Loss.md)
+*최종 업데이트: 2026-04-14*

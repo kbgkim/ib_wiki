@@ -1,75 +1,65 @@
 # 변동성 (Volatility)
 
-가격 변동의 폭과 리스크 수준을 나타내는 시장 기반 위험 지표입니다.
+## 🔥 목적
 
----
+변동성(Volatility)은 시장 자산의 가격이나 이자율 등 리스크 요인이 시계열상에서 얼마나 변화하는지를 나타내는 척도입니다. 
+특히 지분(Equity) 및 시장 리스크 산출 시 충격 시나리오(Shock)를 생성하는 핵심 파라미터입니다.
 
-## 의미
+### ─────────────
 
-- **시장 리스크 (Market Risk)**: 가격 불확실성을 수치화한 값  
-- **변동 범위**: 자산 가격이 일정 기간 동안 움직일 수 있는 폭  
-- **리스크 민감도**: 가격 충격(Shock)의 입력 변수  
+## 📌 개념
 
----
+리스크 관리에서 변동성은 자산 가치의 '불확실성 분포'를 정의합니다.
 
-## 리스크 모델 내 역할
+👉 **Volatility가 높을수록 미래 가치의 하락 가능성(Tail Risk)이 커집니다.**
 
-Volatility는 Equity 리스크에서 다음 구조의 핵심 입력값입니다:
+### ─────────────
 
-Market Value  
-→ Volatility (변동성)  
-→ Shock (가격 충격)  
-→ Loss  
+## ⚙️ 리스크 산출 프로세스
 
-즉, Volatility는 Shock를 결정하는 핵심 파라미터입니다.
+Volatility는 다음과 같은 구조에서 충격(Shock)의 크기를 결정합니다.
 
----
+### 전이 메커니즘
+1. **Volatility** 측정 (표준편차 등)  
+2. 신뢰 수준(Confidence Level)에 따른 **충격치(Shock)** 산출  
+3. 시장가치(Market Value)에 Shock 적용  
+4. 예상 손실(Loss) 확정  
 
-## 활용
+### ─────────────
+
+## 🧠 활용 분야
 
 ### 1. 스트레스 테스트 (Stress Test)
 - 극단적인 시장 상황 가정
 - 가격 하락률 확대 적용
 - Loss 극대화 시나리오 분석
 
----
-
 ### 2. 시나리오 분석 (Scenario Analysis)
 - 다양한 시장 조건에서 자산 가치 변화 분석
 - 금리, 경기, 유동성 환경 반영
-
----
 
 ### 3. 리스크 산출 (Equity Risk)
 - 변동성이 높을수록 Shock 증가
 - Loss 증가 → Equity Risk 증가
 
----
+### ─────────────
 
-## 자산별 적용
+## ⚖️ 자산별 적용
 
 ### 상장 주식
-- 역사적 변동성 (Historical Volatility)
-- 시장 기반 실시간 반영
-
----
+- **역사적 변동성 (Historical Volatility)**: 과거 주점 데이터를 기반으로 산출
+- 시장 기반 실시간 데이터 반영
 
 ### 비상장 주식
-- 유사 기업 비교 또는 모델 기반 추정 변동성
+- 유사 기업 비교 또는 지수 기반 모델 추정 변동성 활용
 
----
+### ─────────────
 
-## 관계 구조
+## 🔗 연결
 
-Volatility는 다음 구조에서 Shock를 결정합니다:
+- [시장가치 (Market Value)](./Market_Value.md)
+- [지분 리스크 산출 (Equity Risk)](../03_Risk_Calculation/Equity_Risk.md)
 
-Volatility  
-→ Shock  
-→ Market Value × Shock = Loss  
+### ─────────────
 
----
-
-## 연결
-
-→ [시장가치 (Market Value)](./Market_Value.md)  
-→ [지분 리스크 (Equity Risk)](../03_Risk_Calculation/Equity_Risk.md)
+*최종 업데이트: 2026-04-14*

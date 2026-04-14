@@ -1,121 +1,56 @@
-# 기대손실 계산 (Expected Loss Calculation)
+# 기대손실 산출 로직 (EL Calculation Logic)
 
-## 🔥 개념 정의
+## 🔥 목적
 
-Expected Loss (EL)은  
-IB 리스크 모델에서 **최종 산출 결과값 (Result Layer)** 입니다.
+개별 포지션의 기초 데이터를 바탕으로 기대손실(Expected Loss)을 산출하는 엔진의 논리적 단계를 정의합니다. 
+이는 리스크 엔진의 **'Calculation Pipeline'**을 형성합니다.
 
-즉,
+### ─────────────
 
-👉 EL = Position 기반 모든 리스크 계산의 최종 출력값
+## 📌 1. 산출 파이프라인 (Pipeline)
 
----
+기대손실 산출은 데이터 로드부터 최종 집계까지 4단계를 거칩니다.
 
-## 📌 공식
+### 산출 단계
+1. **Data Ingestion**: Deal/Position/Cashflow 데이터 로드  
+2. **Variable Mapping**: 자산군별 특성을 반영한 PD, LGD, EAD 매핑  
+3. **Core Calculation**: `EL = PD × LGD × EAD` 연산 수행  
+4. **Result Storage**: 산출된 EL 및 중간 변수를 리스크 결과 테이블에 저장  
 
-$$EL = PD \times LGD \times EAD$$
+### ─────────────
 
-- **PD**: 부도 확률 (Probability of Default)
-- **LGD**: 부도 시 손실률 (Loss Given Default)
-- **EAD**: 부도 시 익스포저 (Exposure at Default)
+## 🧠 2. 자산별 산출 알고리즘
 
----
+### PD (부도 확률) 연산
+- **PF / ABS**: 내부 등급 모델 및 사업성 평가 점수에 따름
+- **NPL**: 부실채권이므로 **100% 고정**
 
-## ⚠️ NPL 특수 처리
+### LGD (손실률) 연산
+- **PF / NPL**: 담보 가치(Collateral Value) 기반 회수 가능성 시뮬레이션
+- **ABS**: 워터폴 순위에 따른 손실 흡수력(Subordination) 분석
 
-NPL은 이미 부도 상태이므로:
+### EAD (익스포저) 연산
+- **공통**: 현재 잔액 + (미인출 한도 × CCF)
 
-PD = 100%
+### ─────────────
 
-따라서:
+## ⚙️ 3. 리스크 결과 집계 (Aggregation)
 
-EL = EAD × LGD
+산출된 기대손실은 상위 계층으로 자동 집계됩니다.
 
-👉 이 경우 EL은 “회수 실패 결과”로 해석됨
+### 집계 계층 구조
+- **Level 1**: Position별 기대손실
+- **Level 2**: Deal별 기대손실 (포지션 합계)
+- **Level 3**: Portfolio/Sector별 기대손실
 
----
+### ─────────────
 
-# 🔄 계산 구조 (Execution Flow)
+## 🔗 연결
 
-EL 계산은 단순 공식이 아니라  
-**Position 기반 데이터 파이프라인**으로 수행됩니다.
+- [통합 리스크 프레임워크](../01_Unified_Risk_Framework.md)
+- [기대손실 (Expected Loss)](../01_Core_Model/Expected_Loss.md)
+- [리스크 결과 스키마](../05_Data_Model/01_Schemas/Risk_Result_Schema.md)
 
----
+### ─────────────
 
-## 1️⃣ Position Layer (기준 단위)
-
-- 모든 리스크 계산의 시작점
-- 자산 분해 단위
-
-→ [Position](../01_Core_Model/Position.md)
-
----
-
-## 2️⃣ Exposure / PD Layer
-
-- 현재 노출액 산정
-- 부도 확률 계산
-
-→ Credit Risk 입력 단계
-
----
-
-## 3️⃣ EAD Layer
-
-- 부도 시점 노출액
-- 미래 확장 Exposure 포함
-
-→ [EAD](../01_Core_Model/EAD.md)
-
----
-
-## 4️⃣ LGD Layer
-
-- 담보 / 회수 기반 손실률 결정
-- 자산별 구조 반영
-
-→ [LGD](../01_Core_Model/LGD.md)
-
----
-
-## 5️⃣ Result Layer (EL)
-
-최종 산출:
-
-EL = PD × LGD × EAD
-
----
-
-# 🧠 자산별 EL 구조
-
-## PF
-- Cashflow 부족 → EL 증가
-
-## ABS
-- Waterfall 실패 → 트랜치 손실 → EL 증가
-
-## NPL
-- Recovery 실패 → LGD 변동 → EL 결정
-
-## Equity
-- Market Value × Shock → EL 대신 Loss 구조
-
----
-
-# 📊 핵심 구조 요약
-
-EL은 단독 계산이 아니라:
-
-Position  
-→ Risk Factors (PD / LGD / EAD)  
-→ Aggregation  
-→ Result (EL)
-
----
-
-# 🔗 연결
-
-→ [포지션 (Position)](../01_Core_Model/Position.md)  
-→ [부도 확률 (PD)](../01_Core_Model/PD.md)  
-→ [부도시노출액 (EAD)](../01_Core_Model/EAD.md)  
-→ [손실률 (LGD)](../01_Core_Model/LGD.md)
+*최종 업데이트: 2026-04-14*

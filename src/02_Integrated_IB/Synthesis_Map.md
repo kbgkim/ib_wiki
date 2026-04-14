@@ -4,11 +4,13 @@
 
 이 문서는 **NPL, PF, Equity, ABS**가 어떻게 서로 교차하며 종합적인 투자은행(IB) 생태계를 형성하는지 보여줍니다. 개별 자산의 한계를 넘어 리스크와 자본의 순환 구조를 이해하는 것이 목적입니다.
 
----
+### ─────────────
 
 ## 📌 1. 자산 라이프사이클 통합 (Integrated Lifecycle)
 
 아래 다이어그램은 대규모 자산(예: 발전소 건설 프로젝트)이 라이프사이클에 따라 각 IB 도메인을 어떻게 거쳐가는지 설명합니다.
+
+### 라이프사이클 시각화
 
 ```mermaid
 graph TD
@@ -35,7 +37,7 @@ graph TD
     end
 ```
 
----
+### ─────────────
 
 ## 🧠 2. 도메인별 시너지 포인트 (Synergy Points)
 
@@ -55,22 +57,19 @@ graph TD
 ABS 메커니즘(예: PF 대출 채권을 기초로 한 ABCP)은 PF 프로젝트의 선순위 대출 자금을 공급합니다.
 - **연속성**: 자본시장과 실물 프로젝트를 연결하여 금융의 연속성을 보장합니다.
 
----
+### ─────────────
 
 ## 🔗 연결
 
-- **통합 리스크 프레임워크**: [01_Unified_Risk_Framework.md](01_Unified_Risk_Framework.md)
-- **IB 기본 개요**: [IB_Overview.md](../01_Foundations/IB_Overview.md)
+- [통합 리스크 프레임워크](./01_Unified_Risk_Framework.md)
+- [IB 기본 개요](../01_Foundations/IB_Overview.md)
 
 ### 상세 자산별 기초 (Asset Verticals)
-- **부실채권**: [NPL Basics](../03_Assets_Verticals/NPL/Basics.md)
-- **프로젝트 파이낸싱**: [PF Basics](../03_Assets_Verticals/PF/Basics.md)
-- **자산유동화**: [ABS Basics](../03_Assets_Verticals/ABS/Basics.md)
-- **자본/지분**: [Equity Basics](../03_Assets_Verticals/Equity/Basics.md)
+- [부실채권](../03_Assets_Verticals/NPL/Basics.md)
+- [프로젝트 파이낸싱](../03_Assets_Verticals/PF/Basics.md)
+- [자산유동화](../03_Assets_Verticals/ABS/Basics.md)
+- [자본/지분](../03_Assets_Verticals/Equity/Basics.md)
 
-### 세부 리스크 데이터 모델 (Detailed Data Models)
-- **[통합 리스크 데이터 모델 (Root Model)](00_Root_Model/IB_Risk_Data_Model.md)**
-- **[핵심 리스크 변수 (Core Model)](01_Core_Model/Position.md)**
+### ─────────────
 
----
-*최종 수정일: 2026-04-14*
+*최종 업데이트: 2026-04-14*

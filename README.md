@@ -61,7 +61,7 @@ graph TD
 본 위키는 **Antigravity AI**에 의해 관리되며, 모든 데이터는 **GitHub** 원격 저장소와 동기화됩니다.
 
 - **원격 저장소**: [https://github.com/kbgkim/ib_wiki](https://github.com/kbgkim/ib_wiki)
-- **최종 업데이트**: 2026-04-11
+- **최종 업데이트**: 2026-04-14
 
 ---
 *Created by [Antigravity](https://github.com/kbgkim)*

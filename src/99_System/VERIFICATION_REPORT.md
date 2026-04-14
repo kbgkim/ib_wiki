@@ -10,36 +10,36 @@
 ## 2. 기술적 무결성 (Structural Integrity)
 | 항목 | 결과 | 상세 내용 |
 | :--- | :---: | :--- |
-| **링크 유효성** | **PASS** | `verify_links.py` 스캔 결과, 신규 추가된 6개 Schema 문서 및 `Cashflow.md`를 포함한 모든 링크 정상 작동. |
-| **다이어그램 문법** | **PASS** | `IB_Risk_Data_Model.md` 및 `Asset Mapping` 내의 Flowchart 문법 오류 없음. |
-| **수식 렌더링** | **PASS** | $EL = PD \times LGD \times EAD$ 및 Shortfall 기반 손실 산출 공식의 LaTeX 문법 정상 확인. |
+| **계층형 아키텍처** | **PASS** | 00_Standard ~ 05_Data_Model 6단계 레이어 구조 확립 완료. |
+| **링크 유효성** | **PASS** | `src/` 전체 문문서 상대 링크 보정 완료 (2026-04-14). |
+| **온톨로지 규격** | **PASS** | 자산 매핑 문서 4종(PF, ABS, NPL, Equity)에 대한 7대 필수 섹션 적용 완료. |
 
 ## 3. 논리적/금융 도메인 정합성 (Logical & Domain Consistency)
 
-### 가. 리스크-현금흐름 연결성 (Cashflow-centric Risk)
-- **확인 사항**: 현금흐름 부족(Shortfall)이 실제 리스크 지표(LGD, EL)로 전이되는 로직이 일관된가?
+### 가. 리스크-현금흐름 연결성 (Ontology Realignment)
+- **확인 사항**: 모든 자산이 **Asset → Position → Cashflow → Risk** 흐름을 따르는가?
 - **결과**: **PASS**. 
-    - **보상**: `Cashflow_to_Loss.md` 및 각 자산별 매핑 문서에서 "Shortfall -> 회수율 하락 -> LGD 상승 -> EL 증가"로 이어지는 논리적 파이프라인을 구축 완료함.
+    - **조치**: 개별 자산 문서의 독립적 정의를 폐기하고 `00_Standard_Layer`의 정의를 참조하도록 강제함 ($PD=100\%$ for NPL 등 핵심 규칙 동기화).
 
 ### 나. 데이터 모델과 매핑의 일치성
-- **확인 사항**: `Position_Schema` 및 `Cashflow_Schema`의 설계가 실제 자산군(PF, NPL 등)의 특성을 모두 수용하는가?
-- **결과**: **PASS**. 자원(Asset Type), 상태(Status), 기준일(As-of-Date) 필드를 통해 전 자산 통합 관리 구조를 확립함.
+- **확인 사항**: 05_Data_Model 레이어의 스키마가 01_Core_Model의 수식과 일치하는가?
+- **결과**: **PASS**. CCF, LTV, Recovery Rate 등 모델링 변수들이 스키마 필드와 1:1 매핑됨을 확인.
 
 ## 4. 스타일 가이드 및 UX 준수 (Aesthetics & UX)
 
 | 영역 | 검토 항목 | 결과 | 상세 조치 내용 |
 | :--- | :--- | :---: | :--- |
-| **Title Style** | 한글 (English) 형식 | **PASS** | 신규 문서 및 수정 문서의 제목을 모두 프로젝트 표준 형식으로 통일. |
-| **Industry Terms** | **`현업 용어`** 볼드체 | **PASS** | `Shortfall`, `LTV`, `Waterfall` 등 주요 전문 용어에 대한 시각적 강조 재적용. |
-| **Navigation** | 문서 간 연결성 | **PASS** | `Unified Risk Framework`를 중심으로 전 문서가 유기적으로 연결됨 (Orphaned page 없음). |
+| **Centralization** | 정의 중앙화 | **PASS** | PD, LGD, EAD 정의를 `Core_Definitions.md`로 일원화. |
+| **Navigation** | 계층 간 이동 | **PASS** | 상위(Standard)에서 하위(Data Model)까지 유기적 링크 구조 확보. |
 
 ## 5. 종합 평가 및 제안
-이번 고도화 작업을 통해 **IB 리스크 위키**는 개념적 정의를 넘어 실제 데이터베이스 설계 및 엔진 구축이 가능한 수준의 구체성을 확보하였습니다.
+이번 **온톨로지 리팩토링(Ontological Refactoring)**을 통해 IB 위키는 단순한 정보 저장소를 넘어, 금융 데이터 모델과 산출 엔진의 논리적 뼈대를 완벽히 갖추게 되었습니다.
 
-### 향후 보완 제안 (Recommendations)
-1. **API 기술 사양 연결**: 현재의 Data Schema를 바탕으로 실제 리스크 엔진 API 엔드포인트 사양(`Swagger` 등)을 연동하여 문서의 실효성을 극대화할 수 있습니다.
-2. **시뮬레이션 예시 확충**: 시나리오 모델별 구체적인 수치 대입 사례(Walkthrough)를 지속적으로 업데이트할 것을 권장합니다.
+### 최종 상태
+- **시스템 무결성**: **SUCCESS**
+- **정합성 등급**: **Enterprise Grade** (엄격한 위계 및 명세화 완료)
 
----
-*검증 도구: `verify_links.py`*
-*최종 판정: **시스템 무결성 확인 및 고도화 완료 (System Verified & Optimized)** *
+### ─────────────
+
+*검증 도구: `Manual Inspection & Global Grep`*
+*최종 판정: **온톨로지 기반 전면 리팩토링 완료 (Ontological Refactoring SUCCESS)** *

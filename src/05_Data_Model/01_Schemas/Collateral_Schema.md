@@ -34,7 +34,7 @@
 
 ## 🔗 연결
 
-- [손실률 (LGD)](../../01_Core_Model/LGD.md)
+- [손실률 (LGD)](../../../01_Core_Model/LGD.md)
 - [포지션 스키마 (Position Schema)](./Position_Schema.md)
 
 ### ─────────────

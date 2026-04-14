@@ -46,7 +46,7 @@
 ## 🔗 연결
 
 - [현금흐름 스키마 (Cashflow Schema)](../01_Schemas/Cashflow_Schema.md)
-- [기대손실 (Expected Loss)](../../01_Core_Model/Expected_Loss.md)
+- [기대손실 (Expected Loss)](../../../01_Core_Model/Expected_Loss.md)
 
 ### ─────────────
 

@@ -8,7 +8,7 @@
 
 **Tech Stack:** Markdown, Git.
 
----
+### ─────────────
 
 ### Task 1: Scaffolding & Plan Persistence
 **Files:**

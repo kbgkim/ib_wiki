@@ -28,5 +28,6 @@
 - **리스크 엔진 기술 사양**: [02_Risk_Engine_Tech_Spec.md](../02_Integrated_IB/02_Risk_Engine_Tech_Spec.md) - 실제 시스템 구현 로직.
 - **IB 기본 개요**: [IB_Overview.md](IB_Overview.md) - 투자은행 기능 및 가치 사슬 개요.
 
----
+### ─────────────
+
 *최종 수정일: 2026-04-11*

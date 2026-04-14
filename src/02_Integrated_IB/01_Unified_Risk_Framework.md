@@ -77,8 +77,8 @@ $$EL (예상 손실) = PD \times LGD \times EAD$$
 
 ### 세부 리스크 데이터 모델 (Detailed Data Models)
 - [통합 리스크 데이터 모델 (Root Model)](./00_Root_Model/IB_Risk_Data_Model.md)
-- [핵심 리스크 변수 (Core Model)](./01_Core_Model/Position.md)
-- [현금흐름 (Cashflow)](./01_Core_Model/Cashflow.md)
+- [핵심 리스크 변수 (Core Model)]../../01_Core_Model/Position.md)
+- [현금흐름 (Cashflow)]../../01_Core_Model/Cashflow.md)
 - [리스크 데이터 스키마 (Schemas)](./05_Data_Model/01_Schemas/Position_Schema.md)
 
 ### ─────────────

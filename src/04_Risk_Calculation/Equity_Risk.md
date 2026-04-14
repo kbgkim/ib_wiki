@@ -53,9 +53,9 @@
 
 ## 🔗 연결
 
-- [시장가치 (Market Value)](../01_Core_Model/Market_Value.md)
-- [변동성 (Volatility)](../01_Core_Model/Volatility.md)
-- [포지션 (Position)](../01_Core_Model/Position.md)
+- [시장가치 (Market Value)](../../01_Core_Model/Market_Value.md)
+- [변동성 (Volatility)](../../01_Core_Model/Volatility.md)
+- [포지션 (Position)](../../01_Core_Model/Position.md)
 
 ### ─────────────
 

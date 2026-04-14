@@ -75,7 +75,7 @@ graph TD
 ## 🔗 연결
 
 - [프로젝트 파이낸싱 기초 (PF Basics)](Basics.md)
-- [PF 리스크 매핑](../../02_Integrated_IB/02_Asset_Mapping/PF_Mapping.md)
+- [PF 리스크 매핑](./PF_Mapping.md)
 
 ### ─────────────
 

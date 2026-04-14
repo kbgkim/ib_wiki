@@ -85,7 +85,7 @@ graph TD
 ## 🔗 연결
 
 - [자산유동화 기초 (ABS Basics)](Basics.md)
-- [리스크 엔진 기술 사양](../../02_Integrated_IB/02_Risk_Engine_Tech_Spec.md)
+- [리스크 엔진 기술 사양](../../04_Risk_Calculation/02_Risk_Engine_Tech_Spec.md)
 
 ### ─────────────
 

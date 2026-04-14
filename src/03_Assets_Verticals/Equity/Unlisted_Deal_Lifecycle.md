@@ -87,7 +87,7 @@ graph TD
 ## 🔗 연결
 
 - [지분 투자 기초 (Equity Basics)](Basics.md)
-- [지분 매핑 가이드](../../02_Integrated_IB/02_Asset_Mapping/Equity_Mapping.md)
+- [지분 매핑 가이드](./Equity_Mapping.md)
 
 ### ─────────────
 

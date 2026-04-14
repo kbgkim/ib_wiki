@@ -66,7 +66,7 @@ graph TD
 ## 🔗 연결
 
 - [부실채권 기초 (NPL Basics)](Basics.md)
-- [NPL 리스크 매핑](../../02_Integrated_IB/02_Asset_Mapping/NPL_Mapping.md)
+- [NPL 리스크 매핑](./NPL_Mapping.md)
 
 ### ─────────────
 

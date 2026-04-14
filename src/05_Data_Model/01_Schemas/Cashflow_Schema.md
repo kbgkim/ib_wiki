@@ -44,7 +44,7 @@ IB 리스크 관리의 가장 핵심적인 관측 데이터 스키마입니다.
 
 ## 🔗 연결
 
-- [현금흐름 (Cashflow)](../../01_Core_Model/Cashflow.md)
+- [현금흐름 (Cashflow)](../../../01_Core_Model/Cashflow.md)
 - [포지션 스키마 (Position Schema)](./Position_Schema.md)
 - [손실 발생 로직 (Logic)](../02_Logic/Cashflow_to_Loss_Logic.md)
 

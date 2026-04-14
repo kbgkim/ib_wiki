@@ -43,5 +43,6 @@
 - **자산유동화**: [ABS Basics](../03_Assets_Verticals/ABS/Basics.md)
 - **자본/지분**: [Equity Basics](../03_Assets_Verticals/Equity/Basics.md)
 
----
+### ─────────────
+
 *최종 수정일: 2026-04-11*

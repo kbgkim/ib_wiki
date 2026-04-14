@@ -34,7 +34,7 @@
 
 ## 🔗 연결
 
-- [부도확률 (PD)](../../01_Core_Model/PD.md)
+- [부도확률 (PD)](../../../01_Core_Model/PD.md)
 - [딜 스키마 (Deal Schema)](./Deal_Schema.md)
 
 ### ─────────────

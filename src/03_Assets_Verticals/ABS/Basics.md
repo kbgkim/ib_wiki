@@ -79,7 +79,7 @@ ABS 리스크는 트랜치 구조에 의해 **LGD**가 극단적으로 결정됩
 - **부도 시 노출액 (EAD)**: 각 트랜치별 실제 **투자 약정 금액**.
 
 ### NOTE
-ABS의 현금흐름 안정성은 [리스크 엔진 기술 사양](../../02_Integrated_IB/02_Risk_Engine_Tech_Spec.md) 내 정규화 로직을 통해 상시 모니터링됩니다.
+ABS의 현금흐름 안정성은 [리스크 엔진 기술 사양](../../04_Risk_Calculation/02_Risk_Engine_Tech_Spec.md) 내 정규화 로직을 통해 상시 모니터링됩니다.
 
 ### ─────────────
 
@@ -87,7 +87,7 @@ ABS의 현금흐름 안정성은 [리스크 엔진 기술 사양](../../02_Integ
 
 - [ABS 딜 라이프사이클 및 북킹 가이드](ABS_Deal_Lifecycle.md)
 - [통합 리스크 프레임워크](../../02_Integrated_IB/01_Unified_Risk_Framework.md)
-- [리스크 엔진 기술 사양](../../02_Integrated_IB/02_Risk_Engine_Tech_Spec.md)
+- [리스크 엔진 기술 사양](../../04_Risk_Calculation/02_Risk_Engine_Tech_Spec.md)
 
 ### ─────────────
 

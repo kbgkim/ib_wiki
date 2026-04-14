@@ -48,5 +48,12 @@ $$EL (예상 손실) = PD \times LGD \times EAD$$
 - **자산유동화**: [ABS Basics](../03_Assets_Verticals/ABS/Basics.md)
 - **자본/지분**: [Equity Basics](../03_Assets_Verticals/Equity/Basics.md)
 
+### 세부 리스크 데이터 모델 (Detailed Data Models)
+- **[통합 리스크 데이터 모델 (Root Model)](00_Root_Model/IB_Risk_Data_Model.md)**: 전체 데이터 아키텍처 개요
+- **[핵심 리스크 변수 (Core Model)](01_Core_Model/Position.md)**: PD, LGD, EAD, EL 등 핵심 변수 정의
+- **[자산별 매핑 가이드 (Mapping)](02_Asset_Mapping/PF_Mapping.md)**: 자산군별 변수 매핑 상세
+- **[리스크 산출 로직 (Calculation)](03_Risk_Calculation/EL_Calculation.md)**: EL 및 Equity Risk 산출 흐름
+
 ---
-*최종 수정일: 2026-04-11*
+*최종 수정일: 2026-04-14*
+

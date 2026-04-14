@@ -55,5 +55,10 @@ ABS 메커니즘(예: PF 대출 채권을 기초로 한 ABCP)은 PF 프로젝트
 - **자산유동화**: [ABS Basics](../03_Assets_Verticals/ABS/Basics.md)
 - **자본/지분**: [Equity Basics](../03_Assets_Verticals/Equity/Basics.md)
 
+### 세부 리스크 데이터 모델 (Detailed Data Models)
+- **[통합 리스크 데이터 모델 (Root Model)](00_Root_Model/IB_Risk_Data_Model.md)**: 전체 데이터 아키텍처 개요
+- **[핵심 리스크 변수 (Core Model)](01_Core_Model/Position.md)**: PD, LGD, EAD, EL 등 핵심 변수 정의
+
 ---
-*최종 수정일: 2026-04-11*
+*최종 수정일: 2026-04-14*
+

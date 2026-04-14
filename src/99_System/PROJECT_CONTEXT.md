@@ -27,10 +27,10 @@
 - **인제션 로그**: 모든 문서 처리 내역은 [INGESTION_LOG.md](INGESTION_LOG.md)에 기록됩니다.
 - **검증 보고서**: 정기 검증 결과는 [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md)에 공시됩니다.
 
-## 5. 향후 과제 (Next Steps)
-- `src/00_Inbox`에 추가되는 기존 문서들의 분석 및 위키 편입
-- 각 자산군(Verticals)별 상세 수익 모델 및 현금흐름 시뮬레이션 로직 정리
-- 리스크 지표 간 상관관계(Correlation Matrix) 분석 심화
+## 5. 향후 고도화 로드맵 (Evolution Roadmap)
+- **실행 가능한 리스크 시뮬레이터 (Simulator)**: $EL = PD \times LGD \times EAD$ 산출 로직을 파이썬 코드로 구현하여 실제 데이터 계산 및 대시보드 연동 기능 추가.
+- **통합 스트레스 테스트 (Stress Test)**: "건설사 부도 -> PF 부실 -> NPL 공급 확대"와 같은 자산 간 리스크 전이 시나리오 설계 및 시각화.
+- **지능형 인박스 정교화 (Auto-Ingestion)**: 외부 리서치 리포트나 뉴스 분석을 통한 대시보드 지표 자동 업데이트 파이프라인 완성.
 
 ---
 *Created: 2026-04-10*

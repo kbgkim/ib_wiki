@@ -6,87 +6,114 @@
 
 ## 포지션 (Position)
 
-- **개별 채권**: 담보물별 또는 채무자별 개별 관리 단위  
+- 개별 채권 단위  
+- 담보 또는 채무자 기준으로 분리 관리  
 
 ---
 
 ## 부도 확률 (PD)
 
-- **100% 고정**: NPL은 이미 부실화된 자산이므로 PD = 100%를 전제합니다.
+- **100% 고정**
+- 이미 부실화된 자산이므로 PD 변동 없음  
+
+👉 NPL에서는 PD가 아니라 **회수율이 리스크를 결정**
 
 ---
 
 ## 노출액 (Exposure)
 
-- **OPB (Outstanding Principal Balance)**: 채권의 미상환 원금 잔액  
+- **OPB (Outstanding Principal Balance)**  
+- 미상환 원금 기준 금액  
 
 ---
 
 ## 부도시노출액 (EAD)
 
-- 원금(OPB) + 회수 시점까지의 연체 이자 + 법적 비용 등을 포함한 총 회수 대상 금액  
+NPL에서 EAD는 일반 Credit과 다르게 정의됩니다.
+
+👉 **EAD = Recovery 기준 Exposure**
+
+구성:
+- OPB
+- 연체이자
+- 법적 비용
+- 기타 회수 대상 금액
 
 ---
 
 ## 손실률 (LGD)
 
-- **담보 회수율 기반 산출**
+LGD는 회수 결과에 의해 결정됩니다.
 
-LGD = 1 - (Recovery / EAD)
-
-- Recovery는 다음 요소를 반영하여 산정합니다:
-  - 경매 낙찰가
-  - 수의매각 예상가
-  - 회수 비용 차감
+LGD = 1 - (Actual Recovery / EAD)
 
 ---
 
-## Cashflow 관점
+## 💰 Cashflow 관점 (핵심 구조)
 
-NPL 자산의 리스크는  
-회수금(Recovery) 기준 Cashflow 부족으로 설명됩니다.
+NPL은 **Recovery 기반 Cashflow 모델**입니다.
 
 ---
 
 ### 구조
 
 - **Expected Recovery**
-  - 담보 평가액 기준 예상 회수금
+  - 담보 평가 기반 예상 회수금
 
 - **Actual Recovery**
-  - 실제 회수된 금액 (경매, 매각, 배당 등)
+  - 실제 회수 금액 (경매 / 매각 / 배당)
 
 ---
 
-### 손실 발생 구조
+### Loss 생성 구조
 
-**Expected Recovery**  
-- **Actual Recovery**  
-= **Shortfall** (회수 부족액)
+Expected Recovery  
+→ Actual Recovery  
+→ Shortfall  
 
-**Shortfall**이 발생하면  
-→ 담보 처분을 통한 현금 유입이 계획보다 적음을 의미하며  
-→ 이는 즉각적인 **손실(Loss)**로 인식됩니다.
+Shortfall = Expected - Actual  
 
 ---
 
-### 리스크 지표 연결
+### Risk Engine 흐름
 
-**Recovery 부족**  
-→ **손실률(LGD)** 상승: $LGD = 1 - (Actual Recovery / EAD)$  
-→ **기대손실(Expected Loss)** 증가  
+Recovery 부족  
+→ LGD 증가  
+→ EL 증가  
 
-> **NPL과 PD**  
-> NPL은 **PD = 100%**로 고정되어 있으므로, 리스크의 변동성은 오직 **LGD(회수율)**의 변화에 의해 결정됩니다.
+---
+
+## 🔥 핵심 구조 정의
+
+👉 NPL은 “Default Model”이 아니라
+
+> ❗ **Recovery Model (회수 기반 리스크 모델)**
+
+---
+
+## 특징
+
+- PD = 100% 고정
+- 리스크 변동 요인 = LGD (회수율)
+- Cashflow = 회수 이벤트 중심
+- 시장 영향 = 담보 가치 직접 반영
 
 ---
 
 ## 핵심 리스크 요인
 
-- **경매가 하락**: 부동산 경기 악화로 낙찰가 저하  
-- **회수 기간 지연**: 법적 분쟁 및 절차 지연  
-- **담보 가치 변동**: 시장 상황에 따른 회수율 변화  
-- **추가 비용 발생**: 소송비, 관리비 등  
+- 경매가 하락 (부동산 경기 영향)
+- 회수 지연 (법적 절차)
+- 담보 가치 변동
+- 추가 비용 발생 (소송 / 관리비)
+
+---
+
+## 구조적 위치
+
+NPL은 다음 구조를 가집니다:
+
+Credit Model의 특수형 + Recovery 중심 구조
 
 ---
 

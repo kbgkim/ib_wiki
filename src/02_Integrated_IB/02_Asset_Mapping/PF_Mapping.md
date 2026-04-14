@@ -1,101 +1,145 @@
 # PF 매핑 (PF Mapping)
 
-부동산 PF 대출 및 투자를 Position 기반 리스크 모델로 변환합니다.
+부동산 PF(Project Finance) 구조를 Position 기반 리스크 모델로 변환합니다.
+
+---
+
+## 🔥 PF의 본질
+
+PF는 단순 대출이 아니라:
+
+> ❗ **단일 프로젝트의 Cashflow 기반 구조화 신용 리스크 모델**
 
 ---
 
 ## 포지션 (Position) 구조
 
-- **선순위 대출**: 담보권 및 상환 우선순위가 높은 포지션  
-- **후순위 투자**: 고수익을 목표로 하되 손실 흡수 버퍼 역할을 하는 포지션  
+- **선순위 대출**
+  - 담보권 우선
+  - 안정적 회수 구조
+
+- **후순위 투자**
+  - 고수익 구조
+  - 손실 흡수 역할 (Buffer Layer)
 
 ---
 
 ## 부도 확률 (PD)
 
-- 시행사/시공사의 신용도, 인허가 리스크 및 분양 가능성을 토대로 산정합니다.
+PF에서 PD는 일반 Credit PD가 아니라:
+
+👉 **Project Failure Probability**
+
+구성 요소:
+- 시행사 신용도
+- 시공사 수행 능력
+- 인허가 리스크
+- 분양 성공 가능성
 
 ---
 
 ## 노출액 (Exposure)
 
-- 현재 대출 잔액 및 투자 집행 원금입니다.
+- 대출 잔액
+- 투자 집행 원금
 
 ---
 
 ## 부도시노출액 (EAD)
 
-- 현재 인출 금액 + 향후 추가 인출 예정액(미사용 약정)을 합산하여 산출합니다.
+- 현재 인출 금액
+- 미사용 한도 (Commitment)
 
 ---
 
 ## 손실률 (LGD)
 
-- **담보 가치 (LTV)**: 사업 부지 및 준공 후 가치 대비 대출 비중  
-- **분양률**: 상환 재원 확보 수준에 따른 회수율 조정  
+LGD는 PF 구조에서 다음에 의해 결정됩니다:
+
+- 담보 가치 (LTV)
+- 분양률
+- 프로젝트 종료 시점 회수 구조
 
 ---
 
-## Cashflow 관점
+# 💰 Cashflow 핵심 구조
 
-PF 자산의 리스크는  
-현금흐름(Cashflow)의 부족으로 설명됩니다.
+PF 리스크의 본질은 Cashflow mismatch입니다.
 
-### 구조
+---
+
+## Cashflow 구조
 
 - **Expected Cashflow**
-  - 분양대금
-  - 임대수익
-  - 기타 사업 수익
+  - 분양 대금
+  - 임대 수익
+  - 사업 수익
 
 - **Actual Cashflow**
-  - 실제 유입된 자금
+  - 실제 유입 자금
 
 ---
 
-### 손실 발생 구조
+## Loss 생성 구조
 
-**Expected Cashflow**  
-- **Actual Cashflow**  
-= **Shortfall** (현금흐름 부족액)
+Expected Cashflow  
+→ Actual Cashflow  
+→ Shortfall  
 
-**Shortfall**이 발생하면  
-→ 원리금 상환 재원이 부족해지며  
-→ 이는 자산의 실질적 **손실(Loss)**로 연결됩니다.
+Shortfall = Cashflow 부족액
 
 ---
 
-### 주요 발생 원인
+## Risk Transmission 구조
 
-- **미분양 발생**: 분양 수입 감소로 인한 자금 유입 단절
-- **분양 지연**: 회수 시점 지연에 따른 금융 비용 증가
-- **공사 지연**: 준공 지연으로 인한 추가 공사비 발생 및 대환 지연
-- **비용 증가**: 자재비/인건비 상승으로 인한 사업성 악화
-
----
-
-### 리스크 연결
-
-**Cashflow 부족**  
-→ **회수율(Recovery Rate)** 하락  
-→ **손실률(LGD)** 증가  
-→ **기대손실(Expected Loss)** 증가
+Cashflow 부족  
+→ 회수율 감소  
+→ LGD 증가  
+→ EL 증가  
 
 ---
 
-## 핵심 리스크 요인
+# 🏗 PF 핵심 특징
 
-- **미분양 리스크**: 상환 재원 부족 가능성  
-- **공사 지연**: 시공사 부실 또는 민원으로 인한 기간 연장  
-- **분양률 저하**: 계획 대비 현금 유입 감소  
-- **금리 상승**: 금융비용 증가로 Cashflow 악화  
+- 단일 프로젝트 기반 구조
+- Cashflow 집중형 리스크
+- 분양/공정률에 민감
+- 시간 지연(Time Risk) 매우 중요
+
+---
+
+# ⚠️ 주요 리스크 요인
+
+- 미분양 리스크 (Demand Failure)
+- 공사 지연 (Construction Delay)
+- 인허가 실패
+- 금리 상승 (Financing Cost Increase)
+- 분양률 하락
+
+---
+
+# 🔗 구조적 위치
+
+PF는 다음 구조에 속합니다:
+
+👉 **Cashflow-based Credit Risk Model**
+
+---
+
+# 🔗 ABS와의 차이
+
+| 구분 | PF | ABS |
+|------|----|-----|
+| 구조 | 단일 프로젝트 | 자산 Pool |
+| Cashflow | 직접 | 간접 |
+| 구조화 | 낮음 | 높음 |
+| 리스크 | 사업 실패 | 트랜치 전이 |
 
 ---
 
 ## 연결
 
 → [포지션 (Position)](../01_Core_Model/Position.md)  
+→ [현금흐름 (Cashflow)](../01_Core_Model/Cashflow.md)  
 → [노출액 (Exposure)](../01_Core_Model/Exposure.md)  
-→ [부도시노출액 (EAD)](../01_Core_Model/EAD.md)  
-→ [손실률 (LGD)](../01_Core_Model/LGD.md)  
-→ [현금흐름 (Cashflow)](../01_Core_Model/Cashflow.md)
+→ [손실률 (LGD)](../01_Core_Model/LGD.md)

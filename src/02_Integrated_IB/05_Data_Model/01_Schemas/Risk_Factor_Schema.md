@@ -1,36 +1,52 @@
 # 리스크 요인 스키마 (Risk Factor Schema)
 
-## 목적
-현금흐름 변동을 유발하는 외부 시장 지표(Risk Driver)의 실측 데이터를 정의합니다.
+## 🔥 목적
+
+시장 및 거시경제 데이터를 기반으로  
+리스크 시나리오 충격(Shock)을 생성하는 **기초 입력 데이터**를 정의합니다.
 
 ---
 
-## 개념
-**Risk Factor**는 관측 가능한 시장 데이터이며, 리스크 엔진에서 시나리오별 충격(Shock)을 가하기 전의 **기초값(Base Value)** 역할을 합니다.
+# 📌 개념
+
+Risk Factor는 다음 역할을 수행합니다:
+
+👉 Market Observation Layer  
+👉 Shock Generator Input  
+👉 Scenario Engine Base Data
 
 ---
 
-## 테이블 구조
+# 🧠 구조 역할
 
-| 컬럼명 | 설명 | 비고 |
-|--------|------|------|
-| **factor_id** | PK (Primary Key) | 요인 식별 코드 |
-| **factor_name** | 요인 명칭 | 예: 국고채 3년, KOSPI 200, 환율 등 |
-| **factor_type** | 요인 유형 | INTEREST_RATE, STOCK_INDEX, FX, COMMODITY 등 |
-| **base_value** | 현재 시장가/지표값 | 특정 시점의 실측값 |
-| **volatility** | 역사적 변동성 (Std Dev) | 리스크 시뮬레이션의 기초 |
-| **source** | 데이터 출처 | Bloomberg, 한국은행, 연합인포맥스 등 |
-| **as_of_date** | 데이터 생성 기준일 | |
+Risk Factor  
+→ Shock  
+→ Scenario  
+→ Risk Engine  
+→ Cashflow / Loss
 
 ---
 
-## 설계 원칙
-- **객관적 실측치**: 실제 시장에서 관측된 데이터만을 저장하며 가공된 시나리오는 포함하지 않습니다.
-- **기준일 관리**: 시계열 분석을 위해 일자별로 데이터를 스냅샷 관리합니다.
+# 📊 테이블 구조
+
+| 컬럼명 | 설명 |
+|--------|------|
+| factor_id | PK |
+| factor_name | 시장 지표명 |
+| factor_type | INTEREST_RATE / FX / INDEX / COMMODITY |
+| base_value | 현재 시장 가격 (Spot Value) |
+| historical_volatility | 과거 변동성 |
+| stress_volatility | 스트레스 변동성 |
+| source | 데이터 출처 |
+| as_of_date | Snapshot 기준일 |
 
 ---
 
-## 연결
-→ [시나리오 모델 (Scenario Model)](../03_Behavior/Scenario_Model.md)  
-→ [시나리오 스키마 (Scenario Schema)](./Scenario_Schema.md)  
-→ [변동성 (Volatility)](../../01_Core_Model/Volatility.md)
+# ⚙️ 핵심 설계 원칙
+
+## 1️⃣ Market Observation Layer
+
+Risk Factor는 실제 관측값입니다:
+
+```text id="obs"
+Market Data → Risk Factor

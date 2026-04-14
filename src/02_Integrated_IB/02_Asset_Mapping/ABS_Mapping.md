@@ -6,93 +6,119 @@
 
 ## 포지션 (Position)
 
-- **트랜치 (Tranching)**: 선순위, 중순위, 후순위별 수익 구조 및 리스크 전이 단계  
+- **트랜치 (Tranching)**: 선순위 / 중순위 / 후순위로 구성된 구조화 투자 단위  
+- 각 트랜치는 서로 다른 리스크와 수익을 가짐  
 
 ---
 
 ## 부도 확률 (PD)
 
-- **기초자산 부도율**: 유동화의 원천이 되는 기초자산(매출채권, 부동산 등)의 부도 확률을 기반으로 합니다.
+- **기초자산 부도율**을 기반으로 산출  
+- 유동화 포트폴리오 전체의 평균 부도 위험을 반영  
 
 ---
 
 ## 노출액 (Exposure)
 
-- 현재 시점의 실제 투자 원금입니다.
+- 현재 시점의 투자 원금  
+- 트랜치별로 독립적으로 관리  
 
 ---
 
 ## 부도시노출액 (EAD)
 
-- 잔존 투자금 및 잔여 보유 기간 동안의 노출 예상액입니다.
+- 잔존 투자금 + 미회수 가능 Cashflow  
+- 트랜치 구조에 따라 다르게 산출  
 
 ---
 
 ## 손실률 (LGD)
 
-- **워터폴 (Waterfall) 구조**: 현금흐름 배분 순서 및 신용보강 수준에 의해 결정됩니다.
+LGD는 **Waterfall 구조에 의해 결정됩니다.**
+
+- 선순위: 낮은 LGD  
+- 중순위: 중간 LGD  
+- 후순위: 높은 LGD  
 
 ---
 
-## Cashflow 관점
+# 💰 Cashflow 관점 (핵심 구조)
 
-ABS 자산의 리스크는  
-기초자산에서 발생하는 Cashflow의 부족으로 설명됩니다.
+ABS의 리스크는 기초자산 Cashflow 실패에서 발생합니다.
 
 ---
 
-### 구조
+## Cashflow 구조
 
-- **Pool Cashflow (기초자산 현금흐름)**
+- **Pool Cashflow**
   - 대출 상환
   - 매출채권 회수
-  - 임대 수익 등
+  - 임대 수익
 
 - **Expected Cashflow**
-  - 구조 설계 시 가정된 현금흐름
+  - 구조 설계 시 가정된 유입
 
 - **Actual Cashflow**
-  - 실제 회수된 현금흐름
+  - 실제 회수된 금액
 
 ---
 
-### 손실 발생 구조
+## Loss 생성 구조
 
-**Expected Cashflow** (구조 설계 시 가정한 유입액)  
-- **Actual Cashflow** (기초자산 실제 회수액)  
-= **Shortfall** (유동화 자산 부족액)
-
----
-
-### 워터폴 (Waterfall) 구조 반영
-
-**Cashflow**는 트랜치(Tranche) 우선순위에 따라 다음 순서로 배분됩니다:
-
-1. **선순위 트랜치**: 최우선 상환 (가장 낮은 LGD)
-2. **중순위 트랜치**: 선순위 상환 후 잔여분 배분
-3. **후순위 트랜치**: 최종 잔여분 배분 (가장 높은 LGD)
-
-**Shortfall** 발생 시 상환 순서의 역순으로 손실을 흡수합니다:
-- **후순위** → 먼저 손실 흡수 (Equity Tranche 역할)  
-- 이후 **중순위** → **선순위** 순으로 손실 전이 (Tranche Erosion)
+Expected Cashflow  
+→ Actual Cashflow  
+→ Shortfall  
 
 ---
 
-### 리스크 지표 연결
+## Waterfall 구조 (핵심)
 
-**Cashflow 부족 (Shortfall)**  
-→ **Waterfall**에 따른 트랜치별 손실 배분  
-→ 개별 트랜치의 **손실률(LGD)** 결정  
-→ **기대손실(Expected Loss)** 증가  
+Cashflow는 트랜치 우선순위에 따라 배분됩니다:
+
+1. **선순위 트랜치**
+2. **중순위 트랜치**
+3. **후순위 트랜치**
+
+---
+
+## Loss 전달 구조 (Tranche Erosion)
+
+Shortfall 발생 시:
+
+후순위 → 먼저 손실 흡수  
+중순위 → 다음 손실 흡수  
+선순위 → 마지막 방어선  
+
+---
+
+## 리스크 전이 구조
+
+Shortfall  
+→ Waterfall 배분 실패  
+→ Tranche LGD 증가  
+→ Expected Loss 증가  
 
 ---
 
 ## 핵심 리스크 요인
 
-- **현금흐름 부족**: 기초자산 회수 실적 저조  
-- **트랜치 손실 전이**: 하위 트랜치 소진 후 상위 트랜치 침범  
-- **신용보강 약화**: 초과담보 및 보증 구조 훼손  
-- **조기상환/연체 증가**: Cashflow 패턴 왜곡  
+- 기초자산 Cashflow 감소  
+- 트랜치 손실 전이 (Subordination Failure)  
+- 신용보강 약화 (OC / Guarantee)  
+- 조기상환 / 연체 구조 붕괴  
+
+---
+
+## 구조적 위치 (모델 내 의미)
+
+ABS는 다음 중간 구조를 가집니다:
+
+- Credit Risk (PF/NPL) + Cashflow 기반
+- Equity Risk (Market Loss) 구조 일부 포함
+
+즉,
+
+👉 **Credit + Structured Layer Hybrid Model**
 
 ---
 

@@ -50,10 +50,13 @@ $$EL (예상 손실) = PD \times LGD \times EAD$$
 
 ### 세부 리스크 데이터 모델 (Detailed Data Models)
 - **[통합 리스크 데이터 모델 (Root Model)](00_Root_Model/IB_Risk_Data_Model.md)**: 전체 데이터 아키텍처 개요
-- **[핵심 리스크 변수 (Core Model)](01_Core_Model/Position.md)**: PD, LGD, EAD, EL 등 핵심 변수 정의
+- [핵심 리스크 변수 (Core Model)](01_Core_Model/Position.md)**: PD, LGD, EAD, EL 등 핵심 변수 정의
+- **[현금흐름 (Cashflow)](01_Core_Model/Cashflow.md)**: 리스크의 원천으로서의 현금흐름 개념
 - **[자산별 매핑 가이드 (Mapping)](02_Asset_Mapping/PF_Mapping.md)**: 자산군별 변수 매핑 상세
+- **[리스크 데이터 스키마 (Schemas)](05_Data_Model/01_Schemas/Position_Schema.md)**: DB 설계를 위한 상세 테이블 구조
 - **[리스크 산출 로직 (Calculation)](03_Risk_Calculation/EL_Calculation.md)**: EL 및 Equity Risk 산출 흐름
 
 ---
 *최종 수정일: 2026-04-14*
+
 

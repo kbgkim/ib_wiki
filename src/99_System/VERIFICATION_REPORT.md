@@ -4,46 +4,42 @@
 
 ## 1. 개요 (Abstract)
 - **검토 범위**: `src/` 내 모든 마크다운 문서 (25개) 및 프로젝트 루트 `README.md`.
-- **검토 일시**: 2026-04-14
+- **검토 일시**: 2026-04-14 (고도화 보정)
 - **검토자**: Antigravity (AI 에이전트)
 
 ## 2. 기술적 무결성 (Structural Integrity)
 | 항목 | 결과 | 상세 내용 |
 | :--- | :---: | :--- |
-| **링크 유효성** | **PASS** | `verify_links.py` 스캔 결과, 신규 추가된 14개 문서를 포함한 모든 상대 경로 링크가 정상 동작함. (Wikilink 제거 완료) |
-| **다이어그램 문법** | **PASS** | `IB_Risk_Data_Model.md` 등 신규 문서 내 ERD 및 Flowchart 문법 오류 없음. |
-| **수식 렌더링** | **PASS** | $EL = PD \times LGD \times EAD$ 및 Equity Risk 공식의 LaTeX 문법 정상 확인. |
+| **링크 유효성** | **PASS** | `verify_links.py` 스캔 결과, 신규 추가된 6개 Schema 문서 및 `Cashflow.md`를 포함한 모든 링크 정상 작동. |
+| **다이어그램 문법** | **PASS** | `IB_Risk_Data_Model.md` 및 `Asset Mapping` 내의 Flowchart 문법 오류 없음. |
+| **수식 렌더링** | **PASS** | $EL = PD \times LGD \times EAD$ 및 Shortfall 기반 손실 산출 공식의 LaTeX 문법 정상 확인. |
 
 ## 3. 논리적/금융 도메인 정합성 (Logical & Domain Consistency)
 
-### 가. 리스크 지표 정의의 일관성
-- **확인 사항**: 모든 문서(Core Model, Asset Mapping)에서 PD, LGD, EAD가 동일한 개념으로 사용되는가?
+### 가. 리스크-현금흐름 연결성 (Cashflow-centric Risk)
+- **확인 사항**: 현금흐름 부족(Shortfall)이 실제 리스크 지표(LGD, EL)로 전이되는 로직이 일관된가?
 - **결과**: **PASS**. 
-    - **보정 완료**: 일부 신규 문서에서 누락되었던 **PD(부도 확률)**를 기대손실(EL) 공식에 전수 반영함.
-    - **자산 특수성 반영**: NPL(이미 부도 발생)의 경우 $PD=100\%$를 적용하여 $EL = EAD \times LGD$로 산출된다는 논리적 예외 사항을 명시하여 프레임워크 내 통합을 완료함.
+    - **보상**: `Cashflow_to_Loss.md` 및 각 자산별 매핑 문서에서 "Shortfall -> 회수율 하락 -> LGD 상승 -> EL 증가"로 이어지는 논리적 파이프라인을 구축 완료함.
 
-### 나. 엔진 워크플로우 일관성
-- **확인 사항**: `Risk_Engine_Tech_Spec.md`의 설계와 `EL_Calculation.md`의 실행 흐름이 일치하는가?
-- **결과**: **PASS**. 포지션 확정에서 기대손실 산출까지의 5단계 파이프라인 정합성 확인.
+### 나. 데이터 모델과 매핑의 일치성
+- **확인 사항**: `Position_Schema` 및 `Cashflow_Schema`의 설계가 실제 자산군(PF, NPL 등)의 특성을 모두 수용하는가?
+- **결과**: **PASS**. 자원(Asset Type), 상태(Status), 기준일(As-of-Date) 필드를 통해 전 자산 통합 관리 구조를 확립함.
 
-## 4. 2024-2025 전문 팩트 체크 및 고도화 (Audit)
+## 4. 스타일 가이드 및 UX 준수 (Aesthetics & UX)
 
 | 영역 | 검토 항목 | 결과 | 상세 조치 내용 |
 | :--- | :--- | :---: | :--- |
-| **Data Model** | Deal-Position-Risk 구조 | **PASS** | 모든 자산을 '포지션' 단위로 환원하여 계산하는 구조적 무결성 확인. |
-| **Credit Risk** | EL 산출 공식 및 변수 | **PASS** | PD/LGD/EAD의 금융공학적 상관관계 및 정의 일치성 확인. |
-| **Equity Risk** | MTM 및 Shock 모델 | **PASS** | 지분 자산의 후순위성(LGD 100% 가정) 및 변동성 기반 손실 산출 로직 반영. |
-| **PF** | 2025 책임준공 모범규준 | **PASS** | 신탁사/시공사 책임준공 기한 연장(최대 90일) 및 손해배상 범위 한정 기준 반영. |
-| **ABS** | 2024 개정 자산유동화법 | **PASS** | **5% 위험보유 의무**, e-SAFE 등록 규정, True Sale 4대 요건 반영. |
-| **NPL** | 배당상계 및 질권 대출 | **PASS** | 민사집행법 제143조 근거 명시, 상계 신청 기한(매각결정기일) 및 질권 대출 구조 추가. |
+| **Title Style** | 한글 (English) 형식 | **PASS** | 신규 문서 및 수정 문서의 제목을 모두 프로젝트 표준 형식으로 통일. |
+| **Industry Terms** | **`현업 용어`** 볼드체 | **PASS** | `Shortfall`, `LTV`, `Waterfall` 등 주요 전문 용어에 대한 시각적 강조 재적용. |
+| **Navigation** | 문서 간 연결성 | **PASS** | `Unified Risk Framework`를 중심으로 전 문서가 유기적으로 연결됨 (Orphaned page 없음). |
 
 ## 5. 종합 평가 및 제안
-신규로 추가된 **IB 리스크 데이터 모델**은 기존의 통합 리스크 프레임워크를 기술적으로 구체화하였으며, 모든 기술적/논리적 정합성이 보정되었습니다.
+이번 고도화 작업을 통해 **IB 리스크 위키**는 개념적 정의를 넘어 실제 데이터베이스 설계 및 엔진 구축이 가능한 수준의 구체성을 확보하였습니다.
 
 ### 향후 보완 제안 (Recommendations)
-1. **데이터 스키마 정의**: 현재 마크다운으로 정의된 모델을 실제 JSON Schema 또는 SQL DDL로 변환하여 `99_System/Schema`에 배치할 것을 권장합니다.
-2. **테스트 케이스 시나리오**: 자산별(PF/NPL 등) 가상의 수치를 대입한 'Walkthrough' 문서를 추가하여 모델의 실효성을 검증할 필요가 있습니다.
+1. **API 기술 사양 연결**: 현재의 Data Schema를 바탕으로 실제 리스크 엔진 API 엔드포인트 사양(`Swagger` 등)을 연동하여 문서의 실효성을 극대화할 수 있습니다.
+2. **시뮬레이션 예시 확충**: 시나리오 모델별 구체적인 수치 대입 사례(Walkthrough)를 지속적으로 업데이트할 것을 권장합니다.
 
 ---
-*검증 도구: `verify_links.py`, `grep logical_scan`*
-*최종 판정: **무결성 확인 및 업데이트 완료 (Verified & Updated)** *
+*검증 도구: `verify_links.py`*
+*최종 판정: **시스템 무결성 확인 및 고도화 완료 (System Verified & Optimized)** *

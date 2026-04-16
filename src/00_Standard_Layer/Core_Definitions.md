@@ -44,6 +44,23 @@
 
 ---
 
-## 6. Core Identity Rule
+## 6. Event (이벤트)
+금융 개체의 상태 변화를 유발하는 비즈니스 사건
 
-All Risk = Function(Position, Cashflow)
+- **Risk Trigger**: PD, LGD 등 리스크 지표를 변화시키는 사건
+- **Value Trigger**: 현금흐름(Cashflow)의 양과 시점을 변화시키는 사건
+
+---
+
+## 7. State (상태)
+이벤트에 의해 결정되는 개체의 특정 시점 상황
+
+- **Lifecycle State**: 딜의 생애주기 단계 (Proposed, Active, Closed 등)
+- **Quality State**: 자산의 건전성 상태 (Normal, Delinquent, Default 등)
+
+---
+
+## 8. Core Identity Rule
+
+All Risk = Function(Position, Cashflow, **Event**)
+- 리스크는 포지션(대상)과 현금흐름(원천)에 이벤트(변화 동력)가 결합되어 결정됩니다.

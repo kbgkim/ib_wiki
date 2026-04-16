@@ -4,7 +4,7 @@
 
 본 프로젝트는 투자은행(IB) 실무에서 다루는 4대 핵심 자산군(**PF, ABS, NPL, Equity**)의 지식을 체계적으로 구조화하고, 이를 **Asset → Position → Cashflow → Risk**라는 단일 온톨로지로 통합 관리하는 프로덕션급 지식 위키입니다.
 
-### ─────────────
+---
 
 ## 🌟 프로젝트 아키텍처 (Layered Architecture)
 
@@ -17,32 +17,36 @@
 5.  ⚙️ **[04_Risk_Calculation](src/04_Risk_Calculation/EL_Calculation.md)**: 기대손실(EL) 및 리스크 산출 엔진 로직
 6.  📊 **[05_Data_Model](src/05_Data_Model/01_Schemas/Position_Schema.md)**: 물리적 데이터 스키마 및 이벤트 모델
 
-### ─────────────
+---
 
-## 🧬 통합 온톨로지 (Unified Ontology)
+## 🧬 도메인 아키텍처 (Domain Architecture)
 
-모든 자산은 형식을 불문하고 아래의 공통 흐름으로 환원되어 관리됩니다.
+본 위키는 지표의 정적 정의와 동적 변화를 동시에 관리하기 위해 **Event-driven Domain Structure**를 채택하고 있습니다.
 
-**Asset** (특정 자산 도메인)
-→ **Position** (모든 리스크의 최소 단위)
-→ **Cashflow** (리스크를 유발하는 현금흐름 데이터)
-→ **Risk** (분석된 최종 위험 지표)
+### 1. 3-Layer 원칙
+- **Core Domain**: 자산의 본질적 금융 구조 및 온톨로지 고정.
+- **Extension Layer**: ESG, STO, Syndication 등 구조적 확장 요소 선별 적용.
+- **Execution Layer**: 시스템 구현 디테일 및 알고리즘 사양 관리.
 
-### ─────────────
+### 2. 동적 라이프사이클 모델
+- **Event Catalog**: 리스크($PD/LGD$)와 가치($Cashflow$)를 변화시키는 핵심 트리거 정의.
+- **State Machine**: 딜의 생애주기에 따른 상태 전이 모델(State Machine) 구축.
+
+---
 
 ## 🛠️ 활용 방법 (How to Use)
 
-- **지식 탐색**: [핵심 정의(Core Definitions)](src/00_Standard_Layer/Core_Definitions.md)에서 공통 언어를 먼저 익히시는 것을 권장합니다.
-- **리스크 분석**: [자산별 매핑 가이드](src/03_Assets_Verticals/)를 통해 각 도메인이 어떻게 공통 모델로 변환되는지 확인하세요.
-- **데이터 구조**: 시스템 구현이 목적이라면 [데이터 모델](src/05_Data_Model/) 레이어를 참조하십시오.
+- **지식 탐색**: [핵심 정의(Core Definitions)](src/00_Standard_Layer/Core_Definitions.md)에서 공통 언어와 **이벤트/상태** 개념을 먼저 익히십시오.
+- **도메인 명세**: [자산별 매핑 가이드](src/03_Assets_Verticals/)에서 각 도메인의 라이프사이클 시각화 자료를 확인하세요.
+- **리스크 엔진**: [리스크 산출](src/04_Risk_Calculation/) 레이어에서 물리적 계산 로직을 참조하십시오.
 
-### ─────────────
+---
 
 ## 👨‍💻 관리 및 기여
 
 - **원격 저장소**: [https://github.com/kbgkim/ib_wiki](https://github.com/kbgkim/ib_wiki)
-- **최종 업데이트**: 2026-04-16 (Ontological Refactoring 완료)
+- **최종 업데이트**: 2026-04-16 (Event-driven Domain Refactoring 완료)
 
-### ─────────────
+---
 
 *Created by [Antigravity](https://github.com/kbgkim)*

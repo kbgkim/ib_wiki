@@ -37,7 +37,7 @@
 ## 🛠️ 활용 방법 (How to Use)
 
 - **지식 탐색**: [핵심 정의(Core Definitions)](src/00_Standard_Layer/Core_Definitions.md)에서 공통 언어와 **이벤트/상태** 개념을 먼저 익히십시오.
-- **도메인 명세**: [자산별 매핑 가이드](src/03_Assets_Verticals/)에서 각 도메인의 라이프사이클 시각화 자료를 확인하세요.
+- **도메인 명세**: 자산별 라이프사이클 시각화 자료 확인 ([PF](src/03_Assets_Verticals/PF/Basics.md) / [ABS](src/03_Assets_Verticals/ABS/Basics.md) / [NPL](src/03_Assets_Verticals/NPL/Basics.md) / [Equity](src/03_Assets_Verticals/Equity/Basics.md))
 - **인과 관계**: [통합 리스크 전파 명세](src/02_Integrated_IB/Synthesis_Map.md)에서 도메인 간 리스크 전이 경로를 추적하세요.
 
 ---

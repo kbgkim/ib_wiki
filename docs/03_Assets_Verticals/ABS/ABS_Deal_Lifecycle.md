@@ -21,11 +21,11 @@ stateDiagram-v2
         ACTIVE --> CASH_TRAP: 트리거 발생 (Trap)
         CASH_TRAP --> ACTIVE: 리워크/정상화 (Release)
         ACTIVE --> AMORTIZATION: 순차 상환 진행
-        AMORTIZATION --> DEFAULT: 상환 불능 (Default)
+        AMORTIZATION --> "DEFAULT": 상환 불능 (Default)
     }
     
     ISSUANCE --> CLOSED: 법인 청산/상환 완료
-    DEFAULT --> NPL_TRANSFER: 부실 자산 매각
+    "DEFAULT" --> NPL_TRANSFER: 부실 자산 매각
     
     %% Invalid Transitions
     SOURCING --> ISSUANCE: [Error] 구조화 없이 발행 불가
@@ -43,7 +43,7 @@ stateDiagram-v2
 | **SECURITIES_ISSUED** | `STRUCTURING` / `Credit_Rating` | 유동화증권 발행 및 매각 완료 | `ACTIVE` | `POOLING` 상태 |
 | **CASH_TRAP_TRIGGER** | `ACTIVE` / `DSCR` | **DSCR < 1.05** 또는 연체율 > 5.0% | `CASH_TRAP` | `CLOSED` 상태 |
 | **CASH_TRAP_RELEASE** | `CASH_TRAP` / `Reserve_Balance`| **DSCR > 1.15** 및 리저브 충족 | `ACTIVE` | `SOURCING` 상태 |
-| **DEFAULT_DECLARED** | `ACTIVE` or `AMORTIZATION` | **선순위 이자 미지급 > 5영업일** | `DEFAULT` | `POOLING` 상태 |
+| **DEFAULT_DECLARED** | `ACTIVE` or `AMORTIZATION` | **선순위 이자 미지급 > 5영업일** | `"DEFAULT"` | `POOLING` 상태 |
 | **REDEMPTION_FINAL** | `AMORTIZATION` / `Zero_Balance` | 최종 트랜치 원리금 상환 완료 | `CLOSED` | `POOLING` 상태 |
 
 ---

@@ -41,6 +41,18 @@
 
 ---
 
+## 5. Scenario Impact (통합 시나리오 영향)
+
+거시 경제 시나리오가 ABS 도메인 내 이벤트를 트리거하는 경로입니다.
+
+| 시나리오 | 트리거 이벤트 (Trigger Event) | 구조적 영향 (Impact) |
+| :--- | :--- | :--- |
+| **S1: Interest Rate Shock** | `CASH_TRAP` | 조달 금리 상승으로 인한 초과 스프레드 감소 및 현금 유보 트리거 작동 |
+| **S2: Real Estate Crash** | `COLLATERAL_DEVALUED` | 기초자산(부동산) 가치 하락에 따른 LTV 악화 및 선순위 안정성 저하 |
+| **S3: Liquidity Crunch** | `REFINANCING_FAILURE` | ABCP 등 단기 유동화 증권의 차환 실패 리스크 및 유동성 지원 이벤트 호출 |
+
+---
+
 ## 🔗 연결
 - [ABS 딜 라이프사이클 및 이벤트 모델](./ABS_Deal_Lifecycle.md)
 - [ABS 리스크 매핑 가이드](./ABS_Mapping.md)

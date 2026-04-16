@@ -1,41 +1,70 @@
-# IB 통합 시너지 맵 (Integrated IB Synthesis Map)
+# IB 통합 리스크 전파 명세 (Integrated Risk Causality Spec)
 
-## 🔥 목적
-이 문서는 **PF, ABS, NPL, Equity**가 어떻게 서로 교차하며 종합적인 투자은행(IB) 생태계를 형성하는지 보여줍니다. 개별 자산의 한계를 넘어 리스크와 자본의 순환 구조를 이해하는 것이 목적입니다.
+## 1. 개요 (Overview)
+본 문서는 거시 시나리오가 각 자산 도메인에 미치는 전파 경로와, 도메인 간의 이벤트 인과관계(Event Causality)를 정의합니다. 이를 통해 개별 자산의 리스크가 전체 IB 생태계로 전이되는 메커니즘을 명세화합니다.
 
-### ─────────────
+---
 
-## 📌 1. 통합 온톨로지 흐름 (Unified Ontology Flow)
-모든 IB 자산은 상호 연결되어 있으며, 표준 레이어의 규칙에 따라 관리됩니다.
+## 2. Integrated Stress Scenario Catalog
+전 도메인에 동시 영향을 미치는 거시 시나리오 정의입니다.
 
-**Asset** (PF, ABS, NPL, Equity)
-→ **Position** ([Core_Definitions](../00_Standard_Layer/Core_Definitions.md#1-position-포지션))
-→ **Cashflow** ([Core_Definitions](../00_Standard_Layer/Core_Definitions.md#2-cashflow-현금흐름))
-→ **Risk** ([Risk_Model_Rule](../00_Standard_Layer/Risk_Model_Rule.md))
+| ID | 시나리오 명칭 | 정의 (Macro Context) | 주요 트리거 이벤트 (Call Events) |
+| :--- | :--- | :--- | :--- |
+| **S1** | **Interest Rate Shock** | 기준 금리 폭등 및 조달 스프레드 확대 | PF.`FUNDING_FAILURE`, ABS.`CASH_TRAP`, Equity.`MTM_SHOCK` |
+| **S2** | **Real Estate Crash** | 분양 시장 마비 및 담보 가치 폭락 | PF.`PRE_SALE_SHORTFALL`, NPL.`AUCTION_FAILURE`, ABS.`COLLATERAL_DEVALUED` |
+| **S3** | **Liquidity Crunch** | 자본시장 유동성 증발 및 엑시트 불가 | ABS.`REFINANCING_FAILURE`, Equity.`EXIT_DELAYED`, NPL.`COLLECTION_DIP` |
 
-### ─────────────
+---
 
-## 🧠 2. 자산 도메인 간 시너지 (Domain Synergies)
+## 3. Event Dependency Graph (도메인 간 인과관계)
 
-### 👉 가. PF -> NPL (부실 전이 지점)
-프로젝트가 현금흐름 창출에 실패하면 [NPL_Mapping](../03_Assets_Verticals/NPL/NPL_Mapping.md)으로 전환됩니다.
-- **리스크**: [PD (부도확률)](../01_Core_Model/PD.md)의 급격한 상승.
+특정 도메인의 이벤트 발생이 후행 도메인의 이벤트를 트리거하는 리스크 전파 그래프입니다.
 
-### 👉 나. NPL -> ABS (유동성 공급 지점)
-은행의 건전성 제고를 위해 NPL 포트폴리오는 [ABS_Mapping](../03_Assets_Verticals/ABS/ABS_Mapping.md) 형태로 유동화됩니다.
-- **효과**: 기관 투자자들이 신용보강을 통해 분산된 트랜치에 투자.
+```mermaid
+graph TD
+    subgraph "Primary Domain"
+        PF_EV[PF: PROJECT_FAILURE]
+    end
+    
+    subgraph "Secondary Domain"
+        NPL_EV[NPL: PORTFOLIO_ACQUIRED]
+        ABS_EV[ABS: ASSET_POOL_AUGMENTED]
+    end
+    
+    subgraph "Value Growth Cycle"
+        EQ_EV[Equity: EXIT_SUCCESS]
+    end
 
-### 👉 다. Equity -> PF (성장 엔진 지점)
-지본 자산(Equity)의 투입은 새로운 PF 프로젝트를 시작하는 원동력이 됩니다.
-- **순환**: 성공적인 리파이낸싱 또는 엑시트(Exit)는 새로운 투자 유동성을 제공합니다.
+    %% Causality Links
+    PF_EV -- "Asset Seizure" --> NPL_EV
+    NPL_EV -- "Liquidation / Sale" --> ABS_EV
+    EQ_EV -- "Capital Injection" --> PF_EV_NEW[PF: NEW_PROJECT_INITIATION]
+    
+    %% Scenario Triggers
+    S1[Scenario: Interest Rate Shock] -.-> PF_EV
+    S1 -.-> ABS_EV
+```
 
-### ─────────────
+---
 
-## Standard Reference
-- [Core_Definitions](../00_Standard_Layer/Core_Definitions.md)
+## 4. Data Transfer Point (데이터 전이 지점)
+이벤트 전이 시 도메인 간에 전달되는 핵심 데이터 사양입니다.
+
+### PF -> NPL (부실 전이)
+- **전이 데이터**: `Uncollected Principal`, `Collateral Appraisal`, `Default Date`.
+- **논리**: PF의 `Loss` 확정 데이터가 NPL의 매입 원리금(`OPB`) 및 회수 목표가로 전환됩니다.
+
+### NPL -> ABS (유동성 공급)
+- **전이 데이터**: `Recovery Cashflow Table`, `Tranche Structure`, `Waterfall Priority`.
+- **논리**: NPL 포트폴리오의 예상 회수 스케줄이 ABS의 기초자산 현금흐름으로 매핑됩니다.
+
+---
+
+## 🔗 연결
+- [Core Ontology Definitions](../00_Standard_Layer/Core_Definitions.md)
 - [Unified Risk Framework](./01_Unified_Risk_Framework.md)
 - [Assets Verticals Mapping](../03_Assets_Verticals/)
 
 ### ─────────────
 
-*최종 업데이트: 2026-04-14*
+*최종 업데이트: 2026-04-16 (이벤트 기반 전파 구조 명세화)*

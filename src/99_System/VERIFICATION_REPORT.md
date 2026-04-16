@@ -10,9 +10,9 @@
 ## 2. 기술적 무결성 (Structural Integrity)
 | 항목 | 결과 | 상세 내용 |
 | :--- | :---: | :--- |
-| **3계층 아키텍처** | **PASS** | Core, Extension, Execution 레이어의 엄격한 분리 준수. |
-| **링크 유효성** | **PASS** | `verify_links.py` 실행 결과, 모든 상대 경로 정합성 확보 (Broken: 0). |
-| **동적 모델링** | **PASS** | 전 자산군(PF, ABS, NPL, Equity)에 대해 Mermaid 상태 전입도 적용 완료. |
+| **3계층 아키텍처** | **PASS** | Core, Extension, Scenario 레이어의 엄격한 분리 준수. |
+| **링크 유효성** | **PASS** | `verify_links.py` 실행 결과, 전체 **58개 문서**에 대해 무결성 확보 (Broken: 0). |
+| **아키텍처 기록** | **PASS** | 모든 구현 계획 및 결과가 [ARCHITECTURAL_LOG.md](ARCHITECTURAL_LOG.md)에 기록됨. |
 
 ## 3. 논리적/금융 도메인 정합성 (Logical & Domain Consistency)
 

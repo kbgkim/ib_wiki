@@ -39,6 +39,18 @@
 
 ---
 
+## 5. Scenario Impact (통합 시나리오 영향)
+
+거시 경제 시나리오가 NPL 도메인 내 이벤트를 트리거하는 경로입니다.
+
+| 시나리오 | 트리거 이벤트 (Trigger Event) | 구조적 영향 (Impact) |
+| :--- | :--- | :--- |
+| **S1: Interest Rate Shock** | `WORKOUT_DELAY` | 채무자의 이자 부담 증가로 인한 조정 협의 지연 및 회수 기간 장기화 |
+| **S2: Real Estate Crash** | `AUCTION_FAILURE` | 부동산 시장 경색에 따른 경매 유찰 및 LGD 급증 |
+| **S3: Liquidity Crunch** | `COLLECTION_DIP` | 매수 주체 부재로 인한 채권 재매각(Re-sale) 지연 및 유동성 회수 저하 |
+
+---
+
 ## 🔗 연결
 - [NPL 딜 라이프사이클 및 이벤트 모델](./NPL_Deal_Lifecycle.md)
 - [NPL 리스크 매핑 가이드](./NPL_Mapping.md)

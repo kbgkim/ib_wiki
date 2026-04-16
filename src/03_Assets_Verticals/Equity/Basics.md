@@ -39,6 +39,18 @@
 
 ---
 
+## 5. Scenario Impact (통합 시나리오 영향)
+
+거시 경제 시나리오가 Equity 도메인 내 이벤트를 트리거하는 경로입니다.
+
+| 시나리오 | 트리거 이벤트 (Trigger Event) | 구조적 영향 (Impact) |
+| :--- | :--- | :--- |
+| **S1: Interest Rate Shock** | `MARK_TO_MARKET_UPDATE` | 할인율(WACC) 상승에 따른 DCF 가치의 급격한 하락 및 평가 손실 발생 |
+| **S2: Real Estate Crash** | `VALUATION_SHOCK` | 부동산 관련 포트폴리오 기업의 실적 악화 및 배수(Multiples) 하락 |
+| **S3: Liquidity Crunch** | `EXIT_DELAYED` | IPO 시장 위축 및 M&A 구매력 저하로 인한 회수 시점 무기한 연기 |
+
+---
+
 ## 🔗 연결
 - [지분 투자 라이프사이클 및 이벤트 모델](./Unlisted_Deal_Lifecycle.md)
 - [지분 리스크 매핑 가이드](./Equity_Mapping.md)

@@ -34,13 +34,13 @@
 ## 4. 자동화 및 워크플로우 (Automation)
 - **문서 입수 스킬**: `ib-wiki-ingestion` 스킬을 사용하여 인박스 문서를 자동으로 처리합니다.
 - **검증 및 정합성 스킬**: `ib-wiki-verification` 스킬을 통해 위키의 기술적 무결성과 논리적 정합성을 점검합니다.
+- **아키텍처 변경 로그**: 상세 계획 및 실행 결과는 [ARCHITECTURAL_LOG.md](ARCHITECTURAL_LOG.md)에 기록됩니다.
 - **인제션 로그**: 모든 문서 처리 내역은 [INGESTION_LOG.md](INGESTION_LOG.md)에 기록됩니다.
 - **검증 보고서**: 정기 검증 결과는 [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md)에 공시됩니다.
 
 ## 5. 향후 고도화 로드맵 (Evolution Roadmap)
-- **실행 가능한 리스크 시뮬레이터 (Simulator)**: $EL = PD \times LGD \times EAD$ 산출 로직을 파이썬 코드로 구현하여 실제 데이터 계산 및 대시보드 연동 기능 추가.
-- **통합 스트레스 테스트 (Stress Test)**: "건설사 부도 -> PF 부실 -> NPL 공급 확대"와 같은 자산 간 리스크 전이 시나리오 설계 및 시각화.
-- **지능형 인박스 정교화 (Auto-Ingestion)**: 외부 리서치 리포트나 뉴스 분석을 통한 대시보드 지표 자동 업데이트 파이프라인 완성.
+- **명세 기반 시스템 구현 (Simulator)**: [통합 리스크 전파 명세](../02_Integrated_IB/Synthesis_Map.md)를 바탕으로, 시나리오별 $PD \times LGD \times EAD$를 산출하는 Python 프로토타입 개발. (현재 구현 대기 중)
+- **지능형 대시보드 정교화**: 실시간 이벤트 로그를 시뮬레이터와 연동하여 리스크 가시성 확보.
 
 ### ─────────────
 

@@ -56,6 +56,9 @@
 - **Contract**: [SYSTEM_CONTRACT.md](99_System/Contract/SYSTEM_CONTRACT.md) / [GOVERNANCE](99_System/Contract/CONTRACT_GOVERNANCE.md)
 - **Trace**: [TRACEABILITY_SPEC.md](99_System/Trace/TRACEABILITY_SPEC.md)
 - **Validation**: [INTEGRATED_VALIDATION_RUN.md](99_System/Validation/INTEGRATED_VALIDATION_RUN.md)
+- **Architecture**: [IMPLEMENTATION_MAPPING_SPEC.md](99_System/Architecture/IMPLEMENTATION_MAPPING_SPEC.md)
+- **Governance**: [SPEC_CONSISTENCY_MATRIX.md](99_System/Governance/SPEC_CONSISTENCY_MATRIX.md)
+- **Runtime**: [FAIL_FAST_POLICY.md](99_System/Runtime/FAIL_FAST_POLICY.md)
 - **Execution**: [OUTPUT_HASH_SPEC.md](99_System/Execution/OUTPUT_HASH_SPEC.md) / [NORMALIZATION](99_System/Execution/TRACE_GRAPH_NORMALIZATION_SPEC.md)
 - **Status & Log**: [VERIFICATION_REPORT.md](99_System/VERIFICATION_REPORT.md) / [ARCHITECTURAL_LOG.md](99_System/ARCHITECTURAL_LOG.md)
 

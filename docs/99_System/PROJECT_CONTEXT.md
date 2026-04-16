@@ -29,6 +29,10 @@
   - 전 자산군(PF, ABS, NPL, Equity)에 대해 **Event Catalog** 및 **State Machine** 상세 명세 구축
   - 이벤트 트리거와 리스크 인자($PD, LGD, Cashflow$) 간의 논리적 결합 완료
 - **리스크 모델 통합**: 공통 EL 프레임워크($PD \times LGD \times EAD$) 및 비선형 전파 모델 구축
+- **시스템 거버넌스 및 실행 안정성 강화 (2026-04-16)**:
+  - **Implementation Mapping**: 설계 규약과 실제 코드 컴포넌트 간의 매핑 명세 수립.
+  - **Consistency Matrix**: 다중 명세 간 충돌 해소를 위한 지배 규칙(Dominant Rule) 체계 확립.
+  - **Fail-Fast Policy**: 비정상 상태 확산 방지를 위한 즉각적 실행 중단 및 오류 차단 규약 정의.
 - **지능형 시각화**: 4대 자산 통합 관제 **대시보드(DASHBOARD.md)** 구축 및 아키텍처 반영 완료
 
 ## 4. 자동화 및 워크플로우 (Automation)

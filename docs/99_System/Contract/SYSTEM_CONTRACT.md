@@ -45,6 +45,8 @@
 
 ## 5. Failure Handling Contract (실패 처리 규약 - STRICT)
 
+본 규약의 상세 실행 지침은 [FAIL_FAST_POLICY.md](../Runtime/FAIL_FAST_POLICY.md)를 따른다.
+
 모든 실패 상황은 예외 없이 아래의 4가지 분류 중 **정치 단 하나(Exactly One)**로만 분류되어야 하며, 중복 분류는 엄격히 금지된다.
 
 1.  **RETRY**: 일시적이고 자동 복구가 가능한 실패 (예: 네트워크 타임아웃, DB 락 경합).
@@ -129,10 +131,13 @@
 ## 🔗 Rule Hierarchy (규칙 계층 구조)
 1. **RULE ZERO** (Highest Absolute Priority)
 2. **System Contract** (본 문서)
-3. **TRACEABILITY SPEC** ([`TRACEABILITY_SPEC.md`](../Trace/TRACEABILITY_SPEC.md))
-4. **Safety Layer Rules** ([`EXECUTION_FIX_PLAN.md`](../../06_Execution_Flow/EXECUTION_FIX_PLAN.md))
-5. **Domain Rules** (Lifecycle Specifications)
-6. **Scenario Rules** ([`EVENT_FLOW_SPECIFICATION.md`](../../02_Integrated_IB/EVENT_FLOW_SPECIFICATION.md))
+3. **Spec Consistency Matrix** ([`SPEC_CONSISTENCY_MATRIX.md`](../Governance/SPEC_CONSISTENCY_MATRIX.md))
+4. **TRACEABILITY SPEC** ([`TRACEABILITY_SPEC.md`](../Trace/TRACEABILITY_SPEC.md))
+5. **Fail-Fast Policy** ([`FAIL_FAST_POLICY.md`](../Runtime/FAIL_FAST_POLICY.md))
+6. **Implementation Mapping** ([`IMPLEMENTATION_MAPPING_SPEC.md`](../Architecture/IMPLEMENTATION_MAPPING_SPEC.md))
+7. **Safety Layer Rules** ([`EXECUTION_FIX_PLAN.md`](../../06_Execution_Flow/EXECUTION_FIX_PLAN.md))
+8. **Domain Rules** (Lifecycle Specifications)
+9. **Scenario Rules** ([`EVENT_FLOW_SPECIFICATION.md`](../../02_Integrated_IB/EVENT_FLOW_SPECIFICATION.md))
 
 ---
 

@@ -4,6 +4,7 @@
 
 ## 1. 프로젝트 개요 (Project Overview)
 - **명칭**: IB 통합 위키 (Investment Banking Integrated Wiki)
+- **버전**: **v1.0 (Spec Frozen)**
 - **핵심 도메인**: **NPL**, **PF**, **Equity**, **ABS** 통합 관리
 - **목적**: 자산별 현금흐름(Cashflow)과 리스크를 통합하여 관리하는 개인용 지식 라이브러리
 
@@ -33,6 +34,7 @@
   - **Implementation Mapping**: 설계 규약과 실제 코드 컴포넌트 간의 매핑 명세 수립.
   - **Consistency Matrix**: 다중 명세 간 충돌 해소를 위한 지배 규칙(Dominant Rule) 체계 확립.
   - **Fail-Fast Policy**: 비정상 상태 확산 방지를 위한 즉각적 실행 중단 및 오류 차단 규약 정의.
+- **Milestone M1 달성 (2026-04-16)**: [Spec Freeze v1.0](./MILESTONES.md#M1-spec-freeze-v10-2026-04-16) 선언 및 분석/설계 단계 공식 종료.
 - **지능형 시각화**: 4대 자산 통합 관제 **대시보드(DASHBOARD.md)** 구축 및 아키텍처 반영 완료
 
 ## 4. 자동화 및 워크플로우 (Automation)

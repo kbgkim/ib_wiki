@@ -1,4 +1,5 @@
 # 🏛️ IB Integrated Wiki (투자은행 통합 지식 라이브러리)
+> **Version: v1.0** | **Status: Spec Frozen**
 
 > **"자산이 아닌 리스크를 통합한다 (Integrate the Risk, not the Asset)"**
 
@@ -63,7 +64,8 @@
 | :--- | :--- | :--- |
 | **2026-04-10** | 프로젝트 초기화 및 6단계 계층형 아키텍처 스캐폴딩 | Initial Commit |
 | **2026-04-14** | 자산군별 온톨로지 정렬 및 전면 리팩토링 실시 | Ontology Refactoring |
-| **2026-04-16** | **이벤트 기반 도메인 아키텍처 및 통합 리스크 명세 전환** | **Current Version** |
+| **2026-04-16** | **이벤트 기반 도메인 아키텍처 및 통합 리스크 명세 전환** | v1.0 Final |
+| **2026-04-16** | **마일스톤 M1: Spec Freeze v1.0 공식 선언** | **Current Version** |
 
 ---
 

@@ -105,6 +105,33 @@
 - Validation 없이 승인하는 행위는 FORBIDDEN
 - 하나라도 실패 시 → 자동 REJECT
 
+### 5.1 Integrated Validation Enforcement
+
+모든 계약 변경은 개별 Validation이 아닌 **통합 Validation Suite**를 반드시 수행해야 한다.
+
+### Validation Scope (MANDATORY)
+
+- Execution Validation
+- Traceability Validation
+- Integrated Validation Run
+- Adversarial Validation
+- Determinism Validation
+
+### Execution Rule
+
+- 모든 Validation은 정의된 순서에 따라 실행되어야 한다
+- Validation은 단일 테스트가 아닌 전체 Suite 기준으로 판정한다
+
+### Final Decision Rule
+
+- 하나라도 FAIL → 전체 변경은 즉시 REJECT
+- 모든 Validation PASS → 승인 가능
+
+### Enforcement
+
+- Validation 결과는 Governance 승인 조건에 필수적으로 포함된다
+- Validation 결과 없이 수행된 승인 또는 배포는 **HARD VIOLATION**으로 간주한다
+
 ---
 
 ## 6. Contract Integrity Enforcement

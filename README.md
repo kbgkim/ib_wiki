@@ -10,12 +10,12 @@
 
 본 위키는 지식의 엄격한 분리와 위계를 위해 다음과 같은 **6단계 레이어**를 따릅니다.
 
-1.  ⚖️ **[00_Standard_Layer](src/00_Standard_Layer/Core_Definitions.md)**: 리스크 관리 헌법 및 핵심 정의
-2.  🧩 **[01_Core_Model](src/01_Core_Model/Position.md)**: 포지션, 현금흐름, 리스크 변수(PD/LGD/EAD) 표준 모델
-3.  🔄 **[02_Integrated_IB](src/02_Integrated_IB/Synthesis_Map.md)**: 자산 간 시너지 맵 및 통합 뷰
-4.  🏗️ **[03_Assets_Verticals](src/03_Assets_Verticals/PF/PF_Mapping.md)**: 자산별 특화 매핑 및 도메인 지식
-5.  ⚙️ **[04_Risk_Calculation](src/04_Risk_Calculation/EL_Calculation.md)**: 기대손실(EL) 및 리스크 산출 엔진 로직
-6.  📊 **[05_Data_Model](src/05_Data_Model/01_Schemas/Position_Schema.md)**: 물리적 데이터 스키마 및 이벤트 모델
+1.  ⚖️ **[00_Standard_Layer](docs/00_Standard_Layer/Core_Definitions.md)**: 리스크 관리 헌법 및 핵심 정의
+2.  🧩 **[01_Core_Model](docs/01_Core_Model/Position.md)**: 포지션, 현금흐름, 리스크 변수(PD/LGD/EAD) 표준 모델
+3.  🔄 **[02_Integrated_IB](docs/02_Integrated_IB/Synthesis_Map.md)**: 자산 간 시너지 맵 및 통합 뷰
+4.  🏗️ **[03_Assets_Verticals](docs/03_Assets_Verticals/PF/PF_Mapping.md)**: 자산별 특화 매핑 및 도메인 지식
+5.  ⚙️ **[04_Risk_Calculation](docs/04_Risk_Calculation/EL_Calculation.md)**: 기대손실(EL) 및 리스크 산출 엔진 로직
+6.  📊 **[05_Data_Model](docs/05_Data_Model/01_Schemas/Position_Schema.md)**: 물리적 데이터 스키마 및 이벤트 모델
 
 ---
 
@@ -34,11 +34,20 @@
 
 ---
 
+## 🏛️ 시스템 거버넌스 및 실행 규약 (Execution & Governance)
+-   📜 **[System Contract](docs/99_System/Contract/SYSTEM_CONTRACT.md)**: 시스템 최상위 실행 규약 및 [결정론 증명](docs/99_System/Contract/DETERMINISM_PROOF.md).
+-   ⚖️ **[Governance](docs/99_System/Contract/CONTRACT_GOVERNANCE.md)**: 계약의 변경 및 승인을 통제하는 메타 규약.
+-   🔗 **[Traceability](docs/99_System/Trace/TRACEABILITY_SPEC.md)**: 전 라이프사이클 인과율 보장 및 추적성 명세.
+-   🧪 **[Validation](docs/99_System/Validation/INTEGRATED_VALIDATION_RUN.md)**: 통합 실행 검증 및 [적대적 시나리오](docs/99_System/Validation/ADVERSARIAL_SCENARIO_SPEC.md).
+-   ⚙️ **[Execution Integrity](docs/99_System/Execution/OUTPUT_HASH_SPEC.md)**: 결과 해싱, [그래프 정규화](docs/99_System/Execution/TRACE_GRAPH_NORMALIZATION_SPEC.md) 및 [자동 검증](docs/99_System/Execution/DETERMINISM_VALIDATION_RUNNER.md).
+
+---
+
 ## 🛠️ 활용 방법 (How to Use)
 
-- **지식 탐색**: [핵심 정의(Core Definitions)](src/00_Standard_Layer/Core_Definitions.md)에서 공통 언어와 **이벤트/상태** 개념을 먼저 익히십시오.
-- **도메인 명세**: 자산별 라이프사이클 시각화 자료 확인 ([PF](src/03_Assets_Verticals/PF/Basics.md) / [ABS](src/03_Assets_Verticals/ABS/Basics.md) / [NPL](src/03_Assets_Verticals/NPL/Basics.md) / [Equity](src/03_Assets_Verticals/Equity/Basics.md))
-- **인과 관계**: [통합 리스크 전파 명세](src/02_Integrated_IB/Synthesis_Map.md)에서 도메인 간 리스크 전이 경로를 추적하세요.
+- **지식 탐색**: [핵심 정의(Core Definitions)](docs/00_Standard_Layer/Core_Definitions.md)에서 공통 언어와 **이벤트/상태** 개념을 먼저 익히십시오.
+- **도메인 명세**: 자산별 라이프사이클 시각화 자료 확인 ([PF](docs/03_Assets_Verticals/PF/Basics.md) / [ABS](docs/03_Assets_Verticals/ABS/Basics.md) / [NPL](docs/03_Assets_Verticals/NPL/Basics.md) / [Equity](docs/03_Assets_Verticals/Equity/Basics.md))
+- **인과 관계**: [통합 리스크 전파 명세](docs/02_Integrated_IB/Synthesis_Map.md)에서 도메인 간 리스크 전이 경로를 추적하세요.
 
 ---
 

@@ -31,11 +31,11 @@
 
 ## 4. Risk / Value Impact Factor
 
-| 구분 | Impact Factor | 영향도 (Impact) |
-| :--- | :--- | :--- |
-| **Risk** | **경매 낙찰가율 (Auction Rate)** | LGD 및 최종 회수액에 직접적인 영향을 미치는 최대 리스크 인자 |
-| **Risk** | **회수 기간 (Resolution Period)** | 기간의 장기화는 내부수익률(IRR) 및 가치 하락의 주범 |
-| **Value** | **채무자 상환 의지 (Willingness)** | 담보 처분 외에 채무 조정을 통한 조기 상환 가능성 확대 |
+| 구분 | Impact Factor | 리스크 지표 전이 (Direction) | 민감도 유형 (Type) |
+| :--- | :--- | :--- | :--- |
+| **Risk** | **낙찰가율 (Auction Rate)** | 낙찰가율 하락 시 LGD 급증 | **Linear** (담보가치와 직접 연동) |
+| **Risk** | **회수 기간 (Resolution Time)** | 기간 장기화 시 보유비용 증가 (Value 하락) | **Linear** (시간 가치 비례) |
+| **Value** | **채무자 상환 의지** | 상환 의지 상승 시 조기 회수 가능성 증가 | **Threshold** (협상 타결 시점 발생) |
 
 ---
 

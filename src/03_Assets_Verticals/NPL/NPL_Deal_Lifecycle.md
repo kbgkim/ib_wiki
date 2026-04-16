@@ -1,7 +1,7 @@
 # NPL 라이프사이클 및 이벤트 모델 명세
 
 ## 1. 개요 (Overview)
-본 문서는 NPL(부실채권) 딜의 생애주기를 상태 전이(State Transition)와 비즈니스 이벤트(Event) 관점에서 정의합니다. 이미 부도난 자산의 회수 경로를 추적하고, 시점별 회수 가치 변동을 모니터링하는 것이 핵심입니다.
+본 문서는 NPL(부실채권) 딜의 생애주기를 상태 전이(State Transition)와 비즈니스 이벤트(Event) 관점에서 정의합니다. 이미 부도난 자산의 회수 경로를 추적하며, **이벤트 정합성 검증(Validation Layer)**을 통해 회수 시점의 논리적 결함을 원천 차단합니다.
 
 ---
 
@@ -23,39 +23,35 @@ stateDiagram-v2
     }
     
     ACQUISITION --> CLOSED: 회수금 배당 및 딜 종료
+    
+    %% Invalid Transitions (명시적 금지)
+    SOURCING --> ACQUISITION: [Error] 담보 가치 산정(Valuation) 없이 매입 금지
+    LIQUIDATION --> WORKOUT: [Error] 경매 진행 중 즉시 워크아웃 전환 불가 (경매 정지 절차 필요)
 ```
 
 ---
 
-## 3. Event Catalog (비즈니스 이벤트 명세)
+## 3. Full Event Catalog & Validation Layer
 
-도메인 내에서 발생하는 핵심 이벤트와 그에 따른 구조적 영향입니다.
+모든 이벤트는 정합성 검증 규칙을 준수해야 합니다.
 
-| Event Name | Trigger (발생 조건) | Impact Factor (영향) | Extension Layer 연동 |
-| :--- | :--- | :--- | :--- |
-| **PORTFOLIO_ACQUIRED** | 채권 양수도 계약 및 대금지급 완료 | **Value**: 투자 원금(EAD) 및 기초 OPB 확정 | AMC 위탁 계약 연동 |
-| **ASSET_VALUED** | 현장 실사 및 감정평가 완료 | **Risk**: 회수 예상가 기반 LGD 재산정 | Valuation 모델 주입 |
-| **AUCTION_SUCCESSFUL** | 경매 낙찰 및 배당금 확정 | **Value**: 최종 회수 현금흐름 정산 | Resolution Path 종료 |
-| **WORKOUT_AGREED** | 채무자와의 감면/분할상환 합의 | **Risk**: PD 재설계 및 회수 확실성 증대 | Workout 분기 진입 |
-| **COLLECTION_COMPLETED**| 잔여 채권 정리 및 법인 해산 | **Value**: 최종 이익/손실 확정 | Exit 가치 정산 |
+| Event Name | Pre-condition (필수 상태/데이터) | Trigger Condition | Post-state | Invalid Transition |
+| :--- | :--- | :--- | :--- | :--- |
+| **PORTFOLIO_ACQUIRED** | `VALUATION` / `Final_Bid_Price` | 채권 양수도 계약 및 대금지급 완료 | `ACQUISITION` | `SOURCING`에서 직접 전이 |
+| **ASSET_VALUED** | `SOURCING` / `Site_Visit_Log` | 현장 실사 및 감정평가 완료 | `VALUATION` | `CLOSED` 상태에서 발생 |
+| **AUCTION_SUCCESSFUL** | `LIQUIDATION` / `Court_Order` | 경매 낙찰 및 배당금 확정 | `CLOSED` (Recovered) | `WORKOUT` 상태에서 직접 발생 |
+| **WORKOUT_AGREED** | `RESOLUTION` / `Agreement_Doc` | 채무자와의 감면/분할상환 합의 | `WORKOUT` | `LIQUIDATION` 상태에서 직접 발생 |
+| **AUCTION_FAILED** | `LIQUIDATION` / `No_Bidder` | 최저 매각가 미달로 유찰 | `RESOLUTION` (Re-bid) | `CLOSED` 상태에서 발생 |
+| **COLLECTION_FINAL** | `Recovered` or `WORKOUT` | 잔여 채권 정리 및 법인 해산 | `CLOSED` | `SOURCING`, `VALUATION` 상태 |
 
 ---
 
-## 4. Phase별 구조 상세 (Core vs Extension)
+## 4. 리스크 전이 논리 (Event Logic)
 
-### Phase 1. 매입 및 평가 (Core)
-- **핵심 행위**: 담보 실사, 매입 밸류에이션.
-- **이벤트**: `PORTFOLIO_ACQUIRED`, `ASSET_VALUED`.
-- **Extension**: AMC 전담 관리자 배정 및 수수료 구조 확정.
-
-### Phase 2. 회수 관리 (Core)
-- **핵심 행위**: 경매 신청, 채무 협상.
-- **이벤트**: `AUCTION_SUCCESSFUL`, `WORKOUT_AGREED`.
-- **Extension**: Liquidation vs Workout 경로 선택에 따른 현금흐름 시뮬레이션.
-
-### Phase 3. 종료 및 정산 (Core)
-- **핵심 행위**: 배당금 정산, 채권 소멸 처리.
-- **이벤트**: `COLLECTION_COMPLETED`.
+### 가. 정합성 검증 규칙 (Validation Rules)
+1. **경로 상호 배타성**: `ACQUISITION` 이후 회수는 반드시 `LIQUIDATION` 또는 `WORKOUT` 중 하나의 경로를 거쳐야 하며, 인가되지 않은 경로로의 이탈을 금지함.
+2. **PD 고정 원칙**: NPL 도메인 내의 모든 이벤트는 `PD=100%`임을 전제로 하며, 어떤 이벤트도 `PD`를 100% 미만으로 변경할 수 없음.
+3. **가치 하한선(Floor)**: `AUCTION_FAILED` 반복 시 LGD는 증가하지만, `Final_Bid_Price` 미만으로의 회수 시도는 `WORKOUT` 전환 검토 대상이 됨.
 
 ---
 
@@ -65,4 +61,4 @@ stateDiagram-v2
 
 ### ─────────────
 
-*최종 업데이트: 2026-04-16 (이벤트 기반 구조 반영)*
+*최종 업데이트: 2026-04-16 (논리적 정합성 규칙 강화)*

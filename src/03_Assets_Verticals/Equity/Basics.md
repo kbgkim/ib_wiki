@@ -31,11 +31,11 @@
 
 ## 4. Risk / Value Impact Factor
 
-| 구분 | Impact Factor | 영향도 (Impact) |
-| :--- | :--- | :--- |
-| **Risk** | **시장 변동성 (Volatility)** | 상장 주식과의 상관관계 및 시장 충격 시 Mark-to-Market 손실 직결 |
-| **Risk** | **실적 성장성 (Growth)** | 매출 및 EBITDA 성장 지연 시 Valuation Multiples 하락 및 가치 잠식 |
-| **Value** | **경영권 프리미엄 (Premium)** | 경영권 매각(Trade Sale) 시 발생하는 지분 가치 이상의 추가 수익 동인 |
+| 구분 | Impact Factor | 리스크 지표 전이 (Direction) | 민감도 유형 (Type) |
+| :--- | :--- | :--- | :--- |
+| **Risk** | **상장 주식 Volatility** | 시장 변동성 상승 시 MTM 손실 증가 | **Linear** (Beta 계수와 비례) |
+| **Risk** | **실적 성장성 (EBITDA)** | 실적 악화 시 Valuation Multiples 하락 | **Piecewise** (BEP 하차 시 가치 급감) |
+| **Value** | **경영권 프리미엄** | 전략적 매수자(SI) 등장 시 가치 상승 | **Threshold** (매각 딜 클로징 시점) |
 
 ---
 

@@ -34,11 +34,11 @@
 
 PF 도메인의 가치와 리스크에 직접적인 영향을 미치는 핵심 변수 정의입니다.
 
-| 구분 | Impact Factor | 영향도 (Impact) |
-| :--- | :--- | :--- |
-| **Risk** | **분양률 (Pre-sale Rate)** | 신규 현금흐름 유입 속도와 PD(부도확률)에 결정적 영향 |
-| **Risk** | **공정률 (Completion Rate)** | 준공 리스크 해소 단계별로 LGD(손실률) 감소 효과 |
-| **Value** | **임대료 (Rent Revenue)** | 준공 후 운영 단계의 지속적 Cashflow 창출 동인 |
+| 구분 | Impact Factor | 리스크 지표 전이 (Direction) | 민감도 유형 (Type) |
+| :--- | :--- | :--- | :--- |
+| **Risk** | **분양률 (Pre-sale Rate)** | 분양률 하락 시 PD(부도확률) 증가 | **Threshold** (임계치 하달 시 급증) |
+| **Risk** | **공정률 (Completion Rate)** | 공정률 상승 시 LGD(손실률) 감소 | **Linear** (잔여 공사비와 반비례) |
+| **Value** | **임대료 (Rent Revenue)** | 임대료 상승 시 Asset 가치 증가 | **Piecewise** (운영비용 차감 후 양수 시) |
 
 ---
 

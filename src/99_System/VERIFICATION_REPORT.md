@@ -16,32 +16,26 @@
 
 ## 3. 논리적/금융 도메인 정합성 (Logical & Domain Consistency)
 
-### 가. 이벤트 기반 도메인 구조 (Event-driven Architecture)
-- **검증 내용**: 4대 자산의 Event Catalog 및 State Machine 구축 여부.
-- **결과**: **PASS**. 
-    - 각 도메인이 단순 프로세스 나열이 아닌, 상태 전이 기반의 동적 모델로 재설계됨.
-    - 핵심 비즈니스 이벤트와 리스크 영향 인자($PD, LGD, Cashflow$) 간의 논리적 결합 완료.
-
-### 나. 온톨로지-이벤트 융합 (Ontology-Event Convergence)
-- **검증 내용**: 기존 Ontological Flow가 이벤트 트리거와 충돌 없이 기능하는지 확인.
-- **결과**: **PASS**.
-    - 이벤트는 `Position` 개체의 `Status`를 변경하는 트리거로 정의됨.
-    - 리스크 산출 공식($EL = PD \times LGD \times EAD$)의 입력값으로 이벤트 데이터가 정상 매핑됨.
-
-## 4. 스타일 가이드 및 UX 준수 (Aesthetics & UX)
-
-| 영역 | 검토 항목 | 결과 | 상세 조치 내용 |
+| 도메인 | 검증 항목 | 결과 | 비고 |
 | :--- | :--- | :---: | :--- |
-| **Modeling** | 상태도(Mermaid) | **PASS** | 라이프사이클 문서 내 상태 전이도 가시성 확보. |
-| **Logic** | 이벤트 카탈로그 | **PASS** | 이벤트별 트리거 및 영향도를 정형 테이블 화하여 사후 관리 용이성 증대. |
-| **Maintenance** | 검증 스크립트 | **PASS** | `src/99_System/scripts/verify_links.py` 구축을 통한 상시 검증 체계 마련. |
+| **표준 정의** | Validation Layer (4대 속성) 준수 여부 | **PASS** | Pre-condition, Post-state, Invalid Transition 표준 수립 |
+| **PF** | 인허가-투심-집행 간 선행 조건 정합성 | **PASS** | `FUNDING` 전 `Approved` 상태 필수 체크 로직 반영 |
+| **ABS** | 발행 후 자산 풀 변경 금지(Static Pool) | **PASS** | `ISSUANCE` 이후 `POOL_FINALIZED` 재호출 불가 명시 |
+| **NPL** | 부도 상태(PD 100%) 고정 및 회수 경로 배타성 | **PASS** | 경매와 워크아웃의 상호 배타적 전이 규칙 정립 |
+| **Equity** | 후순위성(Subordination) 및 엑시트 경로 검증 | **PASS** | 기업 파산 전 시 시니어 자산 손실 확인 절차 명세 |
+| **통합 시너지** | 도메인 간 리스크 전이 인과관계(Causality) | **PASS** | PF 부실 -> NPL 매입 간의 데이터 전이 포인트 정의 |
+
+## 4. 시나리오 및 전파 모델 (Scenario & Propagation)
+- **Macro/Sector/Idiosyncratic** 시나리오 계층화 완료.
+- 각 시나리오별 트리거 이벤트와 도메인별 리스크 민감도(Direction/Type) 정합성 확인.
+- **결과**: **PASS** (Ready-to-Code 수식 배제, 논리적 연결성 중심).
 
 ## 5. 종합 평가 및 결론 (Conclusion)
-이번 **이벤트 기반 도메인 재구조화(Event-driven Domain Refactoring)**를 통해 IB Wiki는 단순한 지식 저장소를 넘어, 실제 리스크 관리 시스템의 **비즈니스 아키텍처 사양서**로서의 역할을 완수하게 되었습니다.
+이번 **논리 정합성 강화(Logical Integrity Refactoring)**를 통해 IB Wiki는 잘못된 비즈니스 이벤트가 발생할 수 없는 **"Bulletproof Logical Specification"** 지위를 확보했습니다. 
 
 ### 최종 상태
 - **시스템 무결성**: **SUCCESS**
-- **정합성 등급**: **System-Ready Grade** (이벤트 기반 정기/수시 리스크 업데이트 설계 완료)
+- **정합성 등급**: **Logic-Ready Grade** (오류 없는 상태 전이 및 이벤트 검증 체계 완비)
 
 ---
 

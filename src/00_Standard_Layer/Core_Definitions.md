@@ -50,6 +50,13 @@
 - **Risk Trigger**: PD, LGD 등 리스크 지표를 변화시키는 사건
 - **Value Trigger**: 현금흐름(Cashflow)의 양과 시점을 변화시키는 사건
 
+### 🛠️ Event Validation Layer (이벤트 정합성 규격)
+모든 비즈니스 이벤트는 다음의 검증 속성을 포함해야 합니다.
+1. **Pre-condition**: 이벤트 발생을 위한 필수 상태 및 데이터.
+2. **Trigger Condition**: 이벤트를 실질적으로 발생시키는 동인.
+3. **Post-state**: 이벤트 성공 후의 결과 상태.
+4. **Invalid Transition**: 논리적으로 금지된 전이 경로 및 상태.
+
 ---
 
 ## 7. State (상태)

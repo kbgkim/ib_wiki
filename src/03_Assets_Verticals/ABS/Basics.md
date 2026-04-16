@@ -33,11 +33,11 @@
 
 ## 4. Risk / Value Impact Factor
 
-| 구분 | Impact Factor | 영향도 (Impact) |
-| :--- | :--- | :--- |
-| **Risk** | **트랜치 두께 (Tranche Thickness)** | 후순위 채권의 비중이 높을수록 선순위 PD/LGD가 기하급수적으로 감소 |
-| **Risk** | **기초자산 상관관계 (Correlation)** | 자산 간 상관관계가 높을수록 시스템 리스크 시 선순위 보호 효과 약화 |
-| **Value** | **Prepayment Rate (조기상환율)** | 예상보다 빠른 상환 시 재투자 리스크(Value 하락) 발생 |
+| 구분 | Impact Factor | 리스크 지표 전이 (Direction) | 민감도 유형 (Type) |
+| :--- | :--- | :--- | :--- |
+| **Risk** | **트랜치 두께 (Thickness)** | 두께 감소(후순위 감소) 시 선순위 PD 증가 | **Threshold** (Buffer 소진 시 급격 전이) |
+| **Risk** | **기초자산 상관관계** | 상관관계 상승 시 포트폴리오 분산효과 감소(PD 상승) | **Linear** (시스템 리스크와 비례) |
+| **Value** | **조기상환율 (Prepayment)** | 조기상환율 상승 시 재투자 리스크 발생(Value 하락) | **Threshold** (상환 속도 임계치 초과 시) |
 
 ---
 

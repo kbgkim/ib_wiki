@@ -14,6 +14,16 @@
 | **S2** | **Real Estate Crash** | 분양 시장 마비 및 담보 가치 폭락 | PF.`PRE_SALE_SHORTFALL`, NPL.`AUCTION_FAILURE`, ABS.`COLLATERAL_DEVALUED` |
 | **S3** | **Liquidity Crunch** | 자본시장 유동성 증발 및 엑시트 불가 | ABS.`REFINANCING_FAILURE`, Equity.`EXIT_DELAYED`, NPL.`COLLECTION_DIP` |
 
+### 가. Sector Scenario (산업별 시나리오)
+| ID | 시나리오 명칭 | 정의 | 주요 트리거 이벤트 |
+| :--- | :--- | :--- | :--- |
+| **S4** | **Semiconductor Shock** | 글로벌 공급망 붕괴 및 반도체 수요 급감 | Equity.`VALUATION_SHOCK`(Tech), NPL.`COLLECTION_DELAY`(SME) |
+
+### 나. Idiosyncratic Scenario (개별 기업 시나리오)
+| ID | 시나리오 명칭 | 정의 | 주요 트리거 이벤트 |
+| :--- | :--- | :--- | :--- |
+| **S5** | **Key Builder Default** | 10대 대형 시공사의 부도 및 워크아웃 | PF.`COMPLETION_RISK_TRIGGER`, ABS.`GUARANTEE_DEFAULT` |
+
 ---
 
 ## 3. Event Dependency Graph (도메인 간 인과관계)

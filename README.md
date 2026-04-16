@@ -26,7 +26,7 @@
 ### 1. 3-Layer 원칙
 - **Core Domain**: 자산의 본질적 금융 구조 및 온톨로지 고정.
 - **Extension Layer**: ESG, STO, Syndication 등 구조적 확장 요소 선별 적용.
-- **Execution Layer**: 시스템 구현 디테일 및 알고리즘 사양 관리.
+- **Scenario Layer**: 거시 리스크 전파 및 시나리오 모델링.
 
 ### 2. 동적 라이프사이클 모델
 - **Event Catalog**: 리스크($PD/LGD$)와 가치($Cashflow$)를 변화시키는 핵심 트리거 정의.
@@ -38,14 +38,24 @@
 
 - **지식 탐색**: [핵심 정의(Core Definitions)](src/00_Standard_Layer/Core_Definitions.md)에서 공통 언어와 **이벤트/상태** 개념을 먼저 익히십시오.
 - **도메인 명세**: [자산별 매핑 가이드](src/03_Assets_Verticals/)에서 각 도메인의 라이프사이클 시각화 자료를 확인하세요.
-- **리스크 엔진**: [리스크 산출](src/04_Risk_Calculation/) 레이어에서 물리적 계산 로직을 참조하십시오.
+- **인과 관계**: [통합 리스크 전파 명세](src/02_Integrated_IB/Synthesis_Map.md)에서 도메인 간 리스크 전이 경로를 추적하세요.
+
+---
+
+## 📜 수정 이력 (Modification History)
+
+| 날짜 | 주요 변경 사항 | 비고 |
+| :--- | :--- | :--- |
+| **2026-04-10** | 프로젝트 초기화 및 6단계 계층형 아키텍처 스캐폴딩 | Initial Commit |
+| **2026-04-14** | 자산군별 온톨로지 정렬 및 전면 리팩토링 실시 | Ontology Refactoring |
+| **2026-04-16** | **이벤트 기반 도메인 아키텍처 및 통합 리스크 명세 전환** | **Current Version** |
 
 ---
 
 ## 👨‍💻 관리 및 기여
 
 - **원격 저장소**: [https://github.com/kbgkim/ib_wiki](https://github.com/kbgkim/ib_wiki)
-- **최종 업데이트**: 2026-04-16 (Event-driven Domain Refactoring 완료)
+- **최종 보강**: 통합 리스크 시스템 명세 정렬 및 인과관계 명세화 완료
 
 ---
 

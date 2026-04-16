@@ -1,7 +1,7 @@
 # IB 통합 리스크 전파 명세 (Integrated Risk Causality Spec)
 
 ## 1. 개요 (Overview)
-본 문서는 거시 시나리오가 각 자산 도메인에 미치는 전파 경로와, 도메인 간의 이벤트 인과관계(Event Causality)를 정의합니다. 이를 통해 개별 자산의 리스크가 전체 IB 생태계로 전이되는 메커니즘을 명세화합니다.
+본 문서는 거시 시나리오가 각 자산 도메인에 미치는 전파 경로와, 도메인 간의 이벤트 인과관계(Event Causality)를 정의합니다. 특히 본 문서의 정적 인과관계는 **[동적 이벤트 흐름 명세(Event Flow Spec)](./EVENT_FLOW_SPECIFICATION.md)**를 통해 시간 순서 기반의 실행 시나리오로 구체화됩니다.
 
 ---
 

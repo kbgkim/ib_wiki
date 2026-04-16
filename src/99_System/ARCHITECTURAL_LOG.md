@@ -4,6 +4,34 @@
 
 ---
 
+## [Log 2026-04-16 #5] 동적 이벤트 흐름 시스템 전환 (Dynamic Event Flow System)
+
+### 📋 계획 (Plan)
+- **목표**: 정적 이벤트 카탈로그를 실행 가능한 시간 순서 기반의 동적 시스템으로 전환.
+- **핵심 요소**:
+    - **Scenario Sequence**: S1, S2 시나리오의 타임라인별 이벤트 흐름 정의.
+    - **Logic Handler**: 이벤트 수신 시 시스템의 논리적 행동 지침(State/Risk Update) 명세.
+    - **Canonical Payload**: 모든 이벤트가 공유하는 표준 데이터 규격(JSON) 수립.
+- **범위 제한**: 구현 단계의 기술 스택(Kafka 등) 및 수식 정의 배제.
+
+### ✅ 실행 결과 (Results)
+- [동적 이벤트 흐름 명세서](../02_Integrated_IB/EVENT_FLOW_SPECIFICATION.md) 생성 및 통합 리스크 전파 명세와 연결 완료.
+- 리스크 엔진이 해석 가능한 수준의 리거 필드(Payload) 및 트리거 규칙(Trigger Rule) 확립.
+
+---
+
+## [Log 2026-04-16 #4] 논리 정합성 강화 (Logical Integrity Enhancement)
+
+### 📋 계획 (Plan)
+- **목표**: 모든 비즈니스 이벤트에 대해 정합성 검증 레이어(Validation Layer)를 적용하여 논리적 결함 차단.
+- **핵심 요소**: Pre-condition, Post-state, Invalid Transition 정의.
+
+### ✅ 실행 결과 (Results)
+- PF/ABS/NPL/Equity 전 도메인의 라이프사이클 문서에 이벤트 정합성 테이블 및 명시적 전이 금지 규칙 반영 완료.
+- `Core_Definitions.md`에 Validation Layer 표준 규격 공식화.
+
+---
+
 ## [Log 2026-04-16 #3] 통합 리스크 시스템 명세 정렬 (Integrated Risk Specification)
 
 ### 📋 계획 (Plan)

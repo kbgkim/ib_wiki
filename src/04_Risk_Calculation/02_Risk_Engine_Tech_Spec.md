@@ -92,8 +92,8 @@ erDiagram
 
 ## 🔗 연결
 
-- [통합 리스크 프레임워크](./01_Unified_Risk_Framework.md)
-- [데이터 스키마 정의](./05_Data_Model/01_Schemas/Position_Schema.md)
+- [통합 리스크 프레임워크](../02_Integrated_IB/01_Unified_Risk_Framework.md)
+- [데이터 스키마 정의](../05_Data_Model/01_Schemas/Position_Schema.md)
 
 ### ─────────────
 

@@ -58,7 +58,7 @@ Volatility는 다음과 같은 구조에서 충격(Shock)의 크기를 결정합
 ## 🔗 연결
 
 - [시장가치 (Market Value)](./Market_Value.md)
-- [지분 리스크 산출 (Equity Risk)](../03_Risk_Calculation/Equity_Risk.md)
+- [지분 리스크 산출 (Equity Risk)](../04_Risk_Calculation/Equity_Risk.md)
 
 ### ─────────────
 

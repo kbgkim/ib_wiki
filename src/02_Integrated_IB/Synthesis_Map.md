@@ -9,9 +9,9 @@
 모든 IB 자산은 상호 연결되어 있으며, 표준 레이어의 규칙에 따라 관리됩니다.
 
 **Asset** (PF, ABS, NPL, Equity)
-→ **Position** ([Core_Definitions](../../00_Standard_Layer/Core_Definitions.md#1-position-포지션))
-→ **Cashflow** ([Core_Definitions](../../00_Standard_Layer/Core_Definitions.md#2-cashflow-현금흐름))
-→ **Risk** ([Risk_Model_Rule](../../00_Standard_Layer/Risk_Model_Rule.md))
+→ **Position** ([Core_Definitions](../00_Standard_Layer/Core_Definitions.md#1-position-포지션))
+→ **Cashflow** ([Core_Definitions](../00_Standard_Layer/Core_Definitions.md#2-cashflow-현금흐름))
+→ **Risk** ([Risk_Model_Rule](../00_Standard_Layer/Risk_Model_Rule.md))
 
 ### ─────────────
 
@@ -19,7 +19,7 @@
 
 ### 👉 가. PF -> NPL (부실 전이 지점)
 프로젝트가 현금흐름 창출에 실패하면 [NPL_Mapping](../03_Assets_Verticals/NPL/NPL_Mapping.md)으로 전환됩니다.
-- **리스크**: [PD (부도확률)](../../01_Core_Model/PD.md)의 급격한 상승.
+- **리스크**: [PD (부도확률)](../01_Core_Model/PD.md)의 급격한 상승.
 
 ### 👉 나. NPL -> ABS (유동성 공급 지점)
 은행의 건전성 제고를 위해 NPL 포트폴리오는 [ABS_Mapping](../03_Assets_Verticals/ABS/ABS_Mapping.md) 형태로 유동화됩니다.
@@ -32,7 +32,7 @@
 ### ─────────────
 
 ## Standard Reference
-- [Core_Definitions](../../00_Standard_Layer/Core_Definitions.md)
+- [Core_Definitions](../00_Standard_Layer/Core_Definitions.md)
 - [Unified Risk Framework](./01_Unified_Risk_Framework.md)
 - [Assets Verticals Mapping](../03_Assets_Verticals/)
 

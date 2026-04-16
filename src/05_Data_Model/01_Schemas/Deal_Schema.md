@@ -34,7 +34,7 @@ IB 리스크 관리의 최상위 통제 단위인 딜(Deal)에 대한 물리적 
 
 ## 🔗 연결
 
-- [통합 리스크 데이터 모델](../../00_Root_Model/IB_Risk_Data_Model.md)
+- [통합 리스크 데이터 모델](../../02_Integrated_IB/IB_Risk_Data_Model.md)
 - [포지션 스키마 (Position Schema)](./Position_Schema.md)
 
 ### ─────────────

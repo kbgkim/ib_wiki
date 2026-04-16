@@ -54,7 +54,7 @@ EL은 미래 현금흐름의 **'평균적인 부족분(Expected Shortfall)'**을
 - [부도확률 (PD)](./PD.md)
 - [손실률 (LGD)](./LGD.md)
 - [부도시노출액 (EAD)](./EAD.md)
-- [리스크 산출 로직 (Calculation)](../03_Risk_Calculation/EL_Calculation.md)
+- [리스크 산출 로직 (Calculation)](../04_Risk_Calculation/EL_Calculation.md)
 
 ### ─────────────
 

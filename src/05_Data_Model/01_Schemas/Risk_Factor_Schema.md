@@ -55,7 +55,7 @@ Risk Factor
 
 ## 🔗 연결
 
-- [변동성 (Volatility)](../../../01_Core_Model/Volatility.md)
+- [변동성 (Volatility)](../../01_Core_Model/Volatility.md)
 - [시나리오 스키마 (Scenario Schema)](./Scenario_Schema.md)
 
 ### ─────────────

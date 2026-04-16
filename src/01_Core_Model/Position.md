@@ -3,7 +3,7 @@
 ## 🔥 목적
 **Position**은 리스크 산출 및 관리의 최소 기본 단위입니다. 모든 자산(Asset)은 하나 이상의 포지션으로 환원되며, 모든 리스크 변수와 현금흐름은 포지션 단위로 귀속됩니다.
 
-- **표준 정의**: [Core_Definitions Position Section](../../00_Standard_Layer/Core_Definitions.md#1-position-포지션)
+- **표준 정의**: [Core_Definitions Position Section](../00_Standard_Layer/Core_Definitions.md#1-position-포지션)
 
 ### ─────────────
 
@@ -26,14 +26,14 @@
 | 항목 | 설명 | 표준 참조 |
 | :--- | :--- | :--- |
 | **Exposure** | 포지션의 현재 노출액 | [Exposure](./Exposure.md) |
-| **Risk Metrics** | 포지션별 PD, LGD, EAD | [Core_Definitions](../../00_Standard_Layer/Core_Definitions.md) |
+| **Risk Metrics** | 포지션별 PD, LGD, EAD | [Core_Definitions](../00_Standard_Layer/Core_Definitions.md) |
 | **Cashflow Link** | 포지션에 귀속된 현금흐름 | [Cashflow](./Cashflow.md) |
 
 ### ─────────────
 
 ## Standard Reference
-- [Core_Definitions](../../00_Standard_Layer/Core_Definitions.md)
-- [Position Schema](../../05_Data_Model/01_Schemas/Position_Schema.md)
+- [Core_Definitions](../00_Standard_Layer/Core_Definitions.md)
+- [Position Schema](../05_Data_Model/01_Schemas/Position_Schema.md)
 - [Cashflow Model](./Cashflow.md)
 
 ### ─────────────

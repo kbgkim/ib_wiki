@@ -41,7 +41,7 @@
 ## 👨‍💻 관리 및 기여
 
 - **원격 저장소**: [https://github.com/kbgkim/ib_wiki](https://github.com/kbgkim/ib_wiki)
-- **최종 업데이트**: 2026-04-14 (Ontological Refactoring 완료)
+- **최종 업데이트**: 2026-04-16 (Ontological Refactoring 완료)
 
 ### ─────────────
 

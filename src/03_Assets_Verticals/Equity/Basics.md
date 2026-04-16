@@ -57,7 +57,7 @@ graph TD
 
 - [비상장 딜 라이프사이클 및 북킹 가이드](Unlisted_Deal_Lifecycle.md)
 - [지분 매핑 가이드](./Equity_Mapping.md)
-- [시장 가치 (Market Value)](../../../01_Core_Model/Market_Value.md)
+- [시장 가치 (Market Value)](../../01_Core_Model/Market_Value.md)
 
 ### ─────────────
 

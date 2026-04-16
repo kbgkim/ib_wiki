@@ -65,21 +65,21 @@ $$EL (예상 손실) = PD \times LGD \times EAD$$
 ## 🔗 연결
 
 ### 상위 거버넌스
-- [리스크 관리 정책](../01_Foundations/Risk_Management_Policy.md)
-- [IB 기본 개요](../01_Foundations/IB_Overview.md)
+- [리스크 관리 정책](./Risk_Management_Policy.md)
+- [IB 기본 개요](./IB_Overview.md)
 - [통합 시너지 맵](./Synthesis_Map.md)
 
 ### 상세 자산별 매핑 (Asset Verticals)
-- [부실채권 매핑](./02_Asset_Mapping/NPL_Mapping.md)
-- [프로젝트 파이낸싱 매핑](./02_Asset_Mapping/PF_Mapping.md)
-- [자산유동화 매핑](./02_Asset_Mapping/ABS_Mapping.md)
-- [자본/지분 매핑](./02_Asset_Mapping/Equity_Mapping.md)
+- [부실채권 매핑](../03_Assets_Verticals/NPL/NPL_Mapping.md)
+- [프로젝트 파이낸싱 매핑](../03_Assets_Verticals/PF/PF_Mapping.md)
+- [자산유동화 매핑](../03_Assets_Verticals/ABS/ABS_Mapping.md)
+- [자본/지분 매핑](../03_Assets_Verticals/Equity/Equity_Mapping.md)
 
 ### 세부 리스크 데이터 모델 (Detailed Data Models)
-- [통합 리스크 데이터 모델 (Root Model)](./00_Root_Model/IB_Risk_Data_Model.md)
-- [핵심 리스크 변수 (Core Model)]../../01_Core_Model/Position.md)
-- [현금흐름 (Cashflow)]../../01_Core_Model/Cashflow.md)
-- [리스크 데이터 스키마 (Schemas)](./05_Data_Model/01_Schemas/Position_Schema.md)
+- [통합 리스크 데이터 모델 (Root Model)](./IB_Risk_Data_Model.md)
+- [핵심 리스크 변수 (Core Model)](../01_Core_Model/Position.md)
+- [현금흐름 (Cashflow)](../01_Core_Model/Cashflow.md)
+- [리스크 데이터 스키마 (Schemas)](../05_Data_Model/01_Schemas/Position_Schema.md)
 
 ### ─────────────
 

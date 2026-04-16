@@ -42,8 +42,8 @@
 ## 🔗 연결
 
 - [포지션 스키마 (Position Schema)](./Position_Schema.md)
-- [기대손실 계산 (EL Calculation)](../../03_Risk_Calculation/EL_Calculation.md)
-- [지분 리스크 계산 (Equity Risk Calculation)](../../03_Risk_Calculation/Equity_Risk.md)
+- [기대손실 계산 (EL Calculation)](../../04_Risk_Calculation/EL_Calculation.md)
+- [지분 리스크 계산 (Equity Risk Calculation)](../../04_Risk_Calculation/Equity_Risk.md)
 
 ### ─────────────
 

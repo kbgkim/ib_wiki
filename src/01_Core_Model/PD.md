@@ -3,7 +3,7 @@
 ## 🔥 목적
 **PD**는 특정 관찰 기간 내에 차주 혹은 자산 포지션이 약속된 현금흐름을 지급하지 못할 확률을 의미합니다. 기대손실(Expected Loss) 산출의 핵심 확률 변수입니다.
 
-- **표준 정의**: [Core_Definitions PD Section](../../00_Standard_Layer/Core_Definitions.md#3-pd-probability-of-default)
+- **표준 정의**: [Core_Definitions PD Section](../00_Standard_Layer/Core_Definitions.md#3-pd-probability-of-default)
 
 ### ─────────────
 
@@ -15,7 +15,7 @@
 ### ─────────────
 
 ## ⚙️ 자산별 특성 (PD Mapping)
-자산군별 PD 산출 방식은 [Mapping_Rule](../../00_Standard_Layer/Mapping_Rule.md)을 따릅니다.
+자산군별 PD 산출 방식은 [Mapping_Rule](../00_Standard_Layer/Mapping_Rule.md)을 따릅니다.
 
 - **PF**: 사업 성공 가능성 기반 산정.
 - **ABS**: 기초자산 풀의 Default 확률.
@@ -25,9 +25,9 @@
 ### ─────────────
 
 ## Standard Reference
-- [Core_Definitions](../../00_Standard_Layer/Core_Definitions.md)
-- [Mapping_Rule](../../00_Standard_Layer/Mapping_Rule.md)
-- [Risk_Model_Rule](../../00_Standard_Layer/Risk_Model_Rule.md)
+- [Core_Definitions](../00_Standard_Layer/Core_Definitions.md)
+- [Mapping_Rule](../00_Standard_Layer/Mapping_Rule.md)
+- [Risk_Model_Rule](../00_Standard_Layer/Risk_Model_Rule.md)
 - [Position](./Position.md)
 
 ### ─────────────

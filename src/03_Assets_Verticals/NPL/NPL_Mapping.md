@@ -60,8 +60,8 @@ NPL의 최종 기대 손실은 PD 100%를 전제로 산출됩니다.
 
 ## Standard Reference
 - [Core_Definitions](../../00_Standard_Layer/Core_Definitions.md)
-- [Position](../../../01_Core_Model/Position.md)
-- [Cashflow Model](../../../01_Core_Model/Cashflow.md)
+- [Position](../../01_Core_Model/Position.md)
+- [Cashflow Model](../../01_Core_Model/Cashflow.md)
 - [Asset Mapping Rule](../../00_Standard_Layer/Mapping_Rule.md)
 
 ### ─────────────

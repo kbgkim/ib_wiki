@@ -3,8 +3,8 @@
 ## 🔥 목적
 **Cashflow**는 포지션(Position)에서 발생하는 실제 자금의 유효한 유입과 유출을 의미하며, 리스크 발생의 원인 데이터입니다.
 
-- **표준 정의**: [Core_Definitions Cashflow Section](../../00_Standard_Layer/Core_Definitions.md#2-cashflow-현금흐름)
-- **운영 규칙**: [Cashflow Rule](../../00_Standard_Layer/Cashflow_Rule.md)
+- **표준 정의**: [Core_Definitions Cashflow Section](../00_Standard_Layer/Core_Definitions.md#2-cashflow-현금흐름)
+- **운영 규칙**: [Cashflow Rule](../00_Standard_Layer/Cashflow_Rule.md)
 
 ### ─────────────
 
@@ -35,9 +35,9 @@ Cashflow는 포지션의 노출액(Exposure) 변동을 유발하는 동인입니
 ### ─────────────
 
 ## Standard Reference
-- [Core_Definitions](../../00_Standard_Layer/Core_Definitions.md)
-- [Cashflow Rule](../../00_Standard_Layer/Cashflow_Rule.md)
-- [Cashflow Schema](../../05_Data_Model/01_Schemas/Cashflow_Schema.md)
+- [Core_Definitions](../00_Standard_Layer/Core_Definitions.md)
+- [Cashflow Rule](../00_Standard_Layer/Cashflow_Rule.md)
+- [Cashflow Schema](../05_Data_Model/01_Schemas/Cashflow_Schema.md)
 - [Position](./Position.md)
 
 ### ─────────────

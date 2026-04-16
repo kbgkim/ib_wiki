@@ -53,8 +53,8 @@
 
 ## 🔗 연결
 
-- [통합 리스크 프레임워크](../01_Unified_Risk_Framework.md)
-- [포지션 (Position)](../../01_Core_Model/Position.md)
+- [통합 리스크 프레임워크](./01_Unified_Risk_Framework.md)
+- [포지션 (Position)](../01_Core_Model/Position.md)
 - [현금흐름 스키마 (Cashflow Schema)](../05_Data_Model/01_Schemas/Cashflow_Schema.md)
 
 ### ─────────────

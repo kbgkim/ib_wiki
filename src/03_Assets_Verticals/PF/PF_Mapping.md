@@ -60,8 +60,8 @@ PF 현금흐름에 영향을 미치는 핵심 리스크 동인입니다.
 
 ## Standard Reference
 - [Core_Definitions](../../00_Standard_Layer/Core_Definitions.md)
-- [Position](../../../01_Core_Model/Position.md)
-- [Cashflow Model](../../../01_Core_Model/Cashflow.md)
+- [Position](../../01_Core_Model/Position.md)
+- [Cashflow Model](../../01_Core_Model/Cashflow.md)
 - [Asset Mapping Rule](../../00_Standard_Layer/Mapping_Rule.md)
 
 ### ─────────────

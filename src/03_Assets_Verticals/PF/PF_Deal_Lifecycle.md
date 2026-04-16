@@ -1,82 +1,70 @@
-# PF 딜 라이프사이클 및 북킹 가이드 (PF Deal Lifecycle & Booking)
+# PF 라이프사이클 및 이벤트 모델 명세
 
-## 🔥 목적
+## 1. 개요 (Overview)
+본 문서는 PF(프로젝트 파이낸싱) 딜의 생애주기를 상태 전이(State Transition)와 비즈니스 이벤트(Event) 관점에서 정의합니다. 모든 프로세스는 리스크 지표(PD/LGD)와 현금흐름에 미치는 영향도를 중심으로 설계되었습니다.
 
-부동산 및 개발 프로젝트 파이낸싱(PF)의 딜 발굴부터 심사, 대출 실행, 사후 관리 및 시스템 북킹 표준을 정의합니다. 
-PF는 토지 매입부터 준공까지의 시계열적 리스크 관리가 핵심입니다.
+---
 
-### ─────────────
+## 2. State Machine (상태 전이 모델)
 
-## 📌 1. 전 과정 업무 흐름도 (End-to-End Flow)
-
-PF 사업은 브릿지론을 통한 토지 확보와 본PF를 통한 건설 자본 공급으로 이어집니다.
-
-### 업무 프로세스 시각화
+PF 딜의 상태는 인허가 및 자금 조달 단계에 따라 다음과 같이 전이됩니다.
 
 ```mermaid
-graph TD
-    A[1. 딜 발굴 및 사업성 검토] --> B[2. 브릿지론 집행/토지 매입]
-    B --> C[3. 인허가 및 본PF 전환 심사]
-    C --> D[4. 대주단 모집 및 대출 실행]
-    D --> E[5. 공사 진행 및 분양 관리]
-    E --> F[6. 준공 및 대출 상환 정산]
+stateDiagram-v2
+    [*] --> PROPOSED: 딜 발굴/Teaser 수취
+    PROPOSED --> UNDER_REVIEW: 실사 및 투심 진행
+    UNDER_REVIEW --> ACTIVE: 대출 실행 (Funding)
     
-    subgraph "Main Funding"
-    D
-    E
-    end
+    state ACTIVE {
+        [*] --> CONSTRUCTION: 공사 및 분양 단계
+        CONSTRUCTION --> COMPLETED: 준공 완료
+        CONSTRUCTION --> DELINQUENT: 공사 지연/부실 발생
+        DELINQUENT --> WORKOUT: 구조조정 진행
+    }
+    
+    ACTIVE --> CLOSED: 대출 전액 상환 (Exit)
+    WORKOUT --> CLOSED: 회수 완료
 ```
 
-### ─────────────
+---
 
-## ⚙️ 2. 단계별 상세 가이드
+## 3. Event Catalog (비즈니스 이벤트 명세)
 
-### Phase 1. 사전 검토 (Sourcing & DD)
-- **사업 지지 분석**: 위치, 공급 물량, 분양 예상가, 시공사 예정사 실사.
-- **인허가 검토**: 지구단위계획, 건축 허가 가능성 등 법률적 리스크 확인.
+도메인 내에서 발생하는 핵심 이벤트와 그에 따른 구조적 영향입니다.
 
-### Phase 2. 브릿지론 (Bridge Loan)
-- **토지 확보**: 본PF 전 단계의 초기 자산 확보용 단기 대출.
-- **북킹**: 고금리 단기 연체 가능성 및 본PF 전환 확약 여부 등록.
+| Event Name | Trigger (발생 조건) | Impact Factor (영향) | Extension Layer 연동 |
+| :--- | :--- | :--- | :--- |
+| **MANDATE_RECEIVED** | 주관사 선정 및 업무 확약 | **Value**: Fee 수익 기회 발생 | MLA/MLM 구조 정의 |
+| **LOAN_APPROVED** | 투자심의위원회 승인 완료 | **Risk**: 자금 조달 리스크 해소 | LOM(확약서) 발행 |
+| **FUNDING_EXECUTED** | 대출 실행 및 자금 인출 | **Risk**: EAD 노출 시작 | Syndication 참여 현황 |
+| **PRE_SALE_SHORTFALL**| 목표 분양률 미달 발생 | **Risk**: PD 급격히 상승 | 리스크 가중치 조정 |
+| **ESG_CERTIFIED** | 친환경 인증 획득 완료 | **Value**: Spread 감면(Benefit) | ESG Factor 주입 |
+| **EXIT_COMPLETED** | 준공 후 정산 및 환입 | **Value**: 원리금 및 이익 실현 | Exit Strategy 완료 |
 
-### Phase 3. 본PF 전환 및 심사 (Underwriting)
-- **시공사 보증**: **책임준공 확약** 및 공사비 도급 계약 확정.
-- **분양 승인**: HUG 보증 또는 분양 신고 완료 여부 확인.
+---
 
-### Phase 4. 대출 실행 및 집행 (Funding & Drawdown)
-- **자금 인출**: 공정률에 따른 기성고 대출 집행.
-- **에스크로**: 모든 수입/지출을 독립된 계좌에서 통제.
+## 4. Phase별 구조 상세 (Core vs Extension)
 
-### Phase 5. 사후 관리 및 종료 (Exit)
-- **분양 대금 관리**: 분양 수입금으로 대출 원리금 조기 상환 처리.
-- **신탁 종료**: 준공 후 보존 등기 및 대주단 수익 확정.
+### Phase 1. 소싱 및 검토 (Core)
+- **핵심 행위**: 사업지 분석, 시공사 신용도 확인.
+- **이벤트**: `MANDATE_RECEIVED`.
+- **Extension**: Syndication 구조(MLA) 확립.
 
-### ─────────────
+### Phase 2. 집행 및 공사 (Core)
+- **핵심 행위**: 기성고 대출 집행, 공정률/분양률 모니터링.
+- **이벤트**: `FUNDING_EXECUTED`, `PRE_SALE_SHORTFALL`.
+- **Extension**: ESG Factor에 따른 금리 조정 이벤트 체크.
 
-## 📂 3. 실무 북킹 정보 표준 (Booking Information)
+### Phase 3. 회수 및 종료 (Core)
+- **핵심 행위**: 분양대금 Waterfall 관리, 대출 상환.
+- **이벤트**: `EXIT_COMPLETED`.
 
-### 가. 프로젝트 및 발행 정보
-- **기본 정보**: 프로젝트명, 담당 RM본부, 투심위 승인번호.
-- **딜 유형**: 브릿지론, 본PF, 선/중/후순위 구분.
-- **사업 단계**: 인허가 전/후, 착공 전/후, 분양 중 등 실시간 상태.
-
-### 나. 대출 및 트랜치 상세 데이터
-- **약정 정보**: 총 펀딩 규모, 해당 기관 인수 금액, LTV(준공 후 가치 기준).
-- **금리 구조**: 기준 금리(CD 등) + 가산 금리(Spread).
-- **상환 조건**: 만기일시상환, 분할상환, 조기상환 조건.
-
-### 다. 담보 및 신용보강
-- **시공사 정보**: 시공사명, 도급순위, 신용등급.
-- **신용보강 형태**: **책임준공 확약**, 채무인수, 매입확약(증권사).
-- **자금 관리**: 에스크로(Escrow) 계좌 정보 및 인출 우선순위(**Waterfall**).
-
-### ─────────────
+---
 
 ## 🔗 연결
-
-- [프로젝트 파이낸싱 기초 (PF Basics)](Basics.md)
-- [PF 리스크 매핑](./PF_Mapping.md)
+- [PF 도메인 기초 및 명세](./Basics.md)
+- [PF 리스크 매핑 가이드](./PF_Mapping.md)
 
 ### ─────────────
 
-*최종 업데이트: 2026-04-14*
+*최종 업데이트: 2026-04-16 (이벤트 기반 구조 반영)*

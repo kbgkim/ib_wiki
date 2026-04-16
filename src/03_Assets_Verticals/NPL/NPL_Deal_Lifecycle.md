@@ -1,73 +1,68 @@
-# NPL 딜 라이프사이클 및 북킹 가이드 (NPL Deal Lifecycle & Booking)
+# NPL 라이프사이클 및 이벤트 모델 명세
 
-## 🔥 목적
+## 1. 개요 (Overview)
+본 문서는 NPL(부실채권) 딜의 생애주기를 상태 전이(State Transition)와 비즈니스 이벤트(Event) 관점에서 정의합니다. 이미 부도난 자산의 회수 경로를 추적하고, 시점별 회수 가치 변동을 모니터링하는 것이 핵심입니다.
 
-부실채권(NPL)의 매입부터 가공, 회수 및 시스템 북킹 표준을 정의합니다. 
-NPL은 자산의 매입 시점 대비 회수 시점의 현금흐름 극대화가 핵심입니다.
+---
 
-### ─────────────
+## 2. State Machine (상태 전이 모델)
 
-## 📌 1. 전 과정 업무 흐름도 (End-to-End Flow)
-
-NPL 투자는 채널별 매입 단계와 법적 절차 중심의 회수 단계로 나뉩니다.
-
-### 업무 프로세스 시각화
+NPL 딜의 상태는 매입 후 회수 전략 실행 단계에 따라 다음과 같이 전이됩니다.
 
 ```mermaid
-graph TD
-    A[1. 딜 발굴 및 채권 풀링] --> B[2. 현장 실사 및 거절 평가]
-    B --> C[3. 매입가 제안 및 계약]
-    C --> D[4. 채권 이전 및 관리 개시]
-    D --> E[5. 회수 전략 실행: 경매/매각]
+stateDiagram-v2
+    [*] --> SOURCING: 부실채권 풀 입수/검토
+    SOURCING --> VALUATION: 담보 실사 및 매입가 산정
+    VALUATION --> ACQUISITION: 낙찰 및 채권 매입 완료
     
-    subgraph "Recovery Engine"
-    E
-    end
+    state ACQUISITION {
+        [*] --> RESOLUTION: 회수 절차 진행
+        RESOLUTION --> LIQUIDATION: 경매/공매 진행
+        RESOLUTION --> WORKOUT: 채무조정/대환 진행
+        LIQUIDATION --> RESOLUTION: 유찰/재경매
+    }
+    
+    ACQUISITION --> CLOSED: 회수금 배당 및 딜 종료
 ```
 
-### ─────────────
+---
 
-## ⚙️ 2. 단계별 상세 가이드
+## 3. Event Catalog (비즈니스 이벤트 명세)
 
-### Phase 1. 딜 발굴 (Sourcing)
-- **채권 Pool 입수**: 금융기관으로부터 매각 예정 NPL 리스트 입수.
-- **기초 분석**: OPB(원금), 담보 위치, 권리 순위 기초 필터링.
+도메인 내에서 발생하는 핵심 이벤트와 그에 따른 구조적 영향입니다.
 
-### Phase 2. 실사 및 평가 (Due Diligence & Valuation)
-- **현장 실사**: 부동산 담보의 실제 가치, 점유 상태, 유치권 여부 등 물리적 실사.
-- **예상 회수가액 산출**: 지역별 낙찰가율, 경매 소요 기간 시뮬레이션.
+| Event Name | Trigger (발생 조건) | Impact Factor (영향) | Extension Layer 연동 |
+| :--- | :--- | :--- | :--- |
+| **PORTFOLIO_ACQUIRED** | 채권 양수도 계약 및 대금지급 완료 | **Value**: 투자 원금(EAD) 및 기초 OPB 확정 | AMC 위탁 계약 연동 |
+| **ASSET_VALUED** | 현장 실사 및 감정평가 완료 | **Risk**: 회수 예상가 기반 LGD 재산정 | Valuation 모델 주입 |
+| **AUCTION_SUCCESSFUL** | 경매 낙찰 및 배당금 확정 | **Value**: 최종 회수 현금흐름 정산 | Resolution Path 종료 |
+| **WORKOUT_AGREED** | 채무자와의 감면/분할상환 합의 | **Risk**: PD 재설계 및 회수 확실성 증대 | Workout 분기 진입 |
+| **COLLECTION_COMPLETED**| 잔여 채권 정리 및 법인 해산 | **Value**: 최종 이익/손실 확정 | Exit 가치 정산 |
 
-### Phase 3. 매입 및 북킹 (Booking)
-- **낙찰 및 계약**: 경쟁 입찰을 통한 최종 매입가 확정.
-- **시스템 등록**: 매입가, OPB, 연체이자율 등 기초 데이터 북킹.
+---
 
-### Phase 4. 회수 관리 (Servicing)
-- **경매 진행**: 대환 유도, 담보권 실행(경매 신청).
-- **채무 조정**: 채무자와의 협상을 통해 일시 상환 또는 채무 감면 계약 체결.
+## 4. Phase별 구조 상세 (Core vs Extension)
 
-### Phase 5. 회수 완료 및 종료 (Exit)
-- **배당금 수취**: 경매 낙찰금에서 배당금 수령.
-- **환입**: 매입가 대비 초과 회수금 발생 시 수익 확정.
+### Phase 1. 매입 및 평가 (Core)
+- **핵심 행위**: 담보 실사, 매입 밸류에이션.
+- **이벤트**: `PORTFOLIO_ACQUIRED`, `ASSET_VALUED`.
+- **Extension**: AMC 전담 관리자 배정 및 수수료 구조 확정.
 
-### ─────────────
+### Phase 2. 회수 관리 (Core)
+- **핵심 행위**: 경매 신청, 채무 협상.
+- **이벤트**: `AUCTION_SUCCESSFUL`, `WORKOUT_AGREED`.
+- **Extension**: Liquidation vs Workout 경로 선택에 따른 현금흐름 시뮬레이션.
 
-## 📂 3. 실무 북킹 정보 표준 (Booking Information)
+### Phase 3. 종료 및 정산 (Core)
+- **핵심 행위**: 배당금 정산, 채권 소멸 처리.
+- **이벤트**: `COLLECTION_COMPLETED`.
 
-### 가. 기초자산 정보 (Underlying Asset)
-- **채권 기본**: 채권번호, 원 채무자, 개시원금(OPB), 매이입일/만기일.
-- **담보 상세**: 부동산 주소, 감정평가액, 선순위 채권액, 예상 낙찰가.
-
-### 나. 투자 및 비용 데이터
-- **투자 내역**: 실제 매입가(Purchase Price), 취득세, 법무 비용, 명도 비용.
-- **회수 관리**: 자산관리자(Servicer) 정보, 관리 수수료율.
-
-### ─────────────
+---
 
 ## 🔗 연결
-
-- [부실채권 기초 (NPL Basics)](Basics.md)
-- [NPL 리스크 매핑](./NPL_Mapping.md)
+- [NPL 도메인 기초 및 명세](./Basics.md)
+- [NPL 리스크 매핑 가이드](./NPL_Mapping.md)
 
 ### ─────────────
 
-*최종 업데이트: 2026-04-14*
+*최종 업데이트: 2026-04-16 (이벤트 기반 구조 반영)*

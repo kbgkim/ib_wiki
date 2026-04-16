@@ -23,10 +23,11 @@
 
 ## 4. 현재까지 진행 상황 (Current Progress)
 - **기반 구축**: 프로젝트 폴더 구조 스캐폴딩 및 GitHub 동기화 완료
-- **온톨로지 리팩토링 (2026-04-14)**:
-  - 전 자산군에 대한 7단계 표준 매핑 구조 적용 완료
-  - 모든 정의를 Standard Layer(`Core_Definitions.md`)로 중앙화하여 정합성 확보
-  - 6단계 계층형 아키텍처로 전체 저장소 재구조화 완료
+- **이벤트 기반 도메인 재설계 (2026-04-16)**:
+  - 단순 문서 집합에서 **Domain Specification + Event-based Architecture**로 대대적 전환 완료
+  - **3계층 아키텍처** 확립: Core Domain(고정), Extension Layer(구조 확장), Execution Layer(제외)
+  - 전 자산군(PF, ABS, NPL, Equity)에 대해 **Event Catalog** 및 **State Machine** 상세 명세 구축
+  - 이벤트 트리거와 리스크 인자($PD, LGD, Cashflow$) 간의 논리적 결합 완료
 - **리스크 모델 통합**: 공통 EL 프레임워크($PD \times LGD \times EAD$) 및 비선형 전파 모델 구축
 - **지능형 시각화**: 4대 자산 통합 관제 **대시보드(DASHBOARD.md)** 구축 및 아키텍처 반영 완료
 

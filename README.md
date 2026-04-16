@@ -40,6 +40,9 @@
 -   🔗 **[Traceability](docs/99_System/Trace/TRACEABILITY_SPEC.md)**: 전 라이프사이클 인과율 보장 및 추적성 명세.
 -   🧪 **[Validation](docs/99_System/Validation/INTEGRATED_VALIDATION_RUN.md)**: 통합 실행 검증 및 [적대적 시나리오](docs/99_System/Validation/ADVERSARIAL_SCENARIO_SPEC.md).
 -   ⚙️ **[Execution Integrity](docs/99_System/Execution/OUTPUT_HASH_SPEC.md)**: 결과 해싱, [그래프 정규화](docs/99_System/Execution/TRACE_GRAPH_NORMALIZATION_SPEC.md) 및 [자동 검증](docs/99_System/Execution/DETERMINISM_VALIDATION_RUNNER.md).
+-   📜 **[Architectural Log](docs/99_System/ARCHITECTURAL_LOG.md)**: 아키텍처 의사결정 및 변경 이력 추적.
+-   🧪 **[Verification Report](docs/99_System/VERIFICATION_REPORT.md)**: 시스템 기술 및 논리 무결성 검증 결과물.
+-   🧠 **[Project Context](docs/99_System/PROJECT_CONTEXT.md)**: 프로젝트 전반의 기술적 맥락 및 자동화 가이드라인.
 
 ---
 

@@ -57,6 +57,7 @@
 - **Trace**: [TRACEABILITY_SPEC.md](99_System/Trace/TRACEABILITY_SPEC.md)
 - **Validation**: [INTEGRATED_VALIDATION_RUN.md](99_System/Validation/INTEGRATED_VALIDATION_RUN.md)
 - **Execution**: [OUTPUT_HASH_SPEC.md](99_System/Execution/OUTPUT_HASH_SPEC.md) / [NORMALIZATION](99_System/Execution/TRACE_GRAPH_NORMALIZATION_SPEC.md)
+- **Status & Log**: [VERIFICATION_REPORT.md](99_System/VERIFICATION_REPORT.md) / [ARCHITECTURAL_LOG.md](99_System/ARCHITECTURAL_LOG.md)
 
 ### ─────────────
 
